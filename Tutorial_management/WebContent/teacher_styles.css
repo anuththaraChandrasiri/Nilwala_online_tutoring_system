@@ -1,0 +1,30 @@
+@charset "ISO-8859-1";
+
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+  background-color: white;
+}
+ul.breadcrumb li {
+  display: inline;
+  font-size: 25px;
+}
+ul.breadcrumb li+li:before {
+  padding: 10px;
+  color: black;
+  content: "/\00a0";
+}
+ul.breadcrumb li a {
+  color: black;
+  text-decoration: none;
+  font-family: sans-serif;
+}
+/*ul.breadcrumb li a:hover {
+  color: green;
+  text-decoration: underline;
+}*/
+#nav_bar .active {
+    color:            green;
+    background-color: #4f81bd;
+    text-decoration: underline;
+}
