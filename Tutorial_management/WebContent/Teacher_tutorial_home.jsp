@@ -18,7 +18,7 @@
 
 	<div>
 		<ul class="breadcrumb"><!--   add your path example : Subject / Add Subject 1st li subject 2nd li Add Subject . change accordingly-->
-		  <li><a href="Student_tutorial_home.jsp"><b>Tutorials</b></a></li>
+		  <li><a href="Teacher_tutorial_home.jsp"><b>Tutorials</b></a></li>
 		</ul>
 	</div>
 	<hr>

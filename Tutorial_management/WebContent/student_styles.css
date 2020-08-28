@@ -51,6 +51,22 @@ ul.breadcrumb li a {
   color: #002699;
 }
 
+.button1 {
+  font-family: 'Hammersmith One', sans-serif;
+  color: white;
+  text-align: left;
+  border-radius: 8px;
+  font-size: 25px;
+  background: #42A5F6;
+  padding: 10px 20px 10px 20px;
+  border: none;
+  width: 350px;
+}
+.button1:hover {
+  background: #0090FF;
+  color: #002699;
+}
+
 
 
 
