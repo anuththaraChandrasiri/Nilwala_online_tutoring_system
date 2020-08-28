@@ -28,3 +28,43 @@ ul.breadcrumb li a {
     background-color: #4f81bd;
     text-decoration: underline;
 }
+
+/*My work*/
+
+.col-sm-6{
+	 text-align:center;	
+}
+
+.button {
+  font-family: 'Hammersmith One', sans-serif;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 25px;
+  background: #42A5F6;
+  padding: 10px 20px 10px 20px;
+  border: none;
+  width: 250px;
+}
+.button:hover {
+  background: #0090FF;
+  color: #002699;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

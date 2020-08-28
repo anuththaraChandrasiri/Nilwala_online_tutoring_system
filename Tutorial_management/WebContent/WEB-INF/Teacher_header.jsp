@@ -182,7 +182,7 @@
 	  <a href="Teacher_home.jsp">Home</a>
 	  <a href="#news">Subjects</a>
 	  <a href="#contact">Classes</a>	  
-      <a href="#about">Tutorials</a>
+      <a href="Teacher_tutorial_home.jsp">Tutorials</a>
       <a href="#about">Notices</a>
       <a href="#about">Payments</a>
      

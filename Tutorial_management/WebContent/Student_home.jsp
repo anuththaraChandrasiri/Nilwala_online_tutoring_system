@@ -12,9 +12,9 @@
 
 <%@ include file="WEB-INF/Student_header.jsp" %> 
 
-<div>
+	<div>
 		<ul class="breadcrumb"><!--   add your path example : Subject / Add Subject 1st li subject 2nd li Add Subject . change accordingly-->
-		  <li><a href="#"><b>Home</b></a></li>
+		  <li><a href="Student_home.jsp"><b>Home</b></a></li>
 		</ul>
 	</div>
 	<hr>
