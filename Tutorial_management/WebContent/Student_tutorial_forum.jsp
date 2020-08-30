@@ -26,16 +26,15 @@
 		  <li><a href="Student_tutorial_home.jsp"><b>Ordinary level - Sinhala medium</b></a>
 		  	  <a href="Student_tutorial_subject.jsp"><b> - Mathematics</b></a>
 		  	  <a href="#"><b> - Kapila Gunarathne</b></a>
+		  	  <a href="#"><b> - Forum (Tutorial 6)</b></a>
 		  </li>
 		</ul>
 	</div>
 	<hr>
 	
-	<div class="container">
-	
-			<div class="jumbotron text-center">
-	 			 <h1>Tute 6 - Lesson 4 - Questions</h1>
-			</div>
+		<div class="jumbotron text-center">
+	 		 <h1>Tute 6 - Lesson 4 - Questions</h1>
+		</div>
 		
 		<div class="jumbotron text-center">
 			  <div class="row">

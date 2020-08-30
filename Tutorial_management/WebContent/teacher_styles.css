@@ -67,4 +67,15 @@ ul.breadcrumb li a {
   color:  black;
 }
 
+/*.SearchBar {
+     position: absolute;
+     top: 355px;
+     left: 575px;
+}*/
+
+.SearchBar input {
+   height: 30px;
+   width: 600px;
+   border-radius: 8px;
+}
 
