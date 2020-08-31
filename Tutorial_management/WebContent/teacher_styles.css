@@ -67,6 +67,40 @@ ul.breadcrumb li a {
   color:  black;
 }
 
+.button2 {
+  font-family: 'Hammersmith One', sans-serif;
+  color: white;
+  text-align: left;
+  border-radius: 8px;
+  font-size: 20px;
+  background:  #009900;
+  padding: 10px 20px 10px 20px;
+  border: none;
+  width: 80px;
+  height:52.7px;
+}
+.button2:hover {
+  background:  #008000;
+  color:  black;
+}
+
+.button3 {
+  font-family: 'Hammersmith One', sans-serif;
+  color: white;
+  text-align: left;
+  border-radius: 8px;
+  font-size: 18px;
+  background:  #4d9900;
+  padding: 10px 20px 10px 20px;
+  border: none;
+  width: 70px;
+  height:46.25px;
+}
+.button3:hover {
+  background:  #008000;
+  color:  black;
+}
+
 /*.SearchBar {
      position: absolute;
      top: 355px;
@@ -78,4 +112,6 @@ ul.breadcrumb li a {
    width: 600px;
    border-radius: 8px;
 }
+
+
 
