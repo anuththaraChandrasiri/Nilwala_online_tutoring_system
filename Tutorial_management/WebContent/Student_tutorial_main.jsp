@@ -5,7 +5,7 @@
 <head>
 <link rel="stylesheet" href="student_styles.css">
 <meta charset="ISO-8859-1">
-<title>Tutorial main</title><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student main</title><meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
@@ -58,9 +58,10 @@
 			   		</div>
 		   			 	<div class="inside">
 		   			 		 <div class="row">
-				   				 <div class="col-sm-6" style="background-color: #cce0ff; width:99.5%; text-align:left;"><h2><a href="#"><b>Tute 01 - Lesson 01</b></a></h2><br>
-				     			 </div>
-				    		     
+				   				 <div class="col-sm-6" style="background-color: #cce0ff; width:99.5%; text-align:left;"><br>				   				 	
+				   					 	 <!-- <img src=".\images\pdf.png" class = "pdf">&nbsp;&nbsp;&nbsp;   -->
+				   					 	  <h2><a href="#"><b>Tute 01 - Lesson 01</b></a></h2><br>		
+				     			 </div>				    		     
 		   			         </div>	 
 		   			         <div class="row">
 				   				 <div class="col-sm-6" style="background-color: #cce0ff; width:99.5%; text-align:left;"><h2><a href="#"><b>Tute 02 - Lesson 01</b></a></h2><br>
