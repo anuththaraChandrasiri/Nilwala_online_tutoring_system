@@ -59,7 +59,9 @@
 		    		 <div class="col-sm-6" style="background-color:white;"><br>
 		    		 <button class="button" onclick= "document.location='Student_tutorial_subject.jsp'" role="button">Mathematics</button><br><br>
 		             </div>
-		           <button class="button" onclick= "document.location='Student_tutorial_subject.jsp'" role="button">Mathematics</button><br><br>
+		           <div class="col-sm-6" style="background-color:white;"><br>
+		    		 <button class="button" onclick= "document.location='Student_tutorial_subject.jsp'" role="button">Mathematics</button><br><br>
+		             </div>
 		 	   </div>
 				<div class="col-sm-6" style="background-color:#ccd9ff;"><br>
 			    	 <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Com. Mathematics</button><br><br>

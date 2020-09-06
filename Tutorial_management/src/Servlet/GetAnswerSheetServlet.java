@@ -48,8 +48,6 @@ public class GetAnswerSheetServlet extends HttpServlet {
 		IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
 		AnswerSheet answerSheet = iAnswerSheetService.getAnswerSheetById(answerSheetID);
 		
-		System.out.println("Answer sheet by id");
-
 		request.setAttribute("answerSheet", answerSheet);
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_updateAnswerSheet.jsp");

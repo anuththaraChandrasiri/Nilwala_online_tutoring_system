@@ -16,7 +16,6 @@ public class DBConnectionUtil extends CommonUtil {
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/tutorialdb", "root", "");
-		System.out.println("Connected to MySQL database");
 		return connection ;
 		
 	}

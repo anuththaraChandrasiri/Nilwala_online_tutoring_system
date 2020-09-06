@@ -88,9 +88,10 @@
 		 	  			  <div class="col-sm-6" style="background-color:  #f2f2f2;"><br><br>  		         
 		 	  			  </div>
 		 	  			  
-					    <button class="button" onclick= "document.location='Student_tutorial_main.jsp'">Submit</button><br><br> 
+					    <!-- <button class="button" onclick= "document.location='Student_tutorial_main.jsp'">Submit</button><br><br> Until i create the servlet -->
 			     		    	
 			     </form>
+			     		<button class="button" onclick= "document.location='Student_tutorial_main.jsp'">Submit</button><br><br> 
 			     		<button class="button" onclick= "document.location='Student_tutorial_main.jsp'">Cancel</button>
 	 		</div> 
 	</div>

@@ -44,8 +44,6 @@ public class DeleteAnswerSheetServlet extends HttpServlet {
 		
 		String answerSheetID = request.getParameter("sheetID");			
 		
-		System.out.println(answerSheetID);
-		
 		IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
 		iAnswerSheetService.deleteAnswerSheet(answerSheetID);
 

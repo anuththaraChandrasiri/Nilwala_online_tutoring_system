@@ -53,10 +53,7 @@ public class AddTutorialServlet extends HttpServlet {
 		tutorial.setMonth(request.getParameter("month"));
 		tutorial.setMaterial(request.getParameter("filename"));
 		
-		System.out.println(request.getParameter("tutorialName") + " " + request.getParameter("teacherId") + "");
-		
 		ITutorialService iTutorialService = new TutorialServiceImpl();
-		System.out.println("blah");
 		iTutorialService.addTutorial(tutorial);
 		
 		request.setAttribute("tutorial", tutorial);

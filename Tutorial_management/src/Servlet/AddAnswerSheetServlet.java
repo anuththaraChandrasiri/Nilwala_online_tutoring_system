@@ -52,10 +52,7 @@ public class AddAnswerSheetServlet extends HttpServlet {
 		answerSheet.setTute_id(request.getParameter("tuteID"));
 		answerSheet.setSubject_code(request.getParameter("subjectCode"));
 		
-		System.out.println(request.getParameter("sheetName") + " " + request.getParameter("teacherID") + "");
-		
 		IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
-		System.out.println("blah");
 		iAnswerSheetService.addAnswerSheet(answerSheet);
 		
 		request.setAttribute("answerSheet", answerSheet);

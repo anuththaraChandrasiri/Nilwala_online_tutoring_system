@@ -37,11 +37,9 @@ public class TutorialServiceImpl implements ITutorialService {
 		try {
 			connection = DBConnectionUtil.getDBConnection();
 			
-			System.out.println("Before the insertion");
 			preparedStatement = connection.prepareStatement(query);
 			connection.setAutoCommit(false);
-			System.out.println("Did you insert?");
-			
+						
 			//Generate tutorial IDs
 			tutorial.setTutorialId(tutorialID);
 			preparedStatement.setString(1, tutorial.getTeacherId());
@@ -51,9 +49,7 @@ public class TutorialServiceImpl implements ITutorialService {
 			preparedStatement.setString(5, tutorial.getDateAdded());
 			preparedStatement.setString(6, tutorial.getMonth());
 			preparedStatement.setString(7, tutorial.getMaterial());
-			System.out.println("Inserted!");
-			System.out.println(tutorial.getTeacherId() + " " + tutorial.getSubjectCode() + " " +  tutorial.getTutorialId()  );
-			
+						
 			// Add tutorial
 			preparedStatement.execute();
 			connection.commit();
@@ -117,8 +113,7 @@ public class TutorialServiceImpl implements ITutorialService {
 				preparedStatement.setString(7, tutorialId);
 				
 				preparedStatement.executeUpdate();
-				System.out.println("Done!");
-				
+								
 			} catch (SQLException | ClassNotFoundException e) {
 				Log.log(Level.SEVERE, e.getMessage());
 			} finally {
@@ -185,7 +180,7 @@ public class TutorialServiceImpl implements ITutorialService {
 		try {
 			connection = DBConnectionUtil.getDBConnection();
 			preparedStatement = connection.prepareStatement(query);
-			System.out.println("Got the id");
+			
 				ResultSet resultSet = preparedStatement.executeQuery();
 				while (resultSet.next()) {
 				arrayList.add(resultSet.getString(1));

@@ -38,11 +38,9 @@ public class AnswerSheetServiceImpl implements IAnswerSheetService {
 		try {
 			connection = DBConnectionUtil.getDBConnection();
 			
-			System.out.println("Before the insertion");
 			preparedStatement = connection.prepareStatement(query);
 			connection.setAutoCommit(false);
-			System.out.println("Did you insert?");
-			
+						
 			//Generate Answer sheet IDs
 			answerSheet.setSheet_id(answerSheetID);
 			preparedStatement.setString(1, answerSheet.getTeacher_id());
@@ -52,9 +50,7 @@ public class AnswerSheetServiceImpl implements IAnswerSheetService {
 			preparedStatement.setString(5, answerSheet.getDate_added());
 			preparedStatement.setString(6, answerSheet.getSheet_name());
 			preparedStatement.setString(7, answerSheet.getMaterial());
-			System.out.println("Inserted!");
-			System.out.println(answerSheet.getTeacher_id() + " " + answerSheet.getSubject_code() + " " +  answerSheet.getTute_id()  );
-			
+						
 			// Add answer sheet
 			preparedStatement.execute();
 			connection.commit();
@@ -76,8 +72,7 @@ public class AnswerSheetServiceImpl implements IAnswerSheetService {
 			} catch (SQLException e) {
 				Log.log(Level.SEVERE, e.getMessage());
 			}
-		}
-		
+		}		
 		
 	}
 
@@ -96,7 +91,6 @@ public class AnswerSheetServiceImpl implements IAnswerSheetService {
 	@Override
 	public AnswerSheet updateAnswerSheet(String answerSheetId, AnswerSheet answerSheet) {
 		
-		System.out.println(answerSheetId);
 		String query = "update answer_sheet as a set a.teacher_id = ?, a.subject_code = ?, a.tute_id = ?, a.date_added = ?, a.sheet_name = ?, a.material = ? where a.sheet_id = ?";
 		
 			/*
@@ -119,8 +113,7 @@ public class AnswerSheetServiceImpl implements IAnswerSheetService {
 					preparedStatement.setString(7, answerSheetId);
 					
 					preparedStatement.executeUpdate();
-					System.out.println("Done!");
-					
+										
 				} catch (SQLException | ClassNotFoundException e) {
 					Log.log(Level.SEVERE, e.getMessage());
 				} finally {
@@ -187,7 +180,7 @@ public class AnswerSheetServiceImpl implements IAnswerSheetService {
 		try {
 			connection = DBConnectionUtil.getDBConnection();
 			preparedStatement = connection.prepareStatement(query);
-			System.out.println("Got the id");
+			
 				ResultSet resultSet = preparedStatement.executeQuery();
 				while (resultSet.next()) {
 				arrayList.add(resultSet.getString(1));

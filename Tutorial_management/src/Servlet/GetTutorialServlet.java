@@ -49,8 +49,6 @@ public class GetTutorialServlet extends HttpServlet {
 		ITutorialService iTutorialService = new TutorialServiceImpl();
 		Tutorial tutorial = iTutorialService.getTutorialById(tutorialID);
 		
-		System.out.println("Tutorial by id");
-
 		request.setAttribute("tutorial", tutorial);
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_updateTutorial.jsp");

@@ -69,12 +69,12 @@
 								for(Tutorial tutorial : arrayList){
 							%>
 						   			 	
-		   			 		 <div class="row">
-				   				
+		   			 		 <div class="row">				   				
 				   				 
-				   				 		<div class="col-sm-6" style="background-color:#ccccb3;">
+				   				 		<div class="col-sm-6" style="background-color: #ccccb3;">
 				   				 		<h2><a href="Teacher_tutorial_pdf.jsp">
 				   				 		<b><%=tutorial.getTutorialTitle()%></b></a></h2><br>
+				   				 		<!--<a href="C:\Users\ASUS\Desktop\MADD\Tutes\Tutorial 1 - Views.pdf" target="_new">  -->
 				     					</div>
 				     					<div class="col-sm-6" style="background-color:#ccccb3;">
 				   				 		<form class = "form2" method="POST" action="GetTutorialServlet"><h2>

@@ -45,8 +45,6 @@ public class DeleteTutorialServlet extends HttpServlet {
 		
 		String tutorialID = request.getParameter("tutorialID");			
 		
-		System.out.println(tutorialID);
-		
 		ITutorialService iTutorialService = new TutorialServiceImpl();
 		iTutorialService.deleteTutorial(tutorialID);
 

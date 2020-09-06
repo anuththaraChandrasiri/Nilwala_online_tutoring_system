@@ -16,10 +16,7 @@ public class QueryUtil extends CommonUtil {
 
 		NodeList nodeList;
 		Element element = null;
-		/*
-		 * Read the EmployeeQuery.xml file and read each query node into node
-		 * list. It refers tag name query
-		 */
+		
 		nodeList = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new File(System.getProperty("catalina.base")
 				+ "\\wtpwebapps\\Tutorial_management\\WEB-INF\\TutorialQuery.xml"))
 				.getElementsByTagName(CommonConstants.TAG_NAME);

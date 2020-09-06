@@ -45,11 +45,8 @@ public class UpdateTutorialServlet extends HttpServlet {
 
 		Tutorial tutorial = new Tutorial() ;
 		
-		System.out.println("Before tutorial id is assigned");
 		String tutorialID = request.getParameter("tutorialID");
 		
-		System.out.println(tutorialID);
-						
 		tutorial.setTutorialId(tutorialID);
 		tutorial.setTutorialTitle(request.getParameter("tutorialName"));
 		tutorial.setTeacherId(request.getParameter("teacherID"));
@@ -58,9 +55,7 @@ public class UpdateTutorialServlet extends HttpServlet {
 		tutorial.setMonth(request.getParameter("month"));
 		tutorial.setMaterial(request.getParameter("filename"));
 	
-		System.out.println(request.getParameter("tutorialName") + " " + request.getParameter("teacherID") + " " + request.getParameter("month") );
 		ITutorialService iTutorialService = new TutorialServiceImpl();
-		System.out.println("blah");
 		iTutorialService.updateTutorial(tutorialID, tutorial);
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_main.jsp");

@@ -45,10 +45,7 @@ public class UpdateAnswerSheetServlet extends HttpServlet {
 
 		AnswerSheet answerSheet = new AnswerSheet() ;
 		
-		System.out.println("Before answer sheet id is assigned");
 		String answerSheetID = request.getParameter("sheetID");
-		
-		System.out.println(answerSheetID);
 		
 		answerSheet.setSheet_name(request.getParameter("sheetName"));
 		answerSheet.setMaterial(request.getParameter("filename"));
@@ -57,9 +54,7 @@ public class UpdateAnswerSheetServlet extends HttpServlet {
 		answerSheet.setTute_id(request.getParameter("tuteID"));
 		answerSheet.setSubject_code(request.getParameter("subjectCode"));
 			
-		System.out.println(request.getParameter("sheetName") + " " + request.getParameter("teacherID") + " " + request.getParameter("subjectCode") );
 		IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
-		System.out.println("blah");
 		iAnswerSheetService.updateAnswerSheet(answerSheetID, answerSheet);
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_main.jsp");
