@@ -66,6 +66,21 @@ label {
   }
 }
 </style>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>   
+<script type="text/javascript">   
+$(document).ready(function() {   
+$('#types').change(function(){   
+if($('#types').val() === 'Other')   
+   {   
+   $('#other').show();    
+   }   
+else 
+   {   
+   $('#other').hide();      
+   }   
+});   
+});   
+</script>   
 </head>
 <body>
 <%@ include file="WEB-INF/Teacher_header.jsp" %>  
@@ -80,7 +95,7 @@ label {
 			</ul>
 		</div>
 		<hr>
-		<div class="jumbotron text-center" style="height: 150px;">
+		<div class="jumbotron text-center" style="height: 100px; padding: 10px 20px 10px 20px;">
 	 		 <p style= font-size:50px;>Upload a new answer sheet</p>
 		</div>
 				
@@ -88,51 +103,75 @@ label {
 			  <div class="row">
 			   		<div class="container-fluid">	
 				   		<div class="container">
-							  <form action="/action_page.php">
-							    <div class="row">
-							      <div class="col-25">
-							        <label for="fname">Answer sheet name</label>
-							      </div>
-							      <div class="col-75">
-							        <input type="text" id="fname" name="firstname" placeholder="Name of the answer sheet">
-							      </div>
+							  <form method="POST" action="AddAnswerSheetServlet">
+							    	<div class="row">
+							     		 <div class="col-25">
+							      			  <label for="sheetLabel">Answer sheet name</label>
+							    		 </div>
+							     		 <div class="col-75">
+							      			  <input type="text" id="sheetName" name="sheetName" placeholder="Name of the answer sheet">
+							    		 </div>
+							  	    </div>
+							        <div class="row">
+							     		 <div class="col-25">
+							       			 <label for="fname" style="display: none;" >Teacher ID</label>
+							     		 </div>
+								    	 <div class="col-75">
+								      		  <input type="text" id="tid" name="teacherID" value ="1201" readonly="readonly" style="display: none;">
+								    	 </div>
+							  	  </div>
+							      <div class="row">
+							    		  <div class="col-25">
+							      			  <label for="fname" style="display: none;" >Subject code</label>
+							   			  </div>
+								   		  <div class="col-75">
+								     		   <input type="text" id="sCode" name="subjectCode" value ="21" readonly="readonly" style="display: none;">
+								   		  </div>
+							   	 </div>		
+							   	  <div class="row">
+							    		<div class="col-25">
+							        		<label for="fname">Tutorial ID</label>
+							      		</div>
+								      	<div class="col-75">
+								        	<input type="text" id="tuteId" name="tuteID" placeholder="Tutorial ID">
+								      </div>
+							    </div>						    
+							     <div class="row">
+							      			<div class="col-25">
+							     		   			<label for="lname">Answer sheet</label>
+							      	   		</div>
+							     		 	<div class="col-75">
+							      			 		 <input type="file" id="myFile" name="filename" required>
+								       		 		 <label for="fileupload" style = "font-size:12px;"> Select a file to upload</label>
+							     		 	</div>
+							   </div>
+							   <div class="row">
+							     		 <div class="col-25">
+							     			   <label for="subject">Uploading date</label>
+							     		 </div>
+							     		 <div class="col-75">
+									 		  <input type="date" class="date" id="uDate" name="uploadingDate" width="100" height="60">
+								 		 </div>
 							    </div>
-							    <div class="row">
-							      <div class="col-25">
-							        <label for="lname">Answer sheet </label>
-							      </div>
-							      <div class="col-75">
-							        <input type="file"  />
-							      </div>
-							    </div>
-							    <div class="row">
-							      <div class="col-25">
-							        <label for="subject">Uploading date</label>
-							      </div>
-							      <div class="col-75">
-									   <input type="date" class="date" id="birthday" name="birthday " width="100" height="48">
-								  </div>
-							    </div>
-							    <div class="row">
-							    
-							      <div class="col-25">
-							        
-							      </div>
-							       <div class="col-25">
-							        
-							      </div>
-							       <div class="col-25"><br><br><br>
-							         <button class="button" role="button">Upload</button>
-							      </div><br><br><br>
-							      <div class="col-25">
-							      
-							      	 <button class="button" role="button" style="background-color:  #70db70;">Cancel</button>
-							      </div>
-							      							     							     						
-							    </div>
-							  </form>
-							</div>
-				   	</div>				   
+							    <div class="row">							    
+							             <div class="col-50">
+							        			 <button class="button" role="button"><b>Upload</b></button><br>
+							    		  </div><br>
+							     		 <div class="col-50">
+							      				<button class="button" type="reset" role="button"><b>Reset</b></button>
+							             </div>
+							  </div><br>
+						  </form>							  
+							   	<div class="row">
+							            <div class="col-50">
+							       				<button class="button"  onclick= "document.location='Teacher_tutorial_main.jsp'" style="background-color:  #70db70;">
+							      				 <b> Cancel</b></button>	
+							    		</div><br>
+							      		 <div class="col-50">
+							        	</div>
+							    </div><br>
+							</div> 
+				     <div>				   
 	 		</div> 
 	</div>
 </body>

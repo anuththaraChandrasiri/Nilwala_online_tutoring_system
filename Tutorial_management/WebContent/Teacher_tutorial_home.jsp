@@ -40,21 +40,27 @@
 		       </div>
 		       
 		       <div class="col-sm-6" style="background-color:#99ff99;"><br><br>
-		    		 <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">English</button><br><br>
+		    		 <div class="col-sm-6" style="background-color:white;"><br>
+		    		  <button class="button" onclick= "document.location='Teacher_tutorial_subject.jsp'" role="button">English</button><br><br>
 		             </div>
-		             <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">English literature</button><br><br>
+		             <div class="col-sm-6" style="background-color:white;"><br>
+		             <button class="button" onclick= "document.location='Teacher_tutorial_subject.jsp'" role="button">English literature</button><br><br>
 		         	 </div>	         
 		 	   </div>
 				<div class="col-sm-6" style="background-color:#99ff99;"><br><br>
-			    	 <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Biology</button><br><br>
+			    	 <div class="col-sm-6" style="background-color:white;"><br>
+			    	 <button class="button" onclick= "document.location='Teacher_tutorial_subject.jsp'" role="button">Biology</button><br><br>
 			         </div>
-			          <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Biology</button><br><br>
+			          <div class="col-sm-6" style="background-color:white;"><br>
+			          <button class="button" onclick= "document.location='Teacher_tutorial_subject.jsp'" role="button">Biology</button><br><br>
 			         </div>	         
 		  	   </div>
 		  	     <div class="col-sm-6" style="background-color:#99ff99;"><br>
-		    		 <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Mathematics</button><br><br>
+		    		 <div class="col-sm-6" style="background-color:white;"><br>
+		    		 <button class="button" onclick= "document.location='Teacher_tutorial_subject.jsp'" role="button">Mathematics</button><br><br>
 		             </div>
-		             <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Mathematics</button><br><br>
+		             <div class="col-sm-6" style="background-color:white;"><br>
+		            <button class="button" onclick= "document.location='Teacher_tutorial_subject.jsp'" role="button">Mathematics</button><br><br>
 		         	 </div>	         
 		 	   </div>
 				<div class="col-sm-6" style="background-color:#99ff99;"><br>

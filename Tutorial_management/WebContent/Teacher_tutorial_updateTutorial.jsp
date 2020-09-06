@@ -151,7 +151,7 @@ else
 							        <label for="Tutorial">Tutorial</label>
 							      </div>
 							      <div class="col-75">
-							        <input type="file" id = "myFile" name="filename" value="<%=tutorial.getMaterial()%>" required/>
+							        <input type="file" id = "myFile" name="filename" value="<%=tutorial.getMaterial()%>"/>
 							      </div>
 							    </div>
 							    <div class="row">

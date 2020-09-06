@@ -30,10 +30,10 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12" style = "text-align: center;">
-      <button class="button1" role="button">Mr. Athula Perera</button><br><br>
-      <button class="button1" role="button">Mr. Kapila Gunarathne</button><br><br>
-      <button class="button1" role="button">Ms. Samanthi Gamage</button><br><br>
-      <button class="button1" role="button">Mr. Kamal De Silva</button><br><br><br><br>
+      <button class="button1" onclick= "document.location='Student_tutorial_main.jsp'" role="button">Mr. Athula Perera</button><br><br>
+      <button class="button1" onclick= "document.location='Student_tutorial_main.jsp'" role="button">Mr. Kapila Gunarathne</button><br><br>
+      <button class="button1" onclick= "document.location='Student_tutorial_main.jsp'" role="button">Ms. Samanthi Gamage</button><br><br>
+      <button class="button1" onclick= "document.location='Student_tutorial_main.jsp'" role="button">Mr. Kamal De Silva</button><br><br><br><br>
     </div>
    </div>
 </div>

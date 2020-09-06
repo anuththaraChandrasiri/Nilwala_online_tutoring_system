@@ -40,11 +40,12 @@ ul.breadcrumb li a {
   color: white;
   text-align: center;
   border-radius: 8px;
-  font-size: 25px;
+  font-size: 35px;
   background: #42A5F6;
   padding: 10px 20px 10px 20px;
   border: none;
   width: 250px;
+  height:130px;
 }
 .button:hover {
   background: #0090FF;
@@ -101,6 +102,22 @@ ul.breadcrumb li a {
   color:  black;
 }
 
+.button4 {
+  font-family: 'Hammersmith One', sans-serif;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 10px;
+  background: #42A5F6;
+  padding: 10px 20px 10px 20px;
+  border: none;
+  width: 100px;
+  height:30px;
+}
+.button4:hover {
+  background: #0090FF;
+  color: #002699;
+}
 .pdf{
   height: 30px;
   width: 30px;

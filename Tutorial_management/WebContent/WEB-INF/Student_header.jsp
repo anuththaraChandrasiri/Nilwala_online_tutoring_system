@@ -183,7 +183,7 @@
 	  <a href="Student_home.jsp">Home</a>
 	  <a href="#news">Subjects</a>
 	  <a href="#contact">Classes</a>
-	  <a href="Student_tutorial_home.jsp">Tutorials</a>
+	  <a href="Student_tutorial_home.jsp" class = "active">Tutorials</a>
       <a href="#about">Notices & Appointments</a>
       <a href="#about">Payments</a>
      

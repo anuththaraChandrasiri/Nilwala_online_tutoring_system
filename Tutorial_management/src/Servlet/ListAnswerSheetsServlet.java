@@ -9,21 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Service.ITutorialService;
-import Service.TutorialServiceImpl;
-
 /**
- * Servlet implementation class DeleteTutorialServlet
+ * Servlet implementation class ListAnswerSheetsServlet
  */
-@WebServlet("/DeleteTutorialServlet")
-public class DeleteTutorialServlet extends HttpServlet {
-	
+@WebServlet("/ListAnswerSheetsServlet")
+public class ListAnswerSheetsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteTutorialServlet() {
+    public ListAnswerSheetsServlet() {
         super();
         
     }
@@ -42,18 +38,9 @@ public class DeleteTutorialServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.setContentType("text/html");
-		
-		String tutorialID = request.getParameter("tutorialID");			
-		
-		System.out.println(tutorialID);
-		
-		ITutorialService iTutorialService = new TutorialServiceImpl();
-		iTutorialService.deleteTutorial(tutorialID);
-
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_main.jsp");
 		dispatcher.forward(request, response);
-		
-		// doGet(request, response);
+		//doGet(request, response);
 	}
 
 }

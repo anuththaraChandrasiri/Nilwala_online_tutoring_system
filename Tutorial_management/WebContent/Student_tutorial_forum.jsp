@@ -88,10 +88,10 @@
 		 	  			  <div class="col-sm-6" style="background-color:  #f2f2f2;"><br><br>  		         
 		 	  			  </div>
 		 	  			  
-					     <button class="button" role="button">Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
-					     <button class="button" role="button">Submit</button>
-			     			    	
+					    <button class="button" onclick= "document.location='Student_tutorial_main.jsp'">Submit</button><br><br> 
+			     		    	
 			     </form>
+			     		<button class="button" onclick= "document.location='Student_tutorial_main.jsp'">Cancel</button>
 	 		</div> 
 	</div>
 </body>

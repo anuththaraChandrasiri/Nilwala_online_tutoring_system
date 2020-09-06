@@ -101,9 +101,7 @@ public class TutorialServiceImpl implements ITutorialService {
 		 * Before fetching tutorial it checks whether tutorialID is available
 		 */
 		if (tutorialId != null && !tutorialId.isEmpty()) {
-			/*
-			 * Update tutorial query will be retrieved from TutorialQuery.xml
-			 */
+			
 			try {				
 												
 				connection = DBConnectionUtil.getDBConnection();
@@ -149,11 +147,9 @@ public class TutorialServiceImpl implements ITutorialService {
 		
 		String query = "delete from tutorials where tutorials.tute_Id = ?" ;
 		
-		// Before deleting check whether the hotel ID is available
+		// Before deleting check whether the tutorial ID is available
 		if (tutorialId!= null && !tutorialId.isEmpty()) {
-			/*
-			 * Remove hotel query will be retrieved from HotelReservationQuery.xml
-			 */
+			
 			try {
 				connection = DBConnectionUtil.getDBConnection();
 				preparedStatement = connection
@@ -185,9 +181,7 @@ public class TutorialServiceImpl implements ITutorialService {
 		
 		ArrayList<String> arrayList = new ArrayList<String>();
 		String query = "select t.tute_Id from tutorials as t" ;
-		/*
-		 * List of tutorial IDs will be retrieved from TutorialnQuery.xml
-		 */
+		
 		try {
 			connection = DBConnectionUtil.getDBConnection();
 			preparedStatement = connection.prepareStatement(query);

@@ -9,21 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Service.ITutorialService;
-import Service.TutorialServiceImpl;
+import Model.AnswerSheet;
+import Service.AnswerSheetServiceImpl;
+import Service.IAnswerSheetService;
 
 /**
- * Servlet implementation class DeleteTutorialServlet
+ * Servlet implementation class AddAnswerSheetServlet
  */
-@WebServlet("/DeleteTutorialServlet")
-public class DeleteTutorialServlet extends HttpServlet {
-	
+@WebServlet("/AddAnswerSheetServlet")
+public class AddAnswerSheetServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteTutorialServlet() {
+    public AddAnswerSheetServlet() {
         super();
         
     }
@@ -32,7 +32,7 @@ public class DeleteTutorialServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -40,20 +40,29 @@ public class DeleteTutorialServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		response.setContentType("text/html");
-		
-		String tutorialID = request.getParameter("tutorialID");			
-		
-		System.out.println(tutorialID);
-		
-		ITutorialService iTutorialService = new TutorialServiceImpl();
-		iTutorialService.deleteTutorial(tutorialID);
 
+	response.setContentType("text/html");
+		
+		AnswerSheet answerSheet = new AnswerSheet() ;
+				
+		answerSheet.setSheet_name(request.getParameter("sheetName"));
+		answerSheet.setMaterial(request.getParameter("filename"));
+		answerSheet.setDate_added(request.getParameter("uploadingDate"));
+		answerSheet.setTeacher_id(request.getParameter("teacherID"));
+		answerSheet.setTute_id(request.getParameter("tuteID"));
+		answerSheet.setSubject_code(request.getParameter("subjectCode"));
+		
+		System.out.println(request.getParameter("sheetName") + " " + request.getParameter("teacherID") + "");
+		
+		IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
+		System.out.println("blah");
+		iAnswerSheetService.addAnswerSheet(answerSheet);
+		
+		request.setAttribute("answerSheet", answerSheet);
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_main.jsp");
 		dispatcher.forward(request, response);
 		
-		// doGet(request, response);
+		//doGet(request, response);
 	}
 
 }

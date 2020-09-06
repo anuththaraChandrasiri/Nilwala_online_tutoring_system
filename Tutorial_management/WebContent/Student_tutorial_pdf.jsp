@@ -16,7 +16,7 @@
 		</ul>
 	</div>
 	<hr>
- <iframe src="URL" width="100%" height="900px"><!-- ...../DSA/IT2070-DSA_V2.pdf  -->
-    </iframe>
+ <!--<iframe src="URL" width="100%" height="900px"> ...../DSA/IT2070-DSA_V2.pdf 
+    </iframe> -->
 </body>
 </html>

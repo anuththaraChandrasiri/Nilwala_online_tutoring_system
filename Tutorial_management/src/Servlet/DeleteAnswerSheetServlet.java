@@ -9,23 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Service.ITutorialService;
-import Service.TutorialServiceImpl;
+import Service.AnswerSheetServiceImpl;
+import Service.IAnswerSheetService;
 
 /**
- * Servlet implementation class DeleteTutorialServlet
+ * Servlet implementation class DeleteAnswerSheetServlet
  */
-@WebServlet("/DeleteTutorialServlet")
-public class DeleteTutorialServlet extends HttpServlet {
-	
+@WebServlet("/DeleteAnswerSheetServlet")
+public class DeleteAnswerSheetServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteTutorialServlet() {
+    public DeleteAnswerSheetServlet() {
         super();
-        
+       
     }
 
 	/**
@@ -43,12 +42,12 @@ public class DeleteTutorialServlet extends HttpServlet {
 		
 		response.setContentType("text/html");
 		
-		String tutorialID = request.getParameter("tutorialID");			
+		String answerSheetID = request.getParameter("sheetID");			
 		
-		System.out.println(tutorialID);
+		System.out.println(answerSheetID);
 		
-		ITutorialService iTutorialService = new TutorialServiceImpl();
-		iTutorialService.deleteTutorial(tutorialID);
+		IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
+		iAnswerSheetService.deleteAnswerSheet(answerSheetID);
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_main.jsp");
 		dispatcher.forward(request, response);

@@ -1,3 +1,10 @@
+<%@page import="Model.Tutorial"%>
+<%@page import="Model.AnswerSheet"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Service.TutorialServiceImpl"%>
+<%@page import="Service.ITutorialService"%>
+<%@page import="Service.AnswerSheetServiceImpl"%>
+<%@page import="Service.IAnswerSheetService"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -17,7 +24,7 @@
 .column {
   float: left;
   padding: 20px;
-  height: 1000px;
+  height: 100%;
 }
 
 .left {
@@ -46,102 +53,89 @@
 		<ul class="breadcrumb"><!--   add your path example : Subject / Add Subject 1st li subject 2nd li Add Subject . change accordingly-->
 		   	  <li><a href="Student_tutorial_home.jsp"><b>Ordinary level - Sinhala medium</b></a>
 			  	  <a href="Student_tutorial_subject.jsp"><b> - Mathematics</b></a>
-			  	  <a href="#"><b> - Kapila Gunarathne</b></a>
+			  	  <a href="Student_tutorial_main.jsp"><b> - Kapila Gunarathne</b></a>
 			 </li>
 		</ul>
 	</div>
 	<hr>
 	
-	<div class="column left" style="background-color: #3385ff;">
-			 		<div class="jumbotron text-center" style="height:30px; text-align:left;">
+	<div class="column left" style="background-color: #b3d1ff;">
+			 		<div class="jumbotron text-center" style=" height: 30px; text-align:left; padding: 10px 20px 70px 20px;">
 			   			 <h2>January</h2>
 			   		</div>
-		   			 	<div class="inside">
-		   			 		 <div class="row">
-				   				 <div class="col-sm-6" style="background-color: #cce0ff; width:99.5%; text-align:left;"><br>				   				 	
-				   					 	 <!-- <img src=".\images\pdf.png" class = "pdf">&nbsp;&nbsp;&nbsp;   -->
-				   					 	  <h2><a href="#"><b>Tute 01 - Lesson 01</b></a></h2><br>		
-				     			 </div>				    		     
-		   			         </div>	 
-		   			         <div class="row">
-				   				 <div class="col-sm-6" style="background-color: #cce0ff; width:99.5%; text-align:left;"><h2><a href="#"><b>Tute 02 - Lesson 01</b></a></h2><br>
-				     			 </div>
-				    		    
-		   			         </div>	  
-		   			         <div class="row">
-				   				 <div class="col-sm-6" style="background-color: #cce0ff; width:99.5%; text-align:left;"><h2><a href="#"><b>Tute 03 - Lesson 02</b></a></h2><br>
-				     			 </div>
-				    		    
-		   			         </div>	  
-		   			         <div class="row">
-				   				 <div class="col-sm-6" style="background-color: #cce0ff; width:99.5%; text-align:left;"><h2><a href="#"><b>Tute 04 - Lesson 03</b></a></h2><br>
-				     			 </div>
-				    		    
-		   			         </div>	<br>
-		   			         <div class="jumbotron text-center" style="height:30px; text-align:left; text-align:left;">
-				   				 <h2>February</h2>
-				   			</div>  	
-				   			 <div class="row">
-				   				 <div class="col-sm-6" style="background-color: #cce0ff; width:99.5%; text-align:left;"><h2><a href="#"><b>Tute 05 - Lesson 04</b></a></h2><br>
-				     			 </div>
-				    		    
-		   			         </div>	  
-		   			         <div class="row">
-				   				 <div class="col-sm-6" style="background-color: #cce0ff; width:99.5%; text-align:left;"><h2><a href="#"><b>Tute 06 - Lesson 04</b></a></h2><br>
-				     			 </div>
-				    		     
-		   			         </div>	<br>
-		   			         		<br><br><br><br>
-		   			         		<div class="row">
+		   			 	
+		   			 		   			 	
+							<%
+					            ITutorialService iTutorialService = new TutorialServiceImpl();
+								ArrayList<Tutorial> arrayList = iTutorialService.getTutorials();
+								
+								for(Tutorial tutorial : arrayList){
+							%>
+						    <div class="row">
+				   				
+				   				 <br>
+				   				 		<div class="col-sm-6" style="background-color:#cce0ff;">
+				   				 		<h2><a href="Student_tutorial_pdf.jsp">
+				   				 		<b><%=tutorial.getTutorialTitle()%></b><br><br></a></h2>
+				     					</div>
+				     					<div class="col-sm-6" style="background-color:#cce0ff;"><br>
+				   				 		<button class="button" onclick= "document.location='Student_tutorial_pdf.jsp'"
+				   				 			style = "background: #80b3ff;  margin-left:25%;">Download</button><br><br>
+				     					</div>					     			 
+				    		 </div> 
+				    		  
+					    	<%	
+				 					  }
+	         				%>  
+	         				
+	         				   <br><br><br>
+				    		   <div class="row">
 				   						 <div class="col-sm-6">
-				   						 
-				   						  <br><br><br><br><br>
+						   											   						
 				     					 </div>
 				    		    		 <div class="col-sm-6">
-				    		    		 <button class="button" role="button" style="background-color: #0052cc;">Questions?</button>
-				    		    		 <br><br><br><br><br>
+				    		    		 
+				    		    		   <button class="button" onclick= "document.location='Student_tutorial_forum.jsp'" style="background-color: #1a75ff;">
+						   						Questions?</button>
+						   						  <br><br><br><br>
 				    		    		 </div>
-		   			         		</div>
-	   			       </div>  		
-				</div>
-				
-				
-			  	<div class="column right" style="background-color: #0052cc; ">
-			   		<div class="jumbotron text-center"  style="height:30px;">
-			   			 <h2>Answer sheets</h2>
-			  		</div>
-			  		<div class="inside">
-		   			 		 <div class="row">
-				   				 <div class="col-sm-6" style="background-color: #ccd9ff; width:99.5%;"><h3><a href="#"><b>Tute 01 answers</b></a></h3><br>
-				     			 </div>
-				    		     
-		   			         </div>
-		   			         <div class="row">
-				   				 <div class="col-sm-6" style="background-color:	 #ccd9ff; width:99.5%;"><h3><a href="#"><b>Tute 02 answers</b></a></h3><br>
-				     			 </div>
-				    		    
-		   			         </div>	  
-		   			         <div class="row">
-				   				 <div class="col-sm-6" style="background-color:	  #ccd9ff; width:99.5%;"><h3><a href="#"><b>Tute 03 answers</b></a></h3><br>
-				     			 </div>
-				    		    
-		   			         </div>	  
-		   			         <div class="row">
-				   				 <div class="col-sm-6" style="background-color:	 #ccd9ff; width:99.5%;"><h3><a href="#"><b>Tute 04 answers</b></a></h3><br>
-				     			 </div>
-				    		    
-		   			         </div>	 	
-				   			<div class="row">
-				   				 <div class="col-sm-6" style="background-color:	  #ccd9ff; width:99.5%;"><h3><a href="#"><b>Tute 05 answers</b></a></h3><br>
-				     			 </div>
-				    		    
-		   			         </div>
-		   			         <div class="row">
-				   				 <div class="col-sm-6" style="background-color:	  #ccd9ff; width:99.5%;"><h3><a href="#"><b>Tute 06 answers</b></a></h3><br><br><br>
-				     			 </div>
-				    		     
-		   			         </div>
-	   			       </div>  		
-			  	</div>
+		   			         	</div>
+				    	 </div>  
+					    		    			    		    				
+			  			<div class="column right" style="background-color: #cce0ff; ">
+			   				<div class="jumbotron text-center" style=" height: 30px; text-align:left; padding: 10px 20px 70px 20px;">
+			   			 		<h2>Answer sheets</h2>
+			  			</div>
+			  		
+			  		<%
+					            IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
+								ArrayList<AnswerSheet> arrayList2 = iAnswerSheetService.getAnswerSheets();
+								
+								for(AnswerSheet answerSheet : arrayList2){
+					%>
+			  		
+		   			 		 <div class="row"><br>
+				   				 	<div class="col-sm-6" style="background-color:	 #cce0ff;">
+				   				 		<h3><a href="Student_tutorial_pdf.jsp">
+				   							 <b><%=answerSheet.getSheet_name()%></b></a></h3><br>
+				     			    </div>
+				    		     	<div class="col-sm-6" style="background-color:	#cce0ff;"><br>
+				    		     			<button class="button4" onclick= "document.location='Student_tutorial_pdf.jsp'"
+				   				 			style = "background: #80b3ff;">Download</button><br><br>
+				     				</div>	
+				    		   </div>
+		   			        
+		   			        <%	
+				 					  }
+	         				%>  
+		   			      </div>
+		   			      	
+			  					 <div class="row">
+				   					 <div class="col-sm-6"><h3></h3><br><br>
+				     			 	</div>
+				    		    	<div class="col-sm-6"><h2></h2><br>
+				    		     	</div>
+		   	     				</div>	 
+		
 </body>
 </html>
