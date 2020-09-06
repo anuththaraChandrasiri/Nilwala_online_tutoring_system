@@ -1,3 +1,7 @@
+<%@page import="Model.Tutorial"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Service.TutorialServiceImpl"%>
+<%@page import="Service.ITutorialService"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -19,7 +23,7 @@
 .column {
   float: left;
   padding: 20px;
-  height: 1000px;
+  height: 100%;
 }
 
 .left {
@@ -44,7 +48,7 @@
 <%@ include file="WEB-INF/Teacher_header.jsp" %>  
 
 		<div>
-			<ul class="breadcrumb"><!--   add your path example : Subject / Add Subject 1st li subject 2nd li Add Subject . change accordingly-->
+			<ul class="breadcrumb">
 			  <li><a href="Student_tutorial_home.jsp"><b>Ordinary level - Sinhala medium</b></a>
 			  	  <a href="Student_tutorial_subject.jsp"><b> - Mathematics</b></a>
 			  	  <a href="#"><b> - Kapila Gunarathne</b></a>
@@ -53,66 +57,53 @@
 		</div>
 		<hr>
 			 	<div class="column left" style="background-color:green;">
-			 		<div class="jumbotron text-center" style="height:30px; text-align:left;">
+			 		<div class="jumbotron text-center" style=" height: 30px; text-align:left; padding: 10px 20px 70px 20px;">
 			   			 <h2>January</h2>
 			   		</div>
-		   			 	<div class="inside">
+		   			 			   			 	
+							<%
+					            ITutorialService iTutorialService = new TutorialServiceImpl();
+								ArrayList<Tutorial> arrayList = iTutorialService.getTutorials();
+								
+								for(Tutorial tutorial : arrayList){
+							%>
+						   			 	
 		   			 		 <div class="row">
-				   				 <div class="col-sm-6" style="background-color:#99ff99;"><h2><a href="#"><b>Tute 01 - Lesson 01</b></a></h2><br>
-				     			 </div>
-				    		     <div class="col-sm-6" style="background-color:#99ff99;"><h2><button class="button2" role="button">Edit</button></h2>
-				    		     </div>
-		   			         </div>	 
-		   			         <div class="row">
-				   				 <div class="col-sm-6" style="background-color:#99ff99;"><h2><a href="#"><b>Tute 02 - Lesson 01</b></a></h2><br>
-				     			 </div>
-				    		     <div class="col-sm-6" style="background-color:#99ff99;"><h2><button class="button2" role="button">Edit</button></h2>
-				    		     </div>
-		   			         </div>	  
-		   			         <div class="row">
-				   				 <div class="col-sm-6" style="background-color:#99ff99;"><h2><a href="#"><b>Tute 03 - Lesson 02</b></a></h2><br>
-				     			 </div>
-				    		     <div class="col-sm-6" style="background-color:#99ff99;"><h2><button class="button2" role="button">Edit</button></h2>
-				    		     </div>
-		   			         </div>	  
-		   			         <div class="row">
-				   				 <div class="col-sm-6" style="background-color:#99ff99;"><h2><a href="#"><b>Tute 04 - Lesson 03</b></a></h2><br>
-				     			 </div>
-				    		     <div class="col-sm-6" style="background-color:#99ff99;"><h2><button class="button2" role="button">Edit</button></h2>
-				    		     </div>
-		   			         </div>	<br>
-		   			         <div class="jumbotron text-center" style="height:30px; text-align:left;">
-				   				 <h2>February</h2>
-				   			</div>  	
-				   			 <div class="row">
-				   				 <div class="col-sm-6" style="background-color:#99ff99;"><h2><a href="#"><b>Tute 05 - Lesson 04</b></a></h2><br>
-				     			 </div>
-				    		     <div class="col-sm-6" style="background-color:#99ff99;"><h2><button class="button2" role="button">Edit</button></h2>
-				    		     </div>
-		   			         </div>	  
-		   			         <div class="row">
-				   				 <div class="col-sm-6" style="background-color:#99ff99;"><h2><a href="#"><b>Tute 06 - Lesson 04</b></a></h2><br>
-				     			 </div>
-				    		     <div class="col-sm-6" style="background-color:#99ff99;"><h2><button class="button2" role="button">Edit</button></h2>
-				    		     </div>
-		   			         </div>	<br>
-		   			         		<br><br><br><br>
+				   				
+				   				 
+				   				 		<div class="col-sm-6" style="background-color:#99ff99;">
+				   				 		<h2><a href="#"><b><%=tutorial.getTutorialTitle()%></b></a></h2><br>
+				     					</div>
+				     					<div class="col-sm-6" style="background-color:#99ff99;">
+				   				 		<form class = "form2" method="POST" action="GetTutorialServlet"><h2>
+											<input type="hidden" name="tutorialID" value="<%=tutorial.getTutorialId()%>"/>
+											<input type="submit" value= "Edit" class="button2" /></h2>
+										</form>
+				     					</div>				   				 
+				     			 
+				    		 </div> 
+				    		 
+					    	<%	
+				 					  }
+	         				%>  
+	         				
+	         				   <br><br><br><br>
 		   			         		<div class="row">
 				   						 <div class="col-sm-6">
-				   						  <button class="button" role="button">Upload a new tutorial</button>
-				   						  <br><br><br><br><br>
+						   						 <button class="button" onclick= "document.location='Teacher_tutorial_uploadTutorial.jsp'">Upload a new tutorial</button>
+						   						  <br><br>
 				     					 </div>
 				    		    		 <div class="col-sm-6">
 				    		    		 <button class="button" role="button" style="background-color:  #70db70;">View most asked questions</button>
-				    		    		 <br><br><br><br><br>
+				    		    		 <br><br>
 				    		    		 </div>
 		   			         		</div>
-	   			       </div>  		
-				</div>
-				
-				
+				    	 </div>  
+					    
+				    		    
+				    		    				
 			  	<div class="column right" style="background-color: #4d9900; ">
-			   		<div class="jumbotron text-center"  style="height:30px;">
+			   		<div class="jumbotron text-center" style=" height: 30px; text-align:left; padding: 10px 20px 70px 20px;">
 			   			 <h2>Answer sheets</h2>
 			  		</div>
 			  		<div class="inside">
@@ -129,35 +120,27 @@
 				    		     </div>
 		   			         </div>	  
 		   			         <div class="row">
-				   				 <div class="col-sm-6" style="background-color:	 #99ff33;"><h3><a href="#"><b>Tute 03 answers</b></a></h3><br>
+				   				 <div class="col-sm-6" style="background-color:	 #99ff33;"><h3><a href="#"><b>Tute 03 answers</b></a></h3><br><br>
 				     			 </div>
-				    		    <div class="col-sm-6" style="background-color:	 #99ff33;"><h2><button class="button3" role="button">Edit</button></h2>
+				    		    <div class="col-sm-6" style="background-color:	 #99ff33;"><h2><button class="button3" role="button">Edit</button></h2><br>
 				    		     </div>
 		   			         </div>	  
-		   			         <div class="row">
-				   				 <div class="col-sm-6" style="background-color:	 #99ff33;"><h3><a href="#"><b>Tute 04 answers</b></a></h3><br>
-				     			 </div>
-				    		     <div class="col-sm-6" style="background-color:	 #99ff33;"><h2><button class="button3" role="button">Edit</button></h2>
-				    		     </div>
-		   			         </div>	 	
-				   			<div class="row">
-				   				 <div class="col-sm-6" style="background-color:	 #99ff33;"><h3><a href="#"><b>Tute 05 answers</b></a></h3><br>
-				     			 </div>
-				    		    <div class="col-sm-6" style="background-color:	 #99ff33;"><h2><button class="button3" role="button">Edit</button></h2>
-				    		     </div>
-		   			         </div>
-		   			         <div class="row">
-				   				 <div class="col-sm-6" style="background-color:	 #99ff33;"><h3><a href="#"><b>Tute 06 answers</b></a></h3><br><br><br>
-				     			 </div>
-				    		     <div class="col-sm-6" style="background-color:	 #99ff33;"><h2><button class="button3" role="button">Edit</button></h2><br><br>
-				    		     </div>
-		   			         </div>
-		   			         		<br><br><br><br><br><br><br><br><br><br><br><br><br>
+		   			        	
+				   			
+		   			         		<br><br><br><br>
 		   			         		<div class="row">				   					
-				   						  <button class="button" role="button" style = "width:99.5%; background:   #264d00;">Upload a new answer sheet</button><br>
+				   						  <button class="button" role="button" style = "background:#264d00;  margin-left:25%;">
+				   						  Upload a new answer sheet</button>
+				   						
 		   			         		</div>
-	   			       </div>  		
+	   			       </div><br>		
 			  	</div>
+			  	 <div class="row">
+				   				 <div class="col-sm-6"><h3></h3><br><br>
+				     			 </div>
+				    		    <div class="col-sm-6"><h2></h2><br>
+				    		     </div>
+		   	     </div>	 
 		
 </body>
 </html>

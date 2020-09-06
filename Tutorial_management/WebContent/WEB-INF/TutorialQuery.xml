@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Querys>
+
+	<!-- Create table employee Query -->
+	<query id="create_employee_table">
+        <![CDATA[
+            CREATE TABLE employee(
+				employeeID varchar(10) not null,
+				employeeName varchar(20),
+				designation varchar(15),
+				faculty varchar(15),
+				department varchar(15),
+				address  varchar(50),
+				qualifications varchar(20),
+				gender varchar(10) DEFAULT 'Male',
+				primary key (employeeID)
+			)
+        ]]>
+	</query>
+
+	<!-- DROP TABLE EMPLOYEES Query -->
+	<query id="drop_table">
+         <![CDATA[        
+            DROP TABLE IF EXISTS employee 
+        ]]>
+	</query>
+
+	<!-- Select all customer orders Query -->
+	<query id="insert_tutorial">
+        <![CDATA[
+          	insert into tutorials (teacher_id, subject_code, tute_id,  title, date_added,  month, material ) 
+          	values (?, ?, ?, ?, ?, ?, ?)
+        ]]>
+	</query>
+
+	<!-- Select a particular employee by id Query -->
+	<query id="tutorial_by_id">
+         <![CDATA[        
+            select * from tutorials where tutorials.tute_id = ?
+        ]]>
+	</query>
+
+	<!-- Select all employees -->
+	<query id="all_tutorials">
+         <![CDATA[        
+            select * from tutorials
+        ]]>
+	</query>
+
+	<!-- Delete a particular employee by id Query -->
+	<query id="remove_tutorial">
+         <![CDATA[        
+            delete from tutorials where tutorials.tute_id = ?
+        ]]>
+	</query>
+	
+	<!-- Update a particular employee by id Query -->
+	<query id="update_tutorial">
+         <![CDATA[        
+            update tutorial as t 
+            set t.teacher_id = ?, t.subject_code = ?, t.title = ?, t.date_added = ?, t.month = ?, t.material = ?
+            where t.tute_id = ?
+        ]]>
+	</query>
+	
+		<!-- Get employee IDs Query -->
+	<query id="tutorial_ids">
+         <![CDATA[        
+            select t.tute_Id from tutorials as t
+        ]]>
+	</query>
+
+</Querys>
