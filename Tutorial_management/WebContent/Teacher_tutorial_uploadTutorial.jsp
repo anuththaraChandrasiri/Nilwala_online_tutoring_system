@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import = "java.io.*,java.util.*, javax.servlet.*" %>
+<%@page import="java.text.SimpleDateFormat" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -116,7 +118,7 @@ else
 							        		<label for="fname" style="display: none;" >Teacher ID</label>
 							      		</div>
 								      	<div class="col-75">
-								        	<input type="text" id="tid" name="teacherID" placeholder="1201" readonly="readonly" style="display: none;">
+								        	<input type="text" id="tid" name="teacherID" placeholder="10002" value = "10002" readonly="readonly" style="display: none;">
 								      	</div>
 							    </div>
 							    <div class="row">
@@ -124,7 +126,7 @@ else
 							        		<label for="fname" style="display: none;" >Subject code</label>
 							      		</div>
 								      	<div class="col-75">
-								        	<input type="text" id="sCode" name="subjectCode" placeholder="21" readonly="readonly" style="display: none;">
+								        	<input type="text" id="sCode" name="subjectCode" placeholder="21" value = "21" readonly="readonly" style="display: none;">
 								      </div>
 							    </div>	
 							   				    
@@ -159,11 +161,15 @@ else
 							      		</div>
 							    	</div>
 							    	<div class="row">
-							      		<div class="col-25">
-							        		<label for="subject">Uploading date</label>
+							      		<div class="col-25">							      			
+							        		<label for="subject" style="display: none;">Uploading date</label>
 							      		</div>
 							      		<div class="col-75">
-									   		<input type="date" class="date" id="uDate" name="uploadingDate" width="100" height="60">
+							      			 <%
+							      			 		Date date = new Date() ;
+											        SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
+    										  %>
+									   		<input type="date" class="date" id="uDate" name="uploadingDate" width="100" height="60" value="<%=sdf.format(date)%>" style="display: none;">
 								  		</div>
 							    	</div>
 							    	<div class="row">							    

@@ -41,56 +41,56 @@
 		       
 		       <div class="col-sm-6" style="background-color:#ccd9ff;"><br><br>
 		    		 <div class="col-sm-6" style="background-color:white;"><br>
-		    		 <button class="button" onclick= "document.location='Student_tutorial_subject.jsp'" role="button">English</button><br><br>
+		    		 <button class="button5" onclick= "document.location='Student_tutorial_subject.jsp'" role="button">English</button><br><br>
 		             </div>
 		             <div class="col-sm-6" style="background-color:white;"><br>
-		            <button class="button" onclick= "document.location='Student_tutorial_subject.jsp'" role="button">English literature</button><br><br>
+		            <button class="button5" onclick= "document.location='Student_tutorial_subject.jsp'" role="button">English literature</button><br><br>
 		         	 </div>	         
 		 	   </div>
 				<div class="col-sm-6" style="background-color:#ccd9ff;"><br><br>
 			    	 <div class="col-sm-6" style="background-color:white;"><br>
-			    	 <button class="button" onclick= "document.location='Student_tutorial_subject.jsp'" role="button">Biology</button><br><br>
+			    	 <button class="button5" onclick= "document.location='Student_tutorial_subject.jsp'" role="button">Biology</button><br><br>
 			         </div>
 			          <div class="col-sm-6" style="background-color:white;"><br>
-			          <button class="button" onclick= "document.location='Student_tutorial_subject.jsp'" role="button">Biology</button><br><br>
+			          <button class="button5" onclick= "document.location='Student_tutorial_subject.jsp'" role="button">Biology</button><br><br>
 			         </div>	         
 		  	   </div>
 		  	     <div class="col-sm-6" style="background-color:#ccd9ff;"><br>
 		    		 <div class="col-sm-6" style="background-color:white;"><br>
-		    		 <button class="button" onclick= "document.location='Student_tutorial_subject.jsp'" role="button">Mathematics</button><br><br>
+		    		 <button class="button5" onclick= "document.location='Student_tutorial_subject.jsp'" role="button">Mathematics</button><br><br>
 		             </div>
 		           <div class="col-sm-6" style="background-color:white;"><br>
-		    		 <button class="button" onclick= "document.location='Student_tutorial_subject.jsp'" role="button">Mathematics</button><br><br>
+		    		 <button class="button5" onclick= "document.location='Student_tutorial_subject.jsp'" role="button">Mathematics</button><br><br>
 		             </div>
 		 	   </div>
 				<div class="col-sm-6" style="background-color:#ccd9ff;"><br>
-			    	 <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Com. Mathematics</button><br><br>
+			    	 <div class="col-sm-6" style="background-color:white;"><br><button class="button5" role="button">Com. Mathematics</button><br><br>
 			         </div>
-			          <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Com. Mathematics</button><br><br>
+			          <div class="col-sm-6" style="background-color:white;"><br><button class="button5" role="button">Com. Mathematics</button><br><br>
 			         </div>	         
 		  	   </div>
 		  	   <div class="col-sm-6" style="background-color:#ccd9ff;"><br>
-		    		 <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Science</button><br><br>
+		    		 <div class="col-sm-6" style="background-color:white;"><br><button class="button5" role="button">Science</button><br><br>
 		             </div>
-		             <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Science</button><br><br>
+		             <div class="col-sm-6" style="background-color:white;"><br><button class="button5" role="button">Science</button><br><br>
 		         	 </div>	         
 		 	   </div>
 				<div class="col-sm-6" style="background-color:#ccd9ff;"><br>
-			    	 <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Physics</button><br><br>
+			    	 <div class="col-sm-6" style="background-color:white;"><br><button class="button5" role="button">Physics</button><br><br>
 			         </div>
-			          <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Physics</button><br><br>
+			          <div class="col-sm-6" style="background-color:white;"><br><button class="button5" role="button">Physics</button><br><br>
 			         </div>     
 		  	   </div>
 		  	    <div class="col-sm-6" style="background-color:#ccd9ff;"><br>
-		    		 <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Sinhala</button><br><br>
+		    		 <div class="col-sm-6" style="background-color:white;"><br><button class="button5" role="button">Sinhala</button><br><br>
 		             </div>
-		             <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Commerce</button><br><br>
+		             <div class="col-sm-6" style="background-color:white;"><br><button class="button5" role="button">Commerce</button><br><br>
 		         	 </div>	         
 		 	   </div>
 				<div class="col-sm-6" style="background-color:#ccd9ff;"><br>
-			    	 <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Chemistry</button><br><br>
+			    	 <div class="col-sm-6" style="background-color:white;"><br><button class="button5" role="button">Chemistry</button><br><br>
 			         </div>
-			          <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Chemistry</button><br><br>
+			          <div class="col-sm-6" style="background-color:white;"><br><button class="button5" role="button">Chemistry</button><br><br>
 			         </div>     
 		  	   </div>
 		  	    <div class="col-sm-6" style="background-color:#ccd9ff;"><br><br>  		         

@@ -104,6 +104,9 @@ public class TutorialServiceImpl implements ITutorialService {
 				preparedStatement = connection
 						.prepareStatement(query);
 				
+				System.out.println(tutorial.getMaterial());
+				System.out.println(tutorial.getDateAdded());
+				
 				preparedStatement.setString(1, tutorial.getTeacherId());
 				preparedStatement.setString(2, tutorial.getSubjectCode());
 				preparedStatement.setString(3, tutorial.getTutorialTitle());
@@ -234,13 +237,13 @@ public class TutorialServiceImpl implements ITutorialService {
 				while (resultSet.next()) {
 					
 					Tutorial tutorial = new Tutorial();
-					tutorial.setMaterial(resultSet.getString(1));
-					tutorial.setMonth(resultSet.getString(2));
-					tutorial.setDateAdded(resultSet.getString(3));
+					tutorial.setTeacherId(resultSet.getString(1));
+					tutorial.setSubjectCode(resultSet.getString(2));
+					tutorial.setTutorialId(resultSet.getString(3));
 					tutorial.setTutorialTitle(resultSet.getString(4));
-					tutorial.setTutorialId(resultSet.getString(5));
-					tutorial.setSubjectCode(resultSet.getString(6));
-					tutorial.setTeacherId(resultSet.getString(7));
+					tutorial.setDateAdded(resultSet.getString(5));
+					tutorial.setMonth(resultSet.getString(6));
+					tutorial.setMaterial(resultSet.getString(7));
 					
 					tutorialList.add(tutorial);
 				}

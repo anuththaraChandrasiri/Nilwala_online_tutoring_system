@@ -28,12 +28,12 @@
 }
 
 .left {
-  width: 65%;
+  width: 55%;
   margin-left: 2.5%;
 }
 
 .right {
-  width: 30%;
+  width: 40%;
 }
 
 /* Clear floats after the columns */
@@ -59,7 +59,7 @@
 		<hr>
 			 	<div class="column left" style="background-color: #b8b894;">
 			 		<div class="jumbotron text-center" style=" height: 30px; text-align:left; padding: 10px 20px 70px 20px;">
-			   			 <h2>January</h2>
+			   			 <h2>Tutorials</h2>
 			   		</div>
 		   			 			   			 	
 							<%
@@ -121,13 +121,13 @@
 			  		
 		   			 		 <div class="row">
 				   				 <div class="col-sm-6" style="background-color:#ccccb3;">
-				   				 <h3><a href="Teacher_tutorial_pdf.jsp">
-				   				 <b><%=answerSheet.getSheet_name()%></b></a></h3><br>
+				   				 <h2><a href="Teacher_tutorial_pdf.jsp">
+				   				 <b><%=answerSheet.getSheet_name()%></b></a></h2><br>
 				     			 </div>
 				    		     <div class="col-sm-6" style="background-color:	 #ccccb3;">
 				    		     <form class = "form2" method="POST" action="GetAnswerSheetServlet"><h2>
 											 <input type="hidden" name="answerSheetID" value="<%=answerSheet.getSheet_id()%>"/>
-											<button class="button3" role="button">Edit</button></h2>
+											<button class="button2" role="button" style="background-color: #4d9900;" >Edit</button></h2>
 										</form>
 				    		     </div>
 		   			         </div>

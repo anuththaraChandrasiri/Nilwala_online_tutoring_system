@@ -133,15 +133,15 @@ else
 							        <label for="TeacherId" style="display: none;" >Teacher ID</label>
 							      </div>
 								      <div class="col-75">
-								        <input type="text" id="tId" name="teacherID" value="1201" readonly="readonly" style="display: none;" >
+								        <input type="text" id="tId" name="teacherID" value="10002" readonly="readonly" style="display: none;" >
 								      </div>
 							    </div>
 							     <div class="row">
 							      <div class="col-25">
-							        <label for="TutorialId" style="display: none;">Tutorial ID</label>
+							        <label for="TutorialId">Tutorial ID</label>
 							      </div>
 								      <div class="col-75">
-								        <input type="text" id="tuteId" name="tuteID" value="<%=answerSheet.getTute_id()%>" readonly="readonly" style="display: none;">
+								        <input type="text" id="tuteId" name="tuteID" value="<%=answerSheet.getTute_id()%>" readonly="readonly">
 								      </div>
 							    </div>
 							    
@@ -159,6 +159,7 @@ else
 							        <label for="answerSheetLabel">Answer sheet</label>
 							      </div>
 							      <div class="col-75">
+							      	 <input type="text" id = "myFile1" name="filename1" value="<%=answerSheet.getMaterial()%>" readonly="readonly"/>
 							        <input type="file" id = "myFile" name="filename" value="<%=answerSheet.getMaterial()%>"/>
 							      </div>
 							    </div>
@@ -167,26 +168,18 @@ else
 							        <label for="fname">Uploaded date</label>
 							      </div>
 							      <div class="col-75">
-							        <input type="text" id="uploadedDate" name="uploadedDate" value="<%=answerSheet.getDate_added()%>">
+							        <input type="text" id="uploadedDate" name="uploadedDate" value="<%=answerSheet.getDate_added()%>" readonly="readonly">
 							      </div>
 							    </div>
-							    <div class="row">
-							      <div class="col-25">
-							        <label for="updatingDate">Updating date</label>
-							      </div>
-							      <div class="col-75">
-									  <input type="date" class="date" id="uDate" name="uploadingDate" width="100" height="48">
-								  </div>
-							    </div>
-							     <div class="row">
-							    
-							      <div class="col-50">
-							        
-							      </div>
+						        <div class="row">
+								    
+								      <div class="col-50">
+								        
+								      </div>
 							      
-							       <div class="col-50"> 
-							          <button class="button" role="button">Update</button>
-							      </div>
+								       <div class="col-50"> 
+								          <button class="button" role="button">Update</button>
+								      </div>
 							       							     						
 							    </div>
 							    </form><br> 

@@ -132,7 +132,7 @@ else
 							        <label for="TeacherId" style="display: none;" >Teacher ID</label>
 							      </div>
 								      <div class="col-75">
-								        <input type="text" id="tId" name="teacherID" value="1201" readonly="readonly" style="display: none;" >
+								        <input type="text" id="tId" name="teacherID" value="10002" readonly="readonly" style="display: none;" >
 								      </div>
 							    </div>
 							    
@@ -146,48 +146,54 @@ else
 							    </div>
 							    
 							    
-							    <div class="row">
+							   <div class="row">
 							      <div class="col-25">
 							        <label for="Tutorial">Tutorial</label>
 							      </div>
 							      <div class="col-75">
+							        <input type="text" id="myFile1" name="filename1" value="<%=tutorial.getMaterial()%>" readonly="readonly">
 							        <input type="file" id = "myFile" name="filename" value="<%=tutorial.getMaterial()%>"/>
 							      </div>
-							    </div>
+							    </div><br>
 							    <div class="row">
 							      <div class="col-25">
 							        <label for="Month">Month</label>
 							      </div>
-							      <div class="col-75">
-							        <input type="text" id="month" name="month"  value="<%=tutorial.getMonth()%>" required>
-							      </div>
-							    </div>
+							     <div class="col-75">
+							        		<select id="month" name="month" required>
+							        			  <option value="<%=tutorial.getMonth()%>" style=" color: brown;"><%=tutorial.getMonth()%></option>
+										          <option value="January">January</option>
+										          <option value="February">February</option>
+										          <option value="March">March</option>
+										          <option value="April">April</option>
+										          <option value="May">May</option>
+										          <option value="June">June</option>
+										          <option value="July">July</option>
+										          <option value="August">August</option>
+										          <option value="September">September</option>
+										          <option value="October">October</option>
+										          <option value="November">November</option>
+										          <option value="December">December</option>
+							       			</select>
+							     </div>
+							    </div><br>
 							     <div class="row">
 							      <div class="col-25">
 							        <label for="Uploaded date">Uploaded date</label>
 							      </div>
 							      <div class="col-75">
-							        <input type="text" id="uploadedDate" name="uploadedDate"  value="<%=tutorial.getDateAdded()%>">
+							        <input type="text" id="uploadedDate" name="uploadedDate"  value="<%=tutorial.getDateAdded()%>" readonly="readonly">
 							      </div>
-							    </div>
-							    <div class="row">
-							      <div class="col-25">
-							        <label for="updatingDate">Updating date</label>
-							      </div>
-							      <div class="col-75">
-							      		<input type="date" class="date" id="uDate" name="uploadingDate" width="100" height="48">
-								  </div>
-							    </div>
-							    <div class="row">
+							    </div><br><br><br>
 							    
+							    
+							    
+							    <div class="row">							    
 							      <div class="col-50">
-							        
 							      </div>
-							      
-							       <div class="col-50"> 
+							      <div class="col-50"> 
 							          <button class="button" role="button">Update</button>
-							      </div>
-							       							     						
+							      </div>			     						
 							    </div>
 							  </form><br>
 							  
@@ -197,14 +203,12 @@ else
 												<input type="hidden" name="tutorialID" value="<%=tutorial.getTutorialId()%>"/> 
 												<button class="button" role="button">Delete</button>
 										</form>
-								      </div><br>
-							      
+								      </div><br>							      
 							       	  <div class="col-50">
-							     <button class="button"  onclick= "document.location='Teacher_tutorial_main.jsp'" style="background-color:  #70db70;">
+							     		<button class="button"  onclick= "document.location='Teacher_tutorial_main.jsp'" style="background-color:  #70db70;">
 							       Cancel</button>
-							     	 </div>  			
-							       							     						
-							    </div>							  			  
+							     	 </div>						       							     						
+							   </div>							  			  
 						</div>
 				   	</div>				   
 	 		</div> 

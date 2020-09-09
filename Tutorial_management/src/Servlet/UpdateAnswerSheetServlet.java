@@ -48,11 +48,19 @@ public class UpdateAnswerSheetServlet extends HttpServlet {
 		String answerSheetID = request.getParameter("sheetID");
 		
 		answerSheet.setSheet_name(request.getParameter("sheetName"));
-		answerSheet.setMaterial(request.getParameter("filename"));
 		answerSheet.setDate_added(request.getParameter("uploadedDate"));
 		answerSheet.setTeacher_id(request.getParameter("teacherID"));
 		answerSheet.setTute_id(request.getParameter("tuteID"));
 		answerSheet.setSubject_code(request.getParameter("subjectCode"));
+		
+		if(request.getParameter("filename").equalsIgnoreCase("")) {
+			answerSheet.setMaterial(request.getParameter("filename1"));
+			System.out.println(request.getParameter("filename1"));
+		}
+		else	
+			answerSheet.setMaterial(request.getParameter("filename"));
+		
+		System.out.println(answerSheet.getMaterial());
 			
 		IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
 		iAnswerSheetService.updateAnswerSheet(answerSheetID, answerSheet);

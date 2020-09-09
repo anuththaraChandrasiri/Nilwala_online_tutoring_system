@@ -46,14 +46,22 @@ public class UpdateTutorialServlet extends HttpServlet {
 		Tutorial tutorial = new Tutorial() ;
 		
 		String tutorialID = request.getParameter("tutorialID");
-		
+				
 		tutorial.setTutorialId(tutorialID);
 		tutorial.setTutorialTitle(request.getParameter("tutorialName"));
 		tutorial.setTeacherId(request.getParameter("teacherID"));
 		tutorial.setSubjectCode(request.getParameter("subjectCode"));
-		tutorial.setDateAdded(request.getParameter("uploadingDate"));
+		tutorial.setDateAdded(request.getParameter("uploadedDate"));
 		tutorial.setMonth(request.getParameter("month"));
-		tutorial.setMaterial(request.getParameter("filename"));
+				
+		if(request.getParameter("filename").equalsIgnoreCase("")) {
+			tutorial.setMaterial(request.getParameter("filename1"));
+			System.out.println(request.getParameter("filename1"));
+		}
+		else	
+			tutorial.setMaterial(request.getParameter("filename"));
+		
+		System.out.println(tutorial.getMaterial());
 	
 		ITutorialService iTutorialService = new TutorialServiceImpl();
 		iTutorialService.updateTutorial(tutorialID, tutorial);

@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DBConnectionUtil extends CommonUtil {
+public class DBConnectionUtil {
 	
 	private static Connection connection = null ;
 
@@ -15,7 +15,8 @@ public class DBConnectionUtil extends CommonUtil {
 	public static Connection getDBConnection() throws ClassNotFoundException, SQLException {
 		
 		Class.forName("com.mysql.jdbc.Driver");
-		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/tutorialdb", "root", "");
+		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/nilwala_online_tutoring", "root", "");
+		System.out.println("New db connected!");
 		return connection ;
 		
 	}
