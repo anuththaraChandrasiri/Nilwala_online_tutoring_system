@@ -71,7 +71,7 @@ public class AddAnswerSheetServlet extends HttpServlet {
 		
 		request.setAttribute("tutorials", tutorials);
 		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_main.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Anu_SuccessfullyUpdated.jsp");
 		dispatcher.forward(request, response);
 		
 		//doGet(request, response);

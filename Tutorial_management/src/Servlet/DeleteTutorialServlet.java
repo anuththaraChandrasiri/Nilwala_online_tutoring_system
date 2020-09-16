@@ -48,12 +48,20 @@ public class DeleteTutorialServlet extends HttpServlet {
 		
 		response.setContentType("text/html");
 		
-		String tutorialID = request.getParameter("tutorialID");			
+		Tutorial tutorial = new Tutorial() ;
+		
+		String tutorialID = request.getParameter("tutorialID");
+		String teacherID = request.getParameter("teacherID");
+		String subjectCode = request.getParameter("subjectCode");
+		
+		tutorial.setTutorialId(tutorialID);
+		tutorial.setTeacherId(teacherID);
+		tutorial.setSubjectCode(subjectCode);
+		
+		request.setAttribute("tutorial", tutorial);
 		
 		ITutorialService iTutorialService = new TutorialServiceImpl();
 		iTutorialService.deleteTutorial(tutorialID);
-		
-		Tutorial tutorial = new Tutorial() ;
 		
 		ITutorialService iTutorialService1 = new TutorialServiceImpl();
 		ArrayList<Tutorial> tutorials = iTutorialService1.getTutorialsById(tutorial.getTeacherId());
@@ -65,7 +73,7 @@ public class DeleteTutorialServlet extends HttpServlet {
 		
 		request.setAttribute("tutorials", tutorials);
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_main.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Anu_SuccessfullyUpdated.jsp");
 		dispatcher.forward(request, response);
 		
 		// doGet(request, response);

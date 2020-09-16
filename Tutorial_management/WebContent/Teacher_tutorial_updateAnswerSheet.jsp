@@ -180,7 +180,7 @@ else
 								      </div>
 							      
 								       <div class="col-50"> 
-								          <button class="button" role="button"  onclick="myFunction()">Update</button>
+								          <button class="button" role="button">Update</button>
 								      </div>
 							       							     						
 							    </div>
@@ -189,8 +189,10 @@ else
 							    
 							    <div class="row">							    
 								      <div class="col-50">							        
-								      	<form class = "form1" name="myForm" action="">
+								      	<form class = "form1" method="POST" action="DeleteAnswerSheetServlet">
 												<input type="hidden" name="sheetID" id="sheetID" value="<%=answerSheet.getSheet_id()%>"/> 
+												<input type="hidden" name="teacherID" value="<%=answerSheet.getTeacher_id()%>"/>
+												<input type="hidden" name="subjectCode" value="<%=answerSheet.getSubject_code()%>"/> 
 												<button class="button" role="button">Delete</button>
 										</form>
 								      </div><br>
@@ -208,34 +210,7 @@ else
 							    </div>			
 				   	</div>				   
 	 		</div>
-	 		</div>  
-	
-		<p id="demo"></p>
-
-<script>
-function myFunction() {
-  var txt;
-  if (confirm("Successfully updated the answer sheet details!")) {
-	  var form = document.getElementById("vehicles");
-      form.submit();
-    txt.href = "Teacher_tutorial_main.jsp" ;
-  } else {
-	txt.href = "Teacher_tutorial_main.jsp" ;
-  }
-  document.getElementById("demo").innerHTML = txt;
-}
-
-function myFunctionDelete() {
-	  var txt;
-	  if (confirm("Do you really want to delete this answer sheet?")) {
-		  document.getElementById('sheetID').value = txt; 
-		  document.myform.submit();  
-	  } else {
-		txt.href = "Teacher_tutorial_main.jsp" ;
-	  }
-	  document.getElementById("demo").innerHTML = txt;
-	}
-</script>
+	 		</div>
 
 </body>
 </html>

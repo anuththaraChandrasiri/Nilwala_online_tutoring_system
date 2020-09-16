@@ -40,6 +40,8 @@ public class TutorialServiceImpl implements ITutorialService {
 			
 			preparedStatement = connection.prepareStatement(query);
 			connection.setAutoCommit(false);
+			
+			System.out.println(tutorial.getSubjectCode()+"code" +tutorial.getTeacherId()+" tid ");
 						
 			//Generate tutorial IDs
 			tutorial.setTutorialId(tutorialID);
@@ -152,6 +154,7 @@ public class TutorialServiceImpl implements ITutorialService {
 	public void deleteTutorial(String tutorialId) {
 		
 		String query = "delete from tutorials where tutorials.tute_Id = ?" ;
+		System.out.println(tutorialId+" tuteId ");
 		
 		// Before deleting check whether the tutorial ID is available
 		if (tutorialId!= null && !tutorialId.isEmpty()) {

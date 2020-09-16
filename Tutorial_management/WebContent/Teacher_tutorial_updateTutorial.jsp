@@ -201,7 +201,9 @@ else
 							    <div class="row">							    
 								      <div class="col-50">							        
 								      	<form class = "form1" method="POST" action="DeleteTutorialServlet">
-												<input type="hidden" name="tutorialID" value="<%=tutorial.getTutorialId()%>"/> 
+												<input type="hidden" name="tutorialID" value="<%=tutorial.getTutorialId()%>"/>
+												<input type="hidden" name="teacherID" value="<%=tutorial.getTeacherId()%>"/>
+												<input type="hidden" name="subjectCode" value="<%=tutorial.getSubjectCode()%>"/> 
 												<button class="button" role="button">Delete</button>
 										</form>
 								      </div><br>							      
@@ -217,20 +219,6 @@ else
 				   	</div>				   
 	 		</div> 
 	</div>
-	
-	<p id="demo"></p>
-
-<script>
-function myFunction() {
-  var txt;
-  if (confirm("Successfully updated the tutorial!")) {
-    txt.href = "Teacher_tutorial_main.jsp" ;
-  } else {
-	txt.href = "Teacher_tutorial_main.jsp" ;
-  }
-  document.getElementById("demo").innerHTML = txt;
-}
-</script>
 
 </body>
 </html>
