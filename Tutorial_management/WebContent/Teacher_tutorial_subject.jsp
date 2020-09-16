@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="Model.Anu_Teacher"%>
+<%@page import="Model.Anu_Subject"%>
+<%@page import="Service.Anu_TeacherServiceImpl"%>
+<%@page import="Service.Anu_ITeacherService"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,27 +19,56 @@
 </head>
 <body>
 
+	<%
+	
+		ArrayList<Anu_Teacher> teacherList = (ArrayList<Anu_Teacher>) request.getAttribute("teachers");
+		ArrayList<Anu_Subject> subjectList = (ArrayList<Anu_Subject>) request.getAttribute("subjects");
+
+	%>
+
+
 <%@ include file="WEB-INF/Teacher_header.jsp" %>  
 
-	 <div>
-		<ul class="breadcrumb"> <!--   add your path example : Subject / Add Subject 1st li subject 2nd li Add Subject . change accordingly-->
-		  <li><a href="Teacher_tutorial_home.jsp"><b>Ordinary level - Sinhala medium</b></a></li>		  
-		</ul>
-	</div>
+	  <%
+					            Anu_Teacher teacher = (Anu_Teacher) request.getAttribute("teacher");
+								
+	     %>  
+
+		<div>
+			<ul class="breadcrumb">
+			  <li><a href="Teacher_tutorial_home.jsp"><b><%=teacher.getLevel()%> - <%=teacher.getMedium()%></b></a>
+			  	 
+			 </li>
+			</ul>
+		</div>
 	<hr>
 	
 	
 	<div class="jumbotron text-center">
-  <h1>Mathematics</h1>
+  <h1><%=teacher.getSubjectName()%></h1>
 </div>
   
 <div class="container">
   <div class="row">
     <div class="col-sm-12" style = "text-align: center;">
-      <button class="button1" onclick= "document.location='Teacher_tutorial_main.jsp'">Mr. Athula Perera</button><br><br>
-      <button class="button1" onclick= "document.location='Teacher_tutorial_main.jsp'">Mr. Kapila Gunarathne</button><br><br>
-      <button class="button1" onclick= "document.location='Teacher_tutorial_main.jsp'">Ms. Samanthi Gamage</button><br><br>
-      <button class="button1" onclick= "document.location='Teacher_tutorial_main.jsp'">Mr. Kamal De Silva</button><br><br><br><br>
+    
+      <%								
+						for(Anu_Teacher anu_Teacher : teacherList){
+	  %>
+    
+	    	<form class = "form2" method="POST" action="ListTutorialsServlet"><h2>
+				 <input type="hidden" name="teacherId" value="<%=anu_Teacher.getTeacherID()%>"/>
+				 <input type="hidden" name="subjectCode" value="<%=anu_Teacher.getSubjectCode()%>"/>
+				 <input type="hidden" name="subjectName" value="<%=teacher.getSubjectName()%>"/>
+				 <input type="hidden" name="level" value="<%=teacher.getLevel()%>"/>
+				 <input type="hidden" name="medium" value="<%=teacher.getMedium()%>"/>
+				  <input type="hidden" name="teacherName"  value="<%=anu_Teacher.getTeacherName()%>"/>
+	     		 <button class="button1" role="button"><%=anu_Teacher.getTeacherName()%></button><br><br>
+	          </h2>
+			</form>		 	   
+	  <%	
+	 					 }
+	  %> 
     </div>
    </div>
 </div>

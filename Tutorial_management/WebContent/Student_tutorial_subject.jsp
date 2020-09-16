@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="Model.Anu_Teacher"%>
+<%@page import="Service.Anu_TeacherServiceImpl"%>
+<%@page import="Service.Anu_ITeacherService"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,10 +34,19 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12" style = "text-align: center;">
-      <button class="button1" onclick= "document.location='Student_tutorial_main.jsp'" role="button">Mr. Athula Perera</button><br><br>
-      <button class="button1" onclick= "document.location='Student_tutorial_main.jsp'" role="button">Mr. Kapila Gunarathne</button><br><br>
-      <button class="button1" onclick= "document.location='Student_tutorial_main.jsp'" role="button">Ms. Samanthi Gamage</button><br><br>
-      <button class="button1" onclick= "document.location='Student_tutorial_main.jsp'" role="button">Mr. Kamal De Silva</button><br><br><br><br>
+    
+      <%
+					            Anu_ITeacherService iTeacherService = new Anu_TeacherServiceImpl();
+								ArrayList<Anu_Teacher> arrayList = iTeacherService.getTeachersForASubject("21");
+								
+								for(Anu_Teacher anu_Teacher : arrayList){
+	  %>
+    
+      <button class="button1" onclick= "document.location='Student_tutorial_main.jsp'" role="button"><%=anu_Teacher.getTeacherName()%></button><br><br>
+         		 	   
+	  <%	
+	 					  }
+	  %> 
     </div>
    </div>
 </div>

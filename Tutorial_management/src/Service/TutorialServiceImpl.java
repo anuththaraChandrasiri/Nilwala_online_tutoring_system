@@ -33,6 +33,7 @@ public class TutorialServiceImpl implements ITutorialService {
 		
 		String tutorialID = generateIDs(getTutorialIDs());
 		String query = "insert into tutorials (teacher_id, subject_code, tute_id,  title, date_added,  month, material) values (?, ?, ?, ?, ?, ?, ?)" ;
+		System.out.println(tutorial.getDateAdded()+"date");
 		
 		try {
 			connection = DBConnectionUtil.getDBConnection();
@@ -78,6 +79,13 @@ public class TutorialServiceImpl implements ITutorialService {
 	public Tutorial getTutorialById(String tutorialId) {
 		
 		return actionOnTutorial(tutorialId).get(0);	
+		
+	}
+	
+	@Override
+	public ArrayList<Tutorial> getTutorialsById(String teacherId) {
+		
+		return TutorialsByTeacherId(teacherId);	
 		
 	}
 
@@ -207,6 +215,67 @@ public class TutorialServiceImpl implements ITutorialService {
 				}
 			}
 			return arrayList;
+		}
+		
+		private ArrayList<Tutorial> TutorialsByTeacherId(String teacherID) {
+			
+			String query1 = "select * from tutorials where tutorials.teacher_id = ?" ;
+			String query2 = "select * from tutorials order by tutorials.tute_id " ;
+
+			ArrayList<Tutorial> tutorialList = new ArrayList<Tutorial>();
+			try {
+				connection = DBConnectionUtil.getDBConnection();
+				/*
+				 * Before fetching tutorial it checks whether tutorial ID is
+				 * available
+				 */
+				if (teacherID!= null && !teacherID.isEmpty()) {
+					
+					preparedStatement = connection.prepareStatement(query1);
+					preparedStatement.setString(1, teacherID);
+					System.out.println("Correct");
+				}
+				/*
+				 * If tutorial ID is not provided it displays all tutorials
+				 */
+				else {
+					preparedStatement = connection.prepareStatement(query2);
+				}
+				ResultSet resultSet = preparedStatement.executeQuery();
+
+				while (resultSet.next()) {
+					
+					Tutorial tutorial = new Tutorial();
+					tutorial.setTeacherId(resultSet.getString(1));
+					tutorial.setSubjectCode(resultSet.getString(2));
+					tutorial.setTutorialId(resultSet.getString(3));
+					tutorial.setTutorialTitle(resultSet.getString(4));
+					tutorial.setDateAdded(resultSet.getString(5));
+					tutorial.setMonth(resultSet.getString(6));
+					tutorial.setMaterial(resultSet.getString(7));
+					
+					tutorialList.add(tutorial);
+				}
+
+			} catch (SQLException | ClassNotFoundException e) {
+				Log.log(Level.SEVERE, e.getMessage());
+			} finally {
+				/*
+				 * Close prepared statement and database connectivity at the end of
+				 * transaction
+				 */
+				try {
+					if (preparedStatement != null) {
+						preparedStatement.close();
+					}
+					if (connection != null) {
+						connection.close();
+					}
+				} catch (SQLException e) {
+					Log.log(Level.SEVERE, e.getMessage());
+				}
+			}
+			return tutorialList;
 		}
 		
 		private ArrayList<Tutorial> actionOnTutorial(String tutorialID) {

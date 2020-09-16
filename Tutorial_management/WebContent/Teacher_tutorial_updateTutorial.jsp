@@ -88,6 +88,7 @@ else
 
 	<%
 		Tutorial tutorial = (Tutorial) request.getAttribute("tutorial");
+	
 	%>
 		<div>
 			<ul class="breadcrumb"><!--   add your path example : Subject / Add Subject 1st li subject 2nd li Add Subject . change accordingly-->
@@ -132,7 +133,7 @@ else
 							        <label for="TeacherId" style="display: none;" >Teacher ID</label>
 							      </div>
 								      <div class="col-75">
-								        <input type="text" id="tId" name="teacherID" value="10002" readonly="readonly" style="display: none;" >
+								        <input type="text" id="tId" name="teacherID" value="<%=tutorial.getTeacherId()%>" readonly="readonly" style="display: none;" >
 								      </div>
 							    </div>
 							    
@@ -141,7 +142,7 @@ else
 							        <label for="SubjectCode" style="display: none;" >Subject code</label>
 							      </div>
 								      <div class="col-75">
-								        <input type="text" id="sCode" name="subjectCode" value="21" readonly="readonly" style="display: none;" >
+								        <input type="text" id="sCode" name="subjectCode" value="<%=tutorial.getSubjectCode()%>" readonly="readonly" style="display: none;" >
 								      </div>
 							    </div>
 							    
@@ -205,14 +206,31 @@ else
 										</form>
 								      </div><br>							      
 							       	  <div class="col-50">
-							     		<button class="button"  onclick= "document.location='Teacher_tutorial_main.jsp'" style="background-color:  #70db70;">
+							  		      <form class = "form1" method="POST" action="ListTutorialsServlet">
+							       	  <input type="hidden" name="teacherId" id="teacherId" value="<%=tutorial.getTeacherId()%>"/>
+							     <button class="button" style="background-color:  #70db70;">
 							       Cancel</button>
-							     	 </div>						       							     						
+							       </form>	
+							      	</div><br>					       							     						
 							   </div>							  			  
 						</div>
 				   	</div>				   
 	 		</div> 
 	</div>
+	
+	<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var txt;
+  if (confirm("Successfully updated the tutorial!")) {
+    txt.href = "Teacher_tutorial_main.jsp" ;
+  } else {
+	txt.href = "Teacher_tutorial_main.jsp" ;
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+</script>
 
 </body>
 </html>

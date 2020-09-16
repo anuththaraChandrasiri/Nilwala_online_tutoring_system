@@ -267,6 +267,74 @@ public class AnswerSheetServiceImpl implements IAnswerSheetService {
 			}
 			return  answerSheetList;
 		}
+
+	@Override
+	public ArrayList<AnswerSheet> getAnswerSheetsById(String teacherId) {
+		
+		return AnswerSheetsByTeacherId(teacherId);	
+	}
+	
+	private ArrayList<AnswerSheet> AnswerSheetsByTeacherId(String teacherID) {
+		
+		String query1 = "select * from answer_sheet where answer_sheet.teacher_id = ?" ;
+		String query2 = "select * from answer_sheet order by answer_sheet.sheet_id " ;
+
+		ArrayList<AnswerSheet> answerSheetList = new ArrayList<AnswerSheet>();
+		try {
+			connection = DBConnectionUtil.getDBConnection();
+			/*
+			 * Before fetching tutorial it checks whether answerSheetID is
+			 * available
+			 */
+			if (teacherID!= null && !teacherID.isEmpty()) {
+				
+				preparedStatement = connection.prepareStatement(query1);
+				preparedStatement.setString(1, teacherID);
+			}
+			/*
+			 * If answerSheetID is not provided it displays all answer sheets
+			 */
+			else {
+				preparedStatement = connection.prepareStatement(query2);
+			}
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				
+				AnswerSheet answerSheet = new AnswerSheet();
+				answerSheet.setTeacher_id(resultSet.getString(1));
+				answerSheet.setSubject_code(resultSet.getString(2));
+				answerSheet.setTute_id(resultSet.getString(3));
+				answerSheet.setSheet_id(resultSet.getString(4));
+				answerSheet.setDate_added(resultSet.getString(5));
+				answerSheet.setSheet_name(resultSet.getString(6));
+				answerSheet.setMaterial(resultSet.getString(7));
+									
+				answerSheetList.add(answerSheet);
+			}
+
+		} catch (SQLException | ClassNotFoundException e) {
+			Log.log(Level.SEVERE, e.getMessage());
+		} finally {
+			/*
+			 * Close prepared statement and database connectivity at the end of
+			 * transaction
+			 */
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				Log.log(Level.SEVERE, e.getMessage());
+			}
+		}
+		return  answerSheetList;
+	}
+
+	
 }
 
 

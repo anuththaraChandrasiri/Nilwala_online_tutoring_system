@@ -1,6 +1,7 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,8 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Model.AnswerSheet;
+import Model.Tutorial;
 import Service.AnswerSheetServiceImpl;
 import Service.IAnswerSheetService;
+import Service.ITutorialService;
+import Service.TutorialServiceImpl;
 
 /**
  * Servlet implementation class DeleteAnswerSheetServlet
@@ -46,6 +51,18 @@ public class DeleteAnswerSheetServlet extends HttpServlet {
 		
 		IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
 		iAnswerSheetService.deleteAnswerSheet(answerSheetID);
+		
+		AnswerSheet answerSheet = new AnswerSheet() ;
+		
+		ITutorialService iTutorialService1 = new TutorialServiceImpl();
+		ArrayList<Tutorial> tutorials = iTutorialService1.getTutorialsById(answerSheet.getTeacher_id());
+		
+		IAnswerSheetService iAnswerSheetService1 = new AnswerSheetServiceImpl();
+		ArrayList<AnswerSheet> answerSheets = iAnswerSheetService1.getAnswerSheetsById(answerSheet.getTeacher_id());
+		
+		request.setAttribute("answerSheets", answerSheets);
+		
+		request.setAttribute("tutorials", tutorials);
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_main.jsp");
 		dispatcher.forward(request, response);

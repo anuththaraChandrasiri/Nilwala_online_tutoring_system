@@ -43,12 +43,26 @@ public class GetAnswerSheetServlet extends HttpServlet {
 		
 		response.setContentType("text/html");
 
- 		String answerSheetID = request.getParameter("answerSheetID");	
+		AnswerSheet answerSheet = new AnswerSheet() ;
+		
+ 		String answerSheetID = request.getParameter("answerSheetID");
+ 		String subjectCode = request.getParameter("subjectCode");
+ 		String teacherID = request.getParameter("teacherID") ;
+ 		
+ 		answerSheet.setSheet_id(answerSheetID);
+ 		answerSheet.setSubject_code(subjectCode);
+ 		answerSheet.setTeacher_id(teacherID);
+ 		
+ 		System.out.println(teacherID+"FIRST");
+ 		
+ 		request.setAttribute("answerSheet", answerSheet);
  		
 		IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
-		AnswerSheet answerSheet = iAnswerSheetService.getAnswerSheetById(answerSheetID);
+		AnswerSheet answerSheet1 = iAnswerSheetService.getAnswerSheetById(answerSheetID);
 		
-		request.setAttribute("answerSheet", answerSheet);
+		System.out.println(teacherID+"sECOND");
+		
+		request.setAttribute("answerSheet1", answerSheet1);
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_updateAnswerSheet.jsp");
 		dispatcher.forward(request, response);

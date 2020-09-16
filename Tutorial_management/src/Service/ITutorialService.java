@@ -18,4 +18,6 @@ public interface ITutorialService {
 	
 	public void deleteTutorial(String tutorialId) ;
 
+	public ArrayList<Tutorial> getTutorialsById(String teacherId);
+
 }

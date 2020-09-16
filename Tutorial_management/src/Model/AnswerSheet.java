@@ -9,6 +9,7 @@ public class AnswerSheet {
 	private String tute_id ;
 	private String subject_code ;
 	private String teacher_id ;
+	private String teacher_name ;
 	
 	public String getMaterial() {
 		return material;
@@ -52,14 +53,17 @@ public class AnswerSheet {
 	public void setTeacher_id(String teacher_id) {
 		this.teacher_id = teacher_id;
 	}
-	
+	public String getTeacher_name() {
+		return teacher_name;
+	}
+	public void setTeacher_name(String teacher_name) {
+		this.teacher_name = teacher_name;
+	}
 	@Override
 	public String toString() {
 		return "AnswerSheet [material=" + material + ", sheet_name=" + sheet_name + ", date_added=" + date_added
 				+ ", sheet_id=" + sheet_id + ", tute_id=" + tute_id + ", subject_code=" + subject_code + ", teacher_id="
-				+ teacher_id + "]";
+				+ teacher_id + ", teacher_name=" + teacher_name + "]";
 	}
-	
-	
-	
+		
 }

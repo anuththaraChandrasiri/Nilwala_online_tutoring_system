@@ -1,7 +1,7 @@
 package Servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,20 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Model.AnswerSheet;
-import Service.AnswerSheetServiceImpl;
-import Service.IAnswerSheetService;
 
 /**
- * Servlet implementation class ListAnswerSheetsServlet
+ * Servlet implementation class BlankAnswerSheetServlet
  */
-@WebServlet("/ListAnswerSheetsServlet")
-public class ListAnswerSheetsServlet extends HttpServlet {
+@WebServlet("/BlankAnswerSheetServlet")
+public class BlankAnswerSheetServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListAnswerSheetsServlet() {
+    public BlankAnswerSheetServlet() {
         super();
         
     }
@@ -32,7 +30,7 @@ public class ListAnswerSheetsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -41,18 +39,21 @@ public class ListAnswerSheetsServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.setContentType("text/html");
+	response.setContentType("text/html");
 		
-		String teacherId = request.getParameter("teacherId");	
- 		System.out.println(teacherId + "servlet");
+		AnswerSheet answerSheet = new AnswerSheet() ;
+
+ 		String teacherID = request.getParameter("teacherID");	
+ 		String subjectCode = request.getParameter("subjectCode");
  		
-		IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
-		ArrayList<AnswerSheet> answerSheets = iAnswerSheetService.getAnswerSheetsById(teacherId);
+ 		answerSheet.setTeacher_id(teacherID);
+ 		answerSheet.setSubject_code(subjectCode);
+ 				
+		request.setAttribute("answerSheet", answerSheet);
 		
-		request.setAttribute("answerSheets", answerSheets);
-		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_main.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_uploadAnswerSheet.jsp");
 		dispatcher.forward(request, response);
+		
 		//doGet(request, response);
 	}
 

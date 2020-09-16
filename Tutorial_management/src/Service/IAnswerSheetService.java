@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 import Model.AnswerSheet;
 
-
 public interface IAnswerSheetService {
 	
 public static final Logger Log = Logger.getLogger(IAnswerSheetService.class.getName()) ;
@@ -18,5 +17,7 @@ public static final Logger Log = Logger.getLogger(IAnswerSheetService.class.getN
 	public AnswerSheet updateAnswerSheet(String answerSheetId, AnswerSheet answerSheet) ;
 	
 	public void deleteAnswerSheet(String answerSheetId) ;
+	
+	public ArrayList<AnswerSheet> getAnswerSheetsById(String teacherId);
 
 }

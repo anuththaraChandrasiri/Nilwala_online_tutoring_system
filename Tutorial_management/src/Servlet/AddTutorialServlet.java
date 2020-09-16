@@ -1,6 +1,7 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Model.AnswerSheet;
 import Model.Tutorial;
+import Service.AnswerSheetServiceImpl;
+import Service.IAnswerSheetService;
 import Service.ITutorialService;
 import Service.TutorialServiceImpl;
 
@@ -59,6 +63,17 @@ public class AddTutorialServlet extends HttpServlet {
 		iTutorialService.addTutorial(tutorial);
 		
 		request.setAttribute("tutorial", tutorial);
+		
+		ITutorialService iTutorialService1 = new TutorialServiceImpl();
+		ArrayList<Tutorial> tutorials = iTutorialService1.getTutorialsById(tutorial.getTeacherId());
+		
+		IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
+		ArrayList<AnswerSheet> answerSheets = iAnswerSheetService.getAnswerSheetsById(tutorial.getTeacherId());
+		
+		request.setAttribute("answerSheets", answerSheets);
+		
+		request.setAttribute("tutorials", tutorials);
+		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_main.jsp");
 		dispatcher.forward(request, response);
 		

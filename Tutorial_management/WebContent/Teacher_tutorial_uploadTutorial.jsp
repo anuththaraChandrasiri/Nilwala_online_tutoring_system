@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import = "java.io.*,java.util.*, javax.servlet.*" %>
 <%@page import="java.text.SimpleDateFormat" %>  
+<%@page import="Model.Tutorial"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,7 +85,12 @@ else
 </script>   
 </head>
 <body>
-<%@ include file="WEB-INF/Teacher_header.jsp" %>  
+<%@ include file="WEB-INF/Teacher_header.jsp" %> 
+
+		<%
+			Tutorial tutorial = (Tutorial) request.getAttribute("tutorial");
+	
+		%> 
 
 		<div>
 			<ul class="breadcrumb">
@@ -118,7 +124,7 @@ else
 							        		<label for="fname" style="display: none;" >Teacher ID</label>
 							      		</div>
 								      	<div class="col-75">
-								        	<input type="text" id="tid" name="teacherID" placeholder="10002" value = "10002" readonly="readonly" style="display: none;">
+								        	<input type="text" id="tid" name="teacherID" placeholder = "<%=tutorial.getTeacherId()%>" value = "<%=tutorial.getTeacherId()%>" readonly="readonly" style="display: none;">
 								      	</div>
 							    </div>
 							    <div class="row">
@@ -126,7 +132,7 @@ else
 							        		<label for="fname" style="display: none;" >Subject code</label>
 							      		</div>
 								      	<div class="col-75">
-								        	<input type="text" id="sCode" name="subjectCode" placeholder="21" value = "21" readonly="readonly" style="display: none;">
+								        	<input type="text" id="sCode" name="subjectCode" placeholder = "<%=tutorial.getSubjectCode()%>" value = "<%=tutorial.getSubjectCode()%>" readonly="readonly" style="display: none;">
 								      </div>
 							    </div>	
 							   				    
@@ -183,8 +189,11 @@ else
 							  </form>
 							  <div class="row">
 							       <div class="col-50">
-							  		     <button class="button"  onclick= "document.location='Teacher_tutorial_main.jsp'" style="background-color:  #70db70;">
-							      		 <b> Cancel</b></button>	
+							  		      <form class = "form1" method="POST" action="ListTutorialsServlet">
+							       	  <input type="hidden" name="teacherId" id="teacherId" value="<%=tutorial.getTeacherId()%>"/>
+							     <button class="button" style="background-color:  #70db70;">
+							       Cancel</button>
+							       </form>	
 							      	</div><br>
 							      	<div class="col-50">
 									</div>

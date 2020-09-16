@@ -5,10 +5,14 @@ public class Tutorial {
 	private String tutorialId ;
 	private String title ;
 	private String teacherId ;
-	private String subjectCode ;	
+	private String subjectCode ;
+	private String subjectName ;
 	private String dateAdded ;
 	private String month ;
 	private String material ;
+	private String level ;
+	private String medium ;
+	private String teacherName ;
 	
 	public String getTutorialId() {
 		return tutorialId;
@@ -41,7 +45,15 @@ public class Tutorial {
 	public void setSubjectCode(String subjectCode) {
 		this.subjectCode = subjectCode;
 	}
-	
+		
+	public String getSubjectName() {
+		return subjectName;
+	}
+
+	public void setSubjectName(String subjectName) {
+		this.subjectName = subjectName;
+	}
+
 	public String getDateAdded() {
 		return dateAdded;
 	}
@@ -65,12 +77,46 @@ public class Tutorial {
 	public void setMaterial(String material) {
 		this.material =  material;
 	}
-	
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
+
+	public String getMedium() {
+		return medium;
+	}
+
+	public void setMedium(String medium) {
+		this.medium = medium;
+	}	
+
+	public String getTeacherName() {
+		return teacherName;
+	}
+
+	public void setTeacherName(String teacherName) {
+		this.teacherName = teacherName;
+	}
+
 	@Override
 	public String toString() {
-		
-		return "Tutorial ID = " + tutorialId + "\n" + "Tutorial name = " + title + "\n" + "Teacher ID = " + teacherId + "\n"
-				+ "Subject code = " + subjectCode + "\n" + "Date added = " + dateAdded + "\n" + "Month = " + month + "\n"
-				+ "Material = " + material ;
+		return "Tutorial [tutorialId=" + tutorialId + ", title=" + title + ", teacherId=" + teacherId + ", subjectCode="
+				+ subjectCode + ", subjectName=" + subjectName + ", dateAdded=" + dateAdded + ", month=" + month
+				+ ", material=" + material + ", level=" + level + ", medium=" + medium + ", teacherName=" + teacherName
+				+ "]";
 	}
+
+	
 }

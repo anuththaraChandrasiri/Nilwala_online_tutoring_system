@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="Model.Anu_Subject"%>
+<%@page import="Service.Anu_SubjectServiceImpl"%>
+<%@page import="Service.Anu_ISubjectService"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,10 +27,9 @@
 	</div>
 	<hr>
 	
-	<div class="container-fluid">
-	     
+	<div class="container-fluid" style="padding: 10px 20px 70px 20px; width: 96%;">	     
 		  <div class="row">
-		   		 <div class="col-sm-6" style="background-color:#99ff99;"><h1>Ordinary level</h1>
+		   		 <div class="col-sm-6" style= "background-color:#99ff99;"><h1>Ordinary level</h1>
 		     		 <div class="col-sm-6" style="background-color:#70db70;"><h1>Sinhala medium</h1>	         
 		        	 </div>
 		         	 <div class="col-sm-6" style="background-color:#47d147;"><h1>English medium</h1>    
@@ -38,66 +41,111 @@
 		       		 <div class="col-sm-6" style="background-color:#47d147;"><h1>English medium</h1>
 		         	 </div>
 		       </div>
+		  </div>     
+		 
+		  <div class="col-sm-6" style="background-color:#99ff99;"><br><br>
+		  	<div class="col-sm-6"><br>
+		       <%
+					            Anu_ISubjectService iSubjectService = new Anu_SubjectServiceImpl();
+								ArrayList<Anu_Subject> arrayList = iSubjectService.OLSinhalaSubjects();
+								
+								for(Anu_Subject anu_Subject : arrayList){
+			   %>
 		       
-		       <div class="col-sm-6" style="background-color:#99ff99;"><br><br>
-		    		 <div class="col-sm-6" style="background-color:white;"><br>
-		    		  <button class="button" onclick= "document.location='Teacher_tutorial_subject.jsp'" role="button">English</button><br><br>
-		             </div>
-		             <div class="col-sm-6" style="background-color:white;"><br>
-		             <button class="button" onclick= "document.location='Teacher_tutorial_subject.jsp'" role="button">English literature</button><br><br>
-		         	 </div>	         
-		 	   </div>
-				<div class="col-sm-6" style="background-color:#99ff99;"><br><br>
-			    	 <div class="col-sm-6" style="background-color:white;"><br>
-			    	 <button class="button" onclick= "document.location='Teacher_tutorial_subject.jsp'" role="button">Biology</button><br><br>
-			         </div>
-			          <div class="col-sm-6" style="background-color:white;"><br>
-			          <button class="button" onclick= "document.location='Teacher_tutorial_subject.jsp'" role="button">Biology</button><br><br>
-			         </div>	         
-		  	   </div>
-		  	     <div class="col-sm-6" style="background-color:#99ff99;"><br>
-		    		 <div class="col-sm-6" style="background-color:white;"><br>
-		    		 <button class="button" onclick= "document.location='Teacher_tutorial_subject.jsp'" role="button">Mathematics</button><br><br>
-		             </div>
-		             <div class="col-sm-6" style="background-color:white;"><br>
-		            <button class="button" onclick= "document.location='Teacher_tutorial_subject.jsp'" role="button">Mathematics</button><br><br>
-		         	 </div>	         
-		 	   </div>
-				<div class="col-sm-6" style="background-color:#99ff99;"><br>
-			    	 <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Com. Mathematics</button><br><br>
-			         </div>
-			          <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Com. Mathematics</button><br><br>
-			         </div>	         
-		  	   </div>
-		  	   <div class="col-sm-6" style="background-color:#99ff99;"><br>
-		    		 <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Science</button><br><br>
-		             </div>
-		             <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Science</button><br><br>
-		         	 </div>	         
-		 	   </div>
-				<div class="col-sm-6" style="background-color:#99ff99;"><br>
-			    	 <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Physics</button><br><br>
-			         </div>
-			          <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Physics</button><br><br>
-			         </div>     
-		  	   </div>
-		  	    <div class="col-sm-6" style="background-color:#99ff99;"><br>
-		    		 <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Sinhala</button><br><br>
-		             </div>
-		             <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Commerce</button><br><br>
-		         	 </div>	         
-		 	   </div>
-				<div class="col-sm-6" style="background-color:#99ff99;"><br>
-			    	 <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Chemistry</button><br><br>
-			         </div>
-			          <div class="col-sm-6" style="background-color:white;"><br><button class="button" role="button">Chemistry</button><br><br>
-			         </div>     
-		  	   </div>
+		       	  		<div class="row"> 
+		    		 		<form class = "form2" method="POST" action="Anu_ListTeachersServlet"><h2>
+			    		 		 <input type="hidden" name="subjectCode" value="<%=anu_Subject.getSubjectCode()%>"/>
+			    		 		 <input type="hidden" name="subjectName" value="<%=anu_Subject.getSubjectName()%>"/>
+			    		 		 <input type="hidden" name="level" value="<%=anu_Subject.getLevel()%>"/>
+			    		 		 <input type="hidden" name="medium" value="<%=anu_Subject.getMedium()%>"/>
+			    		 		 <button class="button" role="button"><%=anu_Subject.getSubjectName()%></button><br><br>
+							</h2>
+							</form>
+		            	</div>
+		        		 	   
+		 	   <%	
+				 					  }
+	           %> 
+	          </div>
+	          <div class="col-sm-6"><br> 
+	            <%
+					            Anu_ISubjectService iSubjectService1 = new Anu_SubjectServiceImpl();
+								ArrayList<Anu_Subject> arrayList1 = iSubjectService.OLEnglishSubjects();
+								
+								for(Anu_Subject anu_Subject : arrayList1){
+			   %>
+		       
+		      			 <div class="row">
+		       				 <form class = "form2" method="POST" action="Anu_ListTeachersServlet"><h2>
+			    		 		 <input type="hidden" name="subjectCode" value="<%=anu_Subject.getSubjectCode()%>"/>
+			    		 		 <input type="hidden" name="subjectName" value="<%=anu_Subject.getSubjectName()%>"/>
+			    		 		 <input type="hidden" name="level" value="<%=anu_Subject.getLevel()%>"/>
+			    		 		 <input type="hidden" name="medium" value="<%=anu_Subject.getMedium()%>"/>
+			    		 		 <button class="button" role="button"><%=anu_Subject.getSubjectName()%></button><br><br>
+							</h2>
+							</form>
+		            	</div>
+		        
+		 	   <%	
+				 					  }
+	           %> 
+				
+			   </div> <br>    
+		  </div>
+		  <div class="col-sm-6" style="background-color:#99ff99;"><br><br>
+		  	<div class="col-sm-6"><br>
+		       <%
+					            Anu_ISubjectService iSubjectService2 = new Anu_SubjectServiceImpl();
+								ArrayList<Anu_Subject> arrayList2 = iSubjectService.ALSinhalaSubjects();
+								
+								for(Anu_Subject anu_Subject : arrayList2){
+			   %>
+		       
+		       	  		<div class="row"> 
+		    		 	<form class = "form2" method="POST" action="Anu_ListTeachersServlet"><h2>
+			    		 		 <input type="hidden" name="subjectCode" value="<%=anu_Subject.getSubjectCode()%>"/>
+			    		 		 <input type="hidden" name="subjectName" value="<%=anu_Subject.getSubjectName()%>"/>
+			    		 		 <input type="hidden" name="level" value="<%=anu_Subject.getLevel()%>"/>
+			    		 		 <input type="hidden" name="medium" value="<%=anu_Subject.getMedium()%>"/>
+			    		 		 <button class="button" role="button"><%=anu_Subject.getSubjectName()%></button><br><br>
+							</h2>
+						</form>
+		            	</div>
+		        		 	   
+		 	   <%	
+				 					  }
+	           %> 
+	          </div>
+	          <div class="col-sm-6"><br> 
+	            <%
+					            Anu_ISubjectService iSubjectService3 = new Anu_SubjectServiceImpl();
+								ArrayList<Anu_Subject> arrayList3 = iSubjectService.ALEnglishSubjects();
+								
+								for(Anu_Subject anu_Subject : arrayList3){
+			   %>
+		       
+		      			 <div class="row">		       				    		 	
+		    		 		<form class = "form2" method="POST" action="Anu_ListTeachersServlet"><h2>
+			    		 		 <input type="hidden" name="subjectCode" value="<%=anu_Subject.getSubjectCode()%>"/>
+			    		 		 <input type="hidden" name="subjectName" value="<%=anu_Subject.getSubjectName()%>"/>
+			    		 		 <input type="hidden" name="level" value="<%=anu_Subject.getLevel()%>"/>
+			    		 		 <input type="hidden" name="medium" value="<%=anu_Subject.getMedium()%>"/>
+			    		 		 <button class="button" role="button"><%=anu_Subject.getSubjectName()%></button><br><br>
+							</h2>
+							</form>
+		            	</div>
+		        
+		 	   <%	
+				 					  }
+	           %> 
+				
+			   </div>     
+		  </div>
+				
 		  	    <div class="col-sm-6" style="background-color:#99ff99;"><br><br>  		         
 		 	   </div>
 			   <div class="col-sm-6" style="background-color:#99ff99;"><br><br>
 		       </div>
 		    </div>
-	</div><br><br>
 </body>
 </html>

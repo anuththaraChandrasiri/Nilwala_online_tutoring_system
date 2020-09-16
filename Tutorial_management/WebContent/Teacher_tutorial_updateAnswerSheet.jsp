@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="Model.AnswerSheet"%>
+<%@page import="Model.Tutorial"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,7 +88,8 @@ else
 <%@ include file="WEB-INF/Teacher_header.jsp" %>  
 
 	<%
-		AnswerSheet answerSheet = (AnswerSheet) request.getAttribute("answerSheet");
+		AnswerSheet answerSheet = (AnswerSheet) request.getAttribute("answerSheet1");
+		AnswerSheet answerSheet1 = (AnswerSheet) request.getAttribute("answerSheet");
 	%>
 
 		<div>
@@ -124,7 +126,7 @@ else
 							        <label for="SheetId" style="display: none;">Sheet ID</label>
 							      </div>
 								      <div class="col-75">
-								        <input type="text" id="sheetId" name="sheetID" value="<%=answerSheet.getSheet_id()%>" readonly="readonly" style="display: none;">
+								        <input type="text" id="sheetId" name="sheetID" value="<%=answerSheet.getSheet_id()%>" style="display: none;">
 								      </div>
 							    </div>
 							    
@@ -133,7 +135,7 @@ else
 							        <label for="TeacherId" style="display: none;" >Teacher ID</label>
 							      </div>
 								      <div class="col-75">
-								        <input type="text" id="tId" name="teacherID" value="10002" readonly="readonly" style="display: none;" >
+								        <input type="text" id="tId" name="teacherID" value="<%=answerSheet.getTeacher_id()%>" style="display: none;" >
 								      </div>
 							    </div>
 							     <div class="row">
@@ -150,7 +152,7 @@ else
 							        <label for="SubjectCode" style="display: none;" >Subject code</label>
 							      </div>
 								      <div class="col-75">
-								        <input type="text" id="sCode" name="subjectCode" value="21" readonly="readonly" style="display: none;" >
+								        <input type="text" id="sCode" name="subjectCode" value="<%=answerSheet.getSubject_code()%>" readonly="readonly" style="display: none;" >
 								      </div>
 							    </div>
 							    
@@ -178,31 +180,62 @@ else
 								      </div>
 							      
 								       <div class="col-50"> 
-								          <button class="button" role="button">Update</button>
+								          <button class="button" role="button"  onclick="myFunction()">Update</button>
 								      </div>
 							       							     						
 							    </div>
 							    </form><br> 
-							    
+							    	</div>
 							    
 							    <div class="row">							    
 								      <div class="col-50">							        
-								      	<form class = "form1" method="POST" action="DeleteAnswerSheetServlet">
-												<input type="hidden" name="sheetID" value="<%=answerSheet.getSheet_id()%>"/> 
+								      	<form class = "form1" name="myForm" action="">
+												<input type="hidden" name="sheetID" id="sheetID" value="<%=answerSheet.getSheet_id()%>"/> 
 												<button class="button" role="button">Delete</button>
 										</form>
 								      </div><br>
 							      
 							       	  <div class="col-50">
-							     <button class="button"  onclick= "document.location='Teacher_tutorial_main.jsp'" style="background-color:  #70db70;">
+							       	  <form class = "form1" method="POST" action="ListTutorialsServlet">
+							       	  <input type="hidden" name="teacherId" id="teacherID" value="<%=answerSheet.getTeacher_id()%>"/>
+							       	  <input type="hidden" name="subjectCode" id="subjectCode" value="<%=answerSheet.getSubject_code()%>"/>
+							       	  <input type="hidden" name="teacherName" id="teacherName" value="<%=answerSheet.getTeacher_name()%>"/>
+							     <button class="button" style="background-color:  #70db70;">
 							       Cancel</button>
+							       </form>
 							     	 </div>  			
 							       							     						
 							    </div>			
 				   	</div>				   
 	 		</div>
 	 		</div>  
-	</div>
+	
+		<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var txt;
+  if (confirm("Successfully updated the answer sheet details!")) {
+	  var form = document.getElementById("vehicles");
+      form.submit();
+    txt.href = "Teacher_tutorial_main.jsp" ;
+  } else {
+	txt.href = "Teacher_tutorial_main.jsp" ;
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+
+function myFunctionDelete() {
+	  var txt;
+	  if (confirm("Do you really want to delete this answer sheet?")) {
+		  document.getElementById('sheetID').value = txt; 
+		  document.myform.submit();  
+	  } else {
+		txt.href = "Teacher_tutorial_main.jsp" ;
+	  }
+	  document.getElementById("demo").innerHTML = txt;
+	}
+</script>
 
 </body>
 </html>
