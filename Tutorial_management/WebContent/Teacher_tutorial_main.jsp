@@ -1,7 +1,5 @@
 <%@page import="Model.Tutorial"%>
 <%@page import="Model.AnswerSheet"%>
-<%@page import="Model.Anu_Subject"%>
-<%@page import="Model.Anu_Teacher"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Service.TutorialServiceImpl"%>
 <%@page import="Service.ITutorialService"%>
@@ -119,9 +117,20 @@
 				     					 </div>
 				    		    		 <div class="col-sm-6">
 				    		    		 
-				    		    		   <button class="button" onclick= "document.location='Teacher_tutorial_viewQuestionsReport.jsp'" style="background-color: #009900;">
-						   						View most asked questions</button>
-						   						  <br><br>
+				    		    		 	<form class = "form2" method="POST" action="TeacherViewReportServlet"><h2>
+												 <input type="hidden" name="tutorialID" value="1008"/>
+												 <input type="hidden" name="studentID" value="10009"/>
+												 <input type="hidden" name="tutorialName" value="tute"/>
+												 <input type="hidden" name="subjectName" value="<%=tutorial1.getSubjectName()%>"/>
+												 <input type="hidden" name="subjectCode" value="<%=tutorial1.getSubjectCode()%>"/>
+												 <input type="hidden" name="level" value="<%=tutorial1.getLevel()%>"/>
+												 <input type="hidden" name="medium" value="<%=tutorial1.getMedium()%>"/>
+												 <input type="hidden" name="teacherId" value="<%=tutorial1.getTeacherId()%>"/>
+												 <input type="hidden" name="teacherName"  value="<%=tutorial1.getTeacherName()%>"/>
+												<input type="submit" value= "View most asked questions" class="button" /></h2>
+											</form>
+											<br><br>
+				    		    		 
 				    		    		 </div>
 		   			         		</div>
 				    	 </div>  

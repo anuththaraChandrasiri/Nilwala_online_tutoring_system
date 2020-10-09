@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Arrays;
+
 public class Tutorial {
 
 	private String tutorialId ;
@@ -13,6 +15,11 @@ public class Tutorial {
 	private String level ;
 	private String medium ;
 	private String teacherName ;
+	private String studentId ;
+	private String questions[] ;
+	private String forumId ;
+	private int questionNo ;
+	private int count ;
 	
 	public String getTutorialId() {
 		return tutorialId;
@@ -109,12 +116,54 @@ public class Tutorial {
 	public void setTeacherName(String teacherName) {
 		this.teacherName = teacherName;
 	}
+	
+	public String getStudentId() {
+		return studentId;
+	}
+
+	public void setStudentId(String studentId) {
+		this.studentId = studentId;
+	}
+
+	public String[] getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(String[] questions) {
+		this.questions = questions;
+	}
+	
+	public String getForumId() {
+		return forumId;
+	}
+
+	public void setForumId(String forumId) {
+		this.forumId = forumId;
+	}
+	
+	public int getQuestionNo() {
+		return questionNo;
+	}
+
+	public void setQuestionNo(int questionNo) {
+		this.questionNo = questionNo;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
 
 	@Override
 	public String toString() {
 		return "Tutorial [tutorialId=" + tutorialId + ", title=" + title + ", teacherId=" + teacherId + ", subjectCode="
 				+ subjectCode + ", subjectName=" + subjectName + ", dateAdded=" + dateAdded + ", month=" + month
 				+ ", material=" + material + ", level=" + level + ", medium=" + medium + ", teacherName=" + teacherName
-				+ "]";
-	}	
+				+ ", studentId=" + studentId + ", questions=" + Arrays.toString(questions) + ", forumId=" + forumId
+				+ ", questionNo=" + questionNo + ", count=" + count + "]";
+	}
+	
 }

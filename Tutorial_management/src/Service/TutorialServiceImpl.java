@@ -28,6 +28,19 @@ public class TutorialServiceImpl implements ITutorialService {
 		return id;
 	}	
 	
+	public static String generateForumIDs(ArrayList<String> arrayList) {
+
+		String id;
+		int next = arrayList.size();
+		next++;
+		id = "1" + next;
+		if (arrayList.contains(id)) {
+			next++;
+			id = "1" + next;
+		}
+		return id;
+	}	
+	
 	@Override
 	public void addTutorial(Tutorial tutorial) {
 		
@@ -220,6 +233,40 @@ public class TutorialServiceImpl implements ITutorialService {
 			return arrayList;
 		}
 		
+		private ArrayList<String> getForumIDs(){
+			
+			ArrayList<String> arrayList = new ArrayList<String>();
+			String query = "select t.tute_Id from tutorials as t" ;
+			
+			try {
+				connection = DBConnectionUtil.getDBConnection();
+				preparedStatement = connection.prepareStatement(query);
+				
+					ResultSet resultSet = preparedStatement.executeQuery();
+					while (resultSet.next()) {
+					arrayList.add(resultSet.getString(1));
+					}
+				} catch (SQLException | ClassNotFoundException e) {
+					Log.log(Level.SEVERE, e.getMessage());
+				} finally {
+				/*
+				 * Close prepared statement and database connectivity at the end of
+				 * transaction
+				 */
+					try {
+						if (preparedStatement != null) {
+						preparedStatement.close();
+						}
+						if (connection != null) {
+						connection.close();
+						}
+					} catch (SQLException e) {
+						Log.log(Level.SEVERE, e.getMessage());
+					}
+				}
+				return arrayList;
+			}
+		
 		private ArrayList<Tutorial> TutorialsByTeacherId(String teacherID) {
 			
 			String query1 = "select * from tutorials where tutorials.teacher_id = ?" ;
@@ -339,5 +386,119 @@ public class TutorialServiceImpl implements ITutorialService {
 				}
 			}
 			return tutorialList;
+		}
+
+		@Override
+		public void addQuestions(Tutorial tutorial) {
+			
+			String questions[] = tutorial.getQuestions();
+			String forumID = generateForumIDs(getForumIDs());	
+			tutorial.setForumId(forumID);
+			String question_no;
+			String query = "insert into qforum (forum_id, student_id, tute_id, teacher_id, subject_code, question_no) values (?, ?, ?, ?, ?, ?)" ;
+			
+			try {
+				connection = DBConnectionUtil.getDBConnection();
+				
+				preparedStatement = connection.prepareStatement(query);
+				connection.setAutoCommit(false);
+				
+				for(int i = 0 ; i < questions.length ; i ++) {
+					
+					if(questions[i]!=null) {
+						
+						question_no = questions[i];	
+						System.out.println(question_no + " question number");
+						
+						preparedStatement.setString(1, tutorial.getForumId());
+						preparedStatement.setString(2, tutorial.getStudentId());
+						preparedStatement.setString(3, tutorial.getTutorialId());
+						preparedStatement.setString(4, tutorial.getTeacherId());
+						preparedStatement.setString(5, tutorial.getSubjectCode());
+						preparedStatement.setString(6, question_no);						
+						
+						preparedStatement.execute();					
+						
+					}					
+						
+				}			
+
+				connection.commit();	
+				
+			} catch (SQLException | ClassNotFoundException e) {
+				Log.log(Level.SEVERE, e.getMessage());
+			} finally {
+				/*
+				 * Close prepared statement and database connectivity at the end of
+				 * transaction
+				 */
+				try {
+					if (preparedStatement != null) {
+						preparedStatement.close();
+					}
+					if (connection != null) {
+						connection.close();
+					}
+				} catch (SQLException e) {
+					Log.log(Level.SEVERE, e.getMessage());
+				}
+			}			
+		}
+
+		@Override
+		public ArrayList<Tutorial> getQuestionNumbersByTutorialId(String tutorialId) {
+			
+			String query1 = "select question_no, count(student_id) as qcount from qforum where qforum.tute_id = ? group by question_no order by qcount DESC" ;
+			String query2 = "select * from qforum order by qforum.forum_id " ;
+
+			ArrayList<Tutorial> questionList = new ArrayList<Tutorial>();
+			try {
+				connection = DBConnectionUtil.getDBConnection();
+				/*
+				 * Before fetching tutorial it checks whether tutorial ID is
+				 * available
+				 */
+				if (tutorialId!= null && !tutorialId.isEmpty()) {
+					
+					preparedStatement = connection.prepareStatement(query1);
+					preparedStatement.setString(1, tutorialId);
+					System.out.println("Correct");
+				}
+				/*
+				 * If tutorial ID is not provided it displays all tutorials
+				 */
+				else {
+					preparedStatement = connection.prepareStatement(query2);
+				}
+				ResultSet resultSet = preparedStatement.executeQuery();
+
+				while (resultSet.next()) {
+					
+					Tutorial tutorial = new Tutorial();
+					tutorial.setQuestionNo(Integer.parseInt(resultSet.getString(1)));
+					tutorial.setCount(Integer.parseInt(resultSet.getString(2)));
+										
+					questionList.add(tutorial);
+				}
+
+			} catch (SQLException | ClassNotFoundException e) {
+				Log.log(Level.SEVERE, e.getMessage());
+			} finally {
+				/*
+				 * Close prepared statement and database connectivity at the end of
+				 * transaction
+				 */
+				try {
+					if (preparedStatement != null) {
+						preparedStatement.close();
+					}
+					if (connection != null) {
+						connection.close();
+					}
+				} catch (SQLException e) {
+					Log.log(Level.SEVERE, e.getMessage());
+				}
+			}
+			return questionList;
 		}
 }

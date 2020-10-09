@@ -101,12 +101,21 @@
 				   						 <div class="col-sm-6">
 						   											   						
 				     					 </div>
-				    		    		 <div class="col-sm-6">
-				    		    		 
-				    		    		   <button class="button" onclick= "document.location='Student_tutorial_forum.jsp'" style="background-color: #1a75ff;">
-						   						Questions?</button>
-						   						  <br><br><br><br>
-				    		    		 </div>
+				     					 <div class="col-sm-6">
+					   				 		<form class = "form2" method="POST" action="StudentDisplayForumServlet"><h2>
+												 <input type="hidden" name="tutorialID" value="1008"/>
+												 <input type="hidden" name="studentID" value="10009"/>
+												 <input type="hidden" name="tutorialName" value="tute"/>
+												 <input type="hidden" name="subjectName" value="<%=tutorial1.getSubjectName()%>"/>
+												 <input type="hidden" name="subjectCode" value="<%=tutorial1.getSubjectCode()%>"/>
+												 <input type="hidden" name="level" value="<%=tutorial1.getLevel()%>"/>
+												 <input type="hidden" name="medium" value="<%=tutorial1.getMedium()%>"/>
+												 <input type="hidden" name="teacherID" value="<%=tutorial1.getTeacherId()%>"/>
+												 <input type="hidden" name="teacherName"  value="<%=tutorial1.getTeacherName()%>"/>
+												<input type="submit" value= "Questions?" class="button" /></h2>
+											</form>
+											<br><br><br><br>
+				     					</div>	
 		   			         	</div>
 				    	 </div>  
 					    		    			    		    				

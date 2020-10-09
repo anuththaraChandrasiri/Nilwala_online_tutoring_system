@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="Model.Tutorial"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,68 +21,111 @@
 </head>
 <body>
 <%@ include file="WEB-INF/Student_header.jsp" %> 
-	
+
+		
+	     <%
+	     
+			Tutorial tutorial1 = (Tutorial) request.getAttribute("tutorial");
+								
+	     %>  
+		<div>
+			<ul class="breadcrumb">
+					<li><a href="Student_tutorial_home.jsp"><b><%=tutorial1.getLevel()%></b></a>
+					<li><a href="Student_tutorial_home.jsp"><b><%=tutorial1.getMedium()%></b></a>
+					<li><a href="Student_tutorial_subject.jsp"><b><%=tutorial1.getSubjectName()%></b></a>	
+					<li><a href="Student_tutorial_subject.jsp"><b><%=tutorial1.getTeacherName()%></b></a>			
+					</li>
+			</ul>
+		</div>
+		<hr>
+		       	
 		<div class="jumbotron text-center">
 	 		 <h1>Questions</h1>
 		</div>
 		
 		<div class="jumbotron text-center">
 			  <div class="row">
-			  	 <form action="/action_page.php">
+			  	 <form method="POST" action="StudentSubmitForumServlet">
 			   		 <div class="col-sm-6" style="background-color:#ccd9ff;">
 				   		 <div class="checkbox">
 			     			 <label style = "font-size:25px;">Question 1</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			     			 <input type="checkbox" class="largerCheckbox" name="question1">     
+			     			 <input type="checkbox" class="largerCheckbox" name="questions" value="1">     
 			   			 </div>
 			   			 <div class="checkbox">
 		     				 <label style = "font-size:25px;">Question 2</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		     				 <input type="checkbox" class="largerCheckbox" name="question2">       
+		     				 <input type="checkbox" class="largerCheckbox" name="questions" value="2">       
 		   				 </div>
 		   				  <div class="checkbox">
 			     			 <label style = "font-size:25px;">Question 3</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			     			 <input type="checkbox" class="largerCheckbox" name="question3">     
+			     			 <input type="checkbox" class="largerCheckbox" name="questions" value="3">     
 			   			 </div>
 			   			 <div class="checkbox">
 		     				 <label style = "font-size:25px;">Question 4</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		     				 <input type="checkbox" class="largerCheckbox" name="question4">       
+		     				 <input type="checkbox" class="largerCheckbox" name="questions" value="4">       
 		   				 </div>
 		   				  <div class="checkbox">
 			     			 <label style = "font-size:25px;">Question 5</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			     			 <input type="checkbox" class="largerCheckbox" name="question5">     
+			     			 <input type="checkbox" class="largerCheckbox" name="questions" value="5">     
 			   			 </div>
 			   		</div>
 			     	<div class="col-sm-6" style="background-color:#ccd9ff;">
 				   		 <div class="checkbox">
 			     			 <label style = "font-size:25px;">Question 6</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			     			 <input type="checkbox" class="largerCheckbox" name="question6">     
+			     			 <input type="checkbox" class="largerCheckbox" name="questions" value="6">     
 			   			 </div>
 			   			 <div class="checkbox">
 		     				 <label style = "font-size:25px;">Question 7</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		     				 <input type="checkbox" class="largerCheckbox" name="question7">       
+		     				 <input type="checkbox" class="largerCheckbox" name="questions" value="7">       
 		   				 </div>
 		   				  <div class="checkbox">
 			     			 <label style = "font-size:25px;">Question 8</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			     			 <input type="checkbox" class="largerCheckbox" name="question8">     
+			     			 <input type="checkbox" class="largerCheckbox" name="questions" value="8">     
 			   			 </div>
 			   			 <div class="checkbox">
 		     				 <label style = "font-size:25px;">Question 9</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		     				 <input type="checkbox" class="largerCheckbox" name="question9">       
+		     				 <input type="checkbox" class="largerCheckbox" name="questions" value="9">       
 		   				 </div>
 		   				 <div class="checkbox">
 		     				 <label style = "font-size:25px;">Question 10</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		     				 <input type="checkbox" class="largerCheckbox" name="question10">       
+		     				 <input type="checkbox" class="largerCheckbox" name="questions" value="10">       
 		   				 </div>		  			     				 
 			     	</div>	
 			     		  <div class="col-sm-6" style="background-color:  #f2f2f2;"><br><br>  		         
 		 	  			  </div>
 		 	  			  <div class="col-sm-6" style="background-color:  #f2f2f2;"><br><br>  		         
 		 	  			  </div>
-		 	  			  
-					    <!-- <button class="button" onclick= "document.location='Student_tutorial_main.jsp'">Submit</button><br><br> Until i create the servlet -->
+		 	 			 
+		 	 			 <div class="row">							    
+							        <div class="col-50">
+							        			<input type="hidden" name="tutorialID" value="<%=tutorial1.getTutorialId()%>"/>
+												<input type="hidden" name="studentID" value="<%=tutorial1.getStudentId()%>"/>
+												<input type="hidden" name="tutorialName" value="<%=tutorial1.getTutorialTitle()%>"/>
+									            <input type="hidden" name="subjectName" value="<%=tutorial1.getSubjectName()%>"/>
+									            <input type="hidden" name="subjectCode" value="<%=tutorial1.getSubjectCode()%>"/>
+												<input type="hidden" name="level" value="<%=tutorial1.getLevel()%>"/>
+												<input type="hidden" name="medium" value="<%=tutorial1.getMedium()%>"/>
+												<input type="hidden" name="teacherId" value="<%=tutorial1.getTeacherId()%>"/>
+												<input type="hidden" name="teacherName"  value="<%=tutorial1.getTeacherName()%>"/>	
+							     		           <button class="button" role="button"><b>Submit</b></button><br>
+							      	</div>
+						</div><br>
 			     		    	
 			     </form>
-			     		<button class="button" onclick= "document.location='Student_tutorial_main.jsp'">Submit</button><br><br> 
-			     		<button class="button" onclick= "document.location='Student_tutorial_main.jsp'">Cancel</button>
+			     		 <div class="row">
+							       <div class="col-50">
+							  		      <form class = "form1" method="POST" action="ListTutorialsServlet">
+							       	  			 <input type="hidden" name="subjectName" value="<%=tutorial1.getSubjectName()%>"/>
+												 <input type="hidden" name="level" value="<%=tutorial1.getLevel()%>"/>
+												 <input type="hidden" name="medium" value="<%=tutorial1.getMedium()%>"/>
+												 <input type="hidden" name="teacherId" value="<%=tutorial1.getTeacherId()%>"/>
+												 <input type="hidden" name="teacherName"  value="<%=tutorial1.getTeacherName()%>"/>	
+												 <input type="hidden" name="teacher" value="false"/>						       	  			
+							     					<button class="button"><b>Cancel</b></button>
+							       		  </form>	
+							      	</div><br>
+							        <div class="col-50">
+									</div>
+					    </div><br>
 	 		</div> 
 	</div>
 </body>
