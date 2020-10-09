@@ -75,7 +75,7 @@ public class Tutorial {
 	}
 
 	public void setMaterial(String material) {
-		this.material =  material;
+		this.material = material;
 	}
 
 	public String getTitle() {
@@ -116,7 +116,5 @@ public class Tutorial {
 				+ subjectCode + ", subjectName=" + subjectName + ", dateAdded=" + dateAdded + ", month=" + month
 				+ ", material=" + material + ", level=" + level + ", medium=" + medium + ", teacherName=" + teacherName
 				+ "]";
-	}
-
-	
+	}	
 }

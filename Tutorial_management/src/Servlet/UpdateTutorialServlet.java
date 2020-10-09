@@ -50,7 +50,7 @@ public class UpdateTutorialServlet extends HttpServlet {
 		Tutorial tutorial = new Tutorial() ;
 		
 		String tutorialID = request.getParameter("tutorialID");
-				
+						
 		tutorial.setTutorialId(tutorialID);
 		tutorial.setTutorialTitle(request.getParameter("tutorialName"));
 		tutorial.setTeacherId(request.getParameter("teacherID"));

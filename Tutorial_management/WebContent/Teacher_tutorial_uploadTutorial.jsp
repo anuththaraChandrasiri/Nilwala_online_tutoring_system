@@ -94,10 +94,10 @@ else
 
 		<div>
 			<ul class="breadcrumb">
-			  <li><a href="Student_tutorial_home.jsp"><b>Ordinary level - Sinhala medium</b></a>
-			  	  <a href="Student_tutorial_subject.jsp"><b> - Mathematics</b></a>
-			  	  <a href="#"><b> - Kapila Gunarathne</b></a>
-			  	  <a href="#"><b> - Upload a new tutorial</b></a>
+			 	<li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial.getLevel()%></b></a>
+				<li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial.getMedium()%></b></a>
+				<li><a href="Teacher_tutorial_subject.jsp"><b><%=tutorial.getSubjectName()%></b></a>	
+				<li><a href="Teacher_tutorial_subject.jsp"><b><%=tutorial.getTeacherName()%></b></a>	
 			  </li>
 			</ul>
 		</div>

@@ -2,6 +2,9 @@
     pageEncoding="ISO-8859-1"%>
 <%@page import="Model.AnswerSheet"%>
 <%@page import="Model.Tutorial"%>
+<%@page import="Service.TutorialServiceImpl"%>
+<%@page import="Service.ITutorialService"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,14 +93,16 @@ else
 	<%
 		AnswerSheet answerSheet = (AnswerSheet) request.getAttribute("answerSheet1");
 		AnswerSheet answerSheet1 = (AnswerSheet) request.getAttribute("answerSheet");
+		Tutorial tutorial1 = (Tutorial) request.getAttribute("tutorial");
+		ArrayList<Tutorial> tutorialList = (ArrayList<Tutorial>) request.getAttribute("tutorials");
 	%>
 
 		<div>
-			<ul class="breadcrumb"><!--   add your path example : Subject / Add Subject 1st li subject 2nd li Add Subject . change accordingly-->
-			  <li><a href="Student_tutorial_home.jsp"><b>Ordinary level - Sinhala medium</b></a>
-			  	  <a href="Student_tutorial_subject.jsp"><b> - Mathematics</b></a>
-			  	  <a href="#"><b> - Kapila Gunarathne</b></a>
-			  	  <a href="#"><b> - Update an answer sheet</b></a>
+			<ul class="breadcrumb">
+			    <li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getLevel()%></b></a>
+				<li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getMedium()%></b></a>
+				<li><a href="Teacher_tutorial_subject.jsp"><b><%=tutorial1.getSubjectName()%></b></a>	
+				<li><a href="Teacher_tutorial_subject.jsp"><b><%=tutorial1.getTeacherName()%></b></a>	
 			  </li>
 			</ul>
 		</div>
@@ -140,11 +145,28 @@ else
 							    </div>
 							     <div class="row">
 							      <div class="col-25">
-							        <label for="TutorialId">Tutorial ID</label>
+							        <label for="TutorialId">Tutorial name</label>
 							      </div>
-								      <div class="col-75">
-								        <input type="text" id="tuteId" name="tuteID" value="<%=answerSheet.getTute_id()%>" readonly="readonly">
-								      </div>
+							     								      
+								       <div class="col-75">								         
+								        		<select id="tuteId" name="tuteID" required>
+								        		
+								        			 <option value="<%=answerSheet.getTute_id()%>" style=" color: brown;"><%=answerSheet.getTute_id()%></option>
+								        			<%
+					           								
+															for(Tutorial tutorial : tutorialList){
+													%>
+								        		
+								        		
+								        			 <option value="<%=tutorial.getTutorialId()%>"><%=tutorial.getTutorialTitle()%></option>
+								       			
+								       				<%	
+				 					  						}
+	         										%>         				
+								       			
+								       			</select>								       			
+							           </div>								      
+								      
 							    </div>
 							    
 							     <div class="row">

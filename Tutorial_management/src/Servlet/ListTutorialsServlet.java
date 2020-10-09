@@ -63,8 +63,10 @@ public class ListTutorialsServlet extends HttpServlet {
  		tutorial.setMedium(medium);
  		tutorial.setTeacherName(teacherName);
  		
- 		request.setAttribute("tutorial", tutorial);
+ 		System.out.println(tutorial.getTeacherId()+ "is tid" + tutorial.getTeacherName() + "teacher name");
  		
+ 		request.setAttribute("tutorial", tutorial);
+ 		 		
 		ITutorialService iTutorialService = new TutorialServiceImpl();
 		ArrayList<Tutorial> tutorials = iTutorialService.getTutorialsById(teacherId);
 		
@@ -74,8 +76,24 @@ public class ListTutorialsServlet extends HttpServlet {
 		request.setAttribute("answerSheets", answerSheets);
 		
 		request.setAttribute("tutorials", tutorials);
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_main.jsp");
-		dispatcher.forward(request, response);
+		
+		String teacherStatus = request.getParameter("teacher");
+		System.out.println("teacher status : " + teacherStatus);
+		
+		if(teacherStatus.contentEquals("true")) {
+			
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_main.jsp");
+			dispatcher.forward(request, response);
+			
+		}
+		
+		else if (teacherStatus.contentEquals("false")) {
+			
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Student_tutorial_main.jsp");
+			dispatcher.forward(request, response);			
+			
+		}
+		
 		//doGet(request, response);
 	}
 

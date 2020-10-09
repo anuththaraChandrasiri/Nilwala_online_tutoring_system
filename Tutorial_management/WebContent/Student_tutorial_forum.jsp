@@ -20,20 +20,9 @@
 </head>
 <body>
 <%@ include file="WEB-INF/Student_header.jsp" %> 
-
-	<div>
-		<ul class="breadcrumb"><!--   add your path example : Subject / Add Subject 1st li subject 2nd li Add Subject . change accordingly-->
-		  <li><a href="Student_tutorial_home.jsp"><b>Ordinary level - Sinhala medium</b></a>
-		  	  <a href="Student_tutorial_subject.jsp"><b> - Mathematics</b></a>
-		  	  <a href="#"><b> - Kapila Gunarathne</b></a>
-		  	  <a href="#"><b> - Forum (Tutorial 6)</b></a>
-		  </li>
-		</ul>
-	</div>
-	<hr>
 	
 		<div class="jumbotron text-center">
-	 		 <h1>Tute 6 - Lesson 4 - Questions</h1>
+	 		 <h1>Questions</h1>
 		</div>
 		
 		<div class="jumbotron text-center">

@@ -36,9 +36,9 @@
 
 		<div>
 			<ul class="breadcrumb">
-			  <li><a href="Teacher_tutorial_home.jsp"><b><%=teacher.getLevel()%> - <%=teacher.getMedium()%></b></a>
-			  	 
-			 </li>
+				<li><a href="Teacher_tutorial_home.jsp"><b><%=teacher.getLevel()%></b></a>
+				<li><a href="Teacher_tutorial_home.jsp"><b><%=teacher.getMedium()%></b></a>
+				</li>
 			</ul>
 		</div>
 	<hr>
@@ -57,14 +57,15 @@
 	  %>
     
 	    	<form class = "form2" method="POST" action="ListTutorialsServlet"><h2>
-				 <input type="hidden" name="teacherId" value="<%=anu_Teacher.getTeacherID()%>"/>
-				 <input type="hidden" name="subjectCode" value="<%=anu_Teacher.getSubjectCode()%>"/>
-				 <input type="hidden" name="subjectName" value="<%=teacher.getSubjectName()%>"/>
-				 <input type="hidden" name="level" value="<%=teacher.getLevel()%>"/>
-				 <input type="hidden" name="medium" value="<%=teacher.getMedium()%>"/>
-				  <input type="hidden" name="teacherName"  value="<%=anu_Teacher.getTeacherName()%>"/>
-	     		 <button class="button1" role="button"><%=anu_Teacher.getTeacherName()%></button><br><br>
-	          </h2>
+					 <input type="hidden" name="teacherId" value="<%=anu_Teacher.getTeacherID()%>"/>
+					 <input type="hidden" name="subjectCode" value="<%=anu_Teacher.getSubjectCode()%>"/>
+					 <input type="hidden" name="subjectName" value="<%=teacher.getSubjectName()%>"/>
+					 <input type="hidden" name="level" value="<%=teacher.getLevel()%>"/>
+					 <input type="hidden" name="medium" value="<%=teacher.getMedium()%>"/>
+					 <input type="hidden" name="teacherName"  value="<%=anu_Teacher.getTeacherName()%>"/>
+					 <input type="hidden" name="teacher" value="true"/>
+	     				 <button class="button1" role="button"><%=anu_Teacher.getTeacherName()%></button><br><br>
+	         		 </h2>
 			</form>		 	   
 	  <%	
 	 					 }

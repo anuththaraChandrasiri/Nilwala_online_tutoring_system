@@ -43,8 +43,21 @@ public class GetTutorialServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.setContentType("text/html");
+		
+		Tutorial tutorial1 = new Tutorial() ;
 
- 		String tutorialID = request.getParameter("tutorialID");	
+ 		String tutorialID = request.getParameter("tutorialID");
+ 		String subjectName = request.getParameter("subjectName");
+		String level = request.getParameter("level");
+		String medium = request.getParameter("medium");
+		String teacherName = request.getParameter("teacherName");
+		
+		tutorial1.setSubjectName(subjectName);
+ 		tutorial1.setLevel(level);
+ 		tutorial1.setMedium(medium);
+ 		tutorial1.setTeacherName(teacherName);
+ 		
+ 		request.setAttribute("tutorial1", tutorial1);
  		
 		ITutorialService iTutorialService = new TutorialServiceImpl();
 		Tutorial tutorial = iTutorialService.getTutorialById(tutorialID);

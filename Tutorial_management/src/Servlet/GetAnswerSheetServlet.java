@@ -1,6 +1,7 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Model.AnswerSheet;
+import Model.Tutorial;
 import Service.AnswerSheetServiceImpl;
 import Service.IAnswerSheetService;
+import Service.ITutorialService;
+import Service.TutorialServiceImpl;
 
 /**
  * Servlet implementation class GetAnswerSheetServlet
@@ -57,12 +61,33 @@ public class GetAnswerSheetServlet extends HttpServlet {
  		
  		request.setAttribute("answerSheet", answerSheet);
  		
+ 		Tutorial tutorial = new Tutorial() ;
+ 		
+ 		String subjectName = request.getParameter("subjectName");
+		String level = request.getParameter("level");
+		String medium = request.getParameter("medium");
+		String teacherName = request.getParameter("teacherName");
+		
+		tutorial.setSubjectName(subjectName);
+ 		tutorial.setLevel(level);
+ 		tutorial.setMedium(medium);
+ 		tutorial.setTeacherName(teacherName);
+ 		
+ 		System.out.println(tutorial.getTeacherName()+ "is teacher name in update as");
+ 		
+ 		request.setAttribute("tutorial", tutorial);
+ 		
 		IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
 		AnswerSheet answerSheet1 = iAnswerSheetService.getAnswerSheetById(answerSheetID);
 		
 		System.out.println(teacherID+"sECOND");
 		
+		ITutorialService iTutorialService1 = new TutorialServiceImpl();
+		ArrayList<Tutorial> tutorials = iTutorialService1.getTutorialsById(answerSheet.getTeacher_id());
+		
 		request.setAttribute("answerSheet1", answerSheet1);
+		
+		request.setAttribute("tutorials", tutorials);
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_updateAnswerSheet.jsp");
 		dispatcher.forward(request, response);

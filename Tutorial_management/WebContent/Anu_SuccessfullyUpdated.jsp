@@ -29,6 +29,7 @@
 							       	  <input type="hidden" name="teacherId" id="teacherID" value="<%=answerSheet.getTeacher_id()%>"/>
 							       	  <input type="hidden" name="subjectCode" id="subjectCode" value="<%=answerSheet.getSubject_code()%>"/>
 							       	  <input type="hidden" name="teacherName" id="teacherName" value="<%=answerSheet.getTeacher_name()%>"/>
+							       	  <input type="hidden" name="teacher" value="true"/>
 							     <button class="button" style="background-color:  #70db70;">
 							       OK</button>
 							       </form>
@@ -47,6 +48,7 @@
 							       	  <input type="hidden" name="teacherId" id="teacherID" value="<%=tutorial.getTeacherId()%>"/>
 							       	  <input type="hidden" name="subjectCode" id="subjectCode" value="<%=tutorial.getSubjectCode()%>"/>
 							       	  <input type="hidden" name="teacherName" id="teacherName" value="<%=tutorial.getTeacherName()%>"/>
+							       	  <input type="hidden" name="teacher" value="true"/>
 							     <button class="button" style="background-color:  #70db70;">
 							       OK</button>
 							       </form>

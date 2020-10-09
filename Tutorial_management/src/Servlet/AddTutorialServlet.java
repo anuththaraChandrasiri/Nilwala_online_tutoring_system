@@ -2,14 +2,12 @@ package Servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import Model.AnswerSheet;
 import Model.Tutorial;
 import Service.AnswerSheetServiceImpl;
@@ -24,7 +22,7 @@ import Service.TutorialServiceImpl;
 public class AddTutorialServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-       
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -49,7 +47,7 @@ public class AddTutorialServlet extends HttpServlet {
 		response.setContentType("text/html");
 		
 		Tutorial tutorial = new Tutorial() ;
-				
+						
 		tutorial.setTutorialTitle(request.getParameter("tutorialName"));
 		tutorial.setTeacherId(request.getParameter("teacherID"));
 		tutorial.setSubjectCode(request.getParameter("subjectCode"));
@@ -57,7 +55,8 @@ public class AddTutorialServlet extends HttpServlet {
 		tutorial.setMonth(request.getParameter("month"));
 		tutorial.setMaterial(request.getParameter("filename"));
 		
-		System.out.println(request.getParameter("uploadingDate"));
+		System.out.println(tutorial.getTeacherId() + "tid");
+		System.out.println(request.getParameter("uploadingDate") + "File name is : " + request.getParameter("filename"));
 		
 		ITutorialService iTutorialService = new TutorialServiceImpl();
 		iTutorialService.addTutorial(tutorial);
@@ -74,9 +73,9 @@ public class AddTutorialServlet extends HttpServlet {
 		
 		request.setAttribute("tutorials", tutorials);
 		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_main.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Anu_SuccessfullyUpdated.jsp");
 		dispatcher.forward(request, response);
-		
+				
 		//doGet(request, response);
 	}
 

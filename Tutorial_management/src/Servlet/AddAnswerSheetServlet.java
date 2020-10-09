@@ -2,14 +2,12 @@ package Servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import Model.AnswerSheet;
 import Model.Tutorial;
 import Service.AnswerSheetServiceImpl;
@@ -60,6 +58,7 @@ public class AddAnswerSheetServlet extends HttpServlet {
 		iAnswerSheetService.addAnswerSheet(answerSheet);
 		
 		request.setAttribute("answerSheet", answerSheet);
+		System.out.println(answerSheet.getTute_id() + "tuteId");
 		
 		ITutorialService iTutorialService1 = new TutorialServiceImpl();
 		ArrayList<Tutorial> tutorials = iTutorialService1.getTutorialsById(answerSheet.getTeacher_id());

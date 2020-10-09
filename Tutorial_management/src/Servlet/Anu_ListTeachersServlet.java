@@ -64,8 +64,22 @@ public class Anu_ListTeachersServlet extends HttpServlet {
 		
 		request.setAttribute("teachers", teachers);
 		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_subject.jsp");
-		dispatcher.forward(request, response);
+		String teacherStatus = request.getParameter("teacher");
+		System.out.println("teacher status : " + teacherStatus);
+		
+		if(teacherStatus.contentEquals("true")) {
+			
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_subject.jsp");
+			dispatcher.forward(request, response);
+			
+		}
+		
+		else if (teacherStatus.contentEquals("false")) {
+			
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Student_tutorial_subject.jsp");
+			dispatcher.forward(request, response);			
+			
+		}
 		
 		//doGet(request, response);
 	}

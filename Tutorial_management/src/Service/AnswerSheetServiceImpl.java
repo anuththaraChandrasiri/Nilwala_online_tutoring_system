@@ -283,7 +283,7 @@ public class AnswerSheetServiceImpl implements IAnswerSheetService {
 		try {
 			connection = DBConnectionUtil.getDBConnection();
 			/*
-			 * Before fetching tutorial it checks whether answerSheetID is
+			 * Before fetching answer sheets it checks whether answerSheetID is
 			 * available
 			 */
 			if (teacherID!= null && !teacherID.isEmpty()) {

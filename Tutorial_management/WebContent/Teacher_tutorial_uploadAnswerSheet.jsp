@@ -3,6 +3,9 @@
 <%@ page import = "java.io.*,java.util.*, javax.servlet.*" %>
 <%@page import="java.text.SimpleDateFormat" %>  
 <%@page import="Model.AnswerSheet"%>
+<%@page import="Model.Tutorial"%>
+<%@page import="Service.TutorialServiceImpl"%>
+<%@page import="Service.ITutorialService"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,14 +93,16 @@ else
 
 		<%
 				AnswerSheet answerSheet = (AnswerSheet) request.getAttribute("answerSheet");
+				Tutorial tutorial1 = (Tutorial) request.getAttribute("tutorial");
+				ArrayList<Tutorial> tutorialList = (ArrayList<Tutorial>) request.getAttribute("tutorials");
 		%>
 
 		<div>
-			<ul class="breadcrumb"><!--   add your path example : Subject / Add Subject 1st li subject 2nd li Add Subject . change accordingly-->
-			  <li><a href="Student_tutorial_home.jsp"><b>Ordinary level - Sinhala medium</b></a>
-			  	  <a href="Student_tutorial_subject.jsp"><b> - Mathematics</b></a>
-			  	  <a href="#"><b> - Kapila Gunarathne</b></a>
-			  	  <a href="#"><b> - Upload a new answer sheet</b></a>
+			<ul class="breadcrumb">
+			  	<li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getLevel()%></b></a>
+				<li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getMedium()%></b></a>
+				<li><a href="Teacher_tutorial_subject.jsp"><b><%=tutorial1.getSubjectName()%></b></a>	
+				<li><a href="Teacher_tutorial_subject.jsp"><b><%=tutorial1.getTeacherName()%></b></a>	
 			  </li>
 			</ul>
 		</div>
@@ -134,15 +139,31 @@ else
 									   		  <div class="col-75">
 									     		   <input type="text" id="sCode" name="subjectCode" value ="<%=answerSheet.getSubject_code()%>" style="display: none;">
 									   		  </div>
-							   	  </div>		
+							   	  </div>						   	  
 							   	  <div class="row">
 								    		<div class="col-25">
-								        		<label for="fname">Tutorial ID</label>
+								        		<label for="fname">Tutorial name</label>
 								      		</div>
-									       	<div class="col-75">
-									        	<input type="text" id="tuteId" name="tuteID" placeholder="Tutorial ID">
-									        </div>
-							     </div>						    
+								      		
+	
+									         <div class="col-75">								         
+								        		<select id="tuteId" name="tuteID" required>
+								        			<%
+					           								
+															for(Tutorial tutorial : tutorialList){
+													%>
+								        		
+								        		
+								        			  <option value="<%=tutorial.getTutorialId()%>"><%=tutorial.getTutorialTitle()%></option>
+								       			
+								       				<%	
+				 					  						}
+	         										%>         				
+								       			
+								       			</select>								       			
+							                </div>								        
+							     </div><br>		     
+							     					    
 							     <div class="row">
 							      			<div class="col-25">
 							     		   			<label for="lname">Answer sheet</label>

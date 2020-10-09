@@ -316,7 +316,7 @@ public class TutorialServiceImpl implements ITutorialService {
 					tutorial.setDateAdded(resultSet.getString(5));
 					tutorial.setMonth(resultSet.getString(6));
 					tutorial.setMaterial(resultSet.getString(7));
-					
+										
 					tutorialList.add(tutorial);
 				}
 

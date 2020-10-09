@@ -28,12 +28,12 @@
 }
 
 .left {
-  width: 65%;
+  width: 55%;
   margin-left: 2.5%;
 }
 
 .right {
-  width: 30%;
+  width: 40%;
 }
 
 /* Clear floats after the columns */
@@ -49,38 +49,46 @@
 
 <%@ include file="WEB-INF/Student_header.jsp" %> 
 
-	<div>
-		<ul class="breadcrumb"><!--   add your path example : Subject / Add Subject 1st li subject 2nd li Add Subject . change accordingly-->
-		   	  <li><a href="Student_tutorial_home.jsp"><b>Ordinary level - Sinhala medium</b></a>
-			  	  <a href="Student_tutorial_subject.jsp"><b> - Mathematics</b></a>
-			  	  <a href="Student_tutorial_main.jsp"><b> - Kapila Gunarathne</b></a>
-			 </li>
-		</ul>
-	</div>
-	<hr>
+	     <%
+		 	ArrayList<Tutorial> tutorialList = (ArrayList<Tutorial>) request.getAttribute("tutorials");
+			ArrayList<AnswerSheet> answerSheetList = (ArrayList<AnswerSheet>) request.getAttribute("answerSheets");
+			Tutorial tutorial1 = (Tutorial) request.getAttribute("tutorial");
+								
+	     %>  
+		<div>
+			<ul class="breadcrumb">
+					<li><a href="Student_tutorial_home.jsp"><b><%=tutorial1.getLevel()%></b></a>
+					<li><a href="Student_tutorial_home.jsp"><b><%=tutorial1.getMedium()%></b></a>
+					<li><a href="Student_tutorial_subject.jsp"><b><%=tutorial1.getSubjectName()%></b></a>	
+					<li><a href="Student_tutorial_subject.jsp"><b><%=tutorial1.getTeacherName()%></b></a>			
+					</li>
+			</ul>
+		</div>
+		
+		<hr>
 	
 	<div class="column left" style="background-color: #b3d1ff;">
 			 		<div class="jumbotron text-center" style=" height: 30px; text-align:left; padding: 10px 20px 70px 20px;">
-			   			 <h2>January</h2>
+			   			 <h2>Tutorials</h2>
 			   		</div>
 		   			 	
 		   			 		   			 	
 							<%
-					            ITutorialService iTutorialService = new TutorialServiceImpl();
-								ArrayList<Tutorial> arrayList = iTutorialService.getTutorials();
-								
-								for(Tutorial tutorial : arrayList){
+							
+								for(Tutorial tutorial : tutorialList){
+									
 							%>
 						    <div class="row">
 				   				
-				   				 <br>
 				   				 		<div class="col-sm-6" style="background-color:#cce0ff;">
-				   				 		<h2><a href="Student_tutorial_pdf.jsp">
-				   				 		<b><%=tutorial.getTutorialTitle()%></b><br><br></a></h2>
+				   				 		<h2><a href=".\documents\Tutorial 1 - Views.pdf" target="_new">
+				   				 		<b><%=tutorial.getTutorialTitle()%></b></a></h2><br>
 				     					</div>
-				     					<div class="col-sm-6" style="background-color:#cce0ff;"><br>
-				   				 		<button class="button" onclick= "document.location='Student_tutorial_pdf.jsp'"
-				   				 			style = "background: #80b3ff;  margin-left:25%;">Download</button><br><br>
+				     					<div class="col-sm-6" style="background-color:#cce0ff;">
+				     						<form class = "form2" method="POST" action="GetTutorialServlet"><h2>
+												<input type="hidden" name="tutorialID" value="<%=tutorial.getTutorialId()%>"/>
+												<input type="submit" value= "Download" class="button2" /></h2>
+											</form>				  
 				     					</div>					     			 
 				    		 </div> 
 				    		  
@@ -88,7 +96,7 @@
 				 					  }
 	         				%>  
 	         				
-	         				   <br><br><br>
+	         				   <br><br><br><br>
 				    		   <div class="row">
 				   						 <div class="col-sm-6">
 						   											   						
@@ -102,26 +110,26 @@
 		   			         	</div>
 				    	 </div>  
 					    		    			    		    				
-			  			<div class="column right" style="background-color: #cce0ff; ">
+			  			<div class="column right" style="background-color:#b3d1ff; ">
 			   				<div class="jumbotron text-center" style=" height: 30px; text-align:left; padding: 10px 20px 70px 20px;">
 			   			 		<h2>Answer sheets</h2>
 			  			</div>
 			  		
 			  		<%
-					            IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
-								ArrayList<AnswerSheet> arrayList2 = iAnswerSheetService.getAnswerSheets();
-								
-								for(AnswerSheet answerSheet : arrayList2){
+					        
+								for(AnswerSheet answerSheet : answerSheetList){
 					%>
 			  		
-		   			 		 <div class="row"><br>
-				   				 	<div class="col-sm-6" style="background-color:	 #cce0ff;">
-				   				 		<h3><a href="Student_tutorial_pdf.jsp">
-				   							 <b><%=answerSheet.getSheet_name()%></b></a></h3><br>
+		   			 		 <div class="row">
+				   				 	<div class="col-sm-6" style="background-color: #cce0ff;">
+				   				 		<h2><a href="Student_tutorial_pdf.jsp">
+				   							 <b><%=answerSheet.getSheet_name()%></b></a></h2><br>
 				     			    </div>
-				    		     	<div class="col-sm-6" style="background-color:	#cce0ff;"><br>
-				    		     			<button class="button4" onclick= "document.location='Student_tutorial_pdf.jsp'"
-				   				 			style = "background: #80b3ff;">Download</button><br><br>
+				    		     	<div class="col-sm-6" style="background-color:	#cce0ff;">
+				    		     			<form class = "form2" method="POST" action="GetTutorialServlet"><h2>
+												<input type="hidden" name="tutorialID" value="<%=tutorial1.getTutorialId()%>"/>
+												<input type="submit" value= "Download" class="button2" /></h2>
+											</form>	
 				     				</div>	
 				    		   </div>
 		   			        

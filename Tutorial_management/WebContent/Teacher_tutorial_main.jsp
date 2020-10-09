@@ -58,11 +58,11 @@
 	     %>  
 		<div>
 			<ul class="breadcrumb">
-			<li><a href="Teacher_tutorial_home.jsp"><b> "ol" </b></a>
-			<a href="Teacher_tutorial_home.jsp"><b> "sinhala"</b></a>
-			  	  <a href="Teacher_tutorial_subject.jsp"><b> ""</b></a>
-			  	  <a href="Teacher_tutorial_main.jsp"><b>""</b></a>
-			 </li>
+				<li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getLevel()%></b></a>
+				<li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getMedium()%></b></a>
+				<li><a href="Teacher_tutorial_subject.jsp"><b><%=tutorial1.getSubjectName()%></b></a>	
+				<li><a href="Teacher_tutorial_subject.jsp"><b><%=tutorial1.getTeacherName()%></b></a>			
+				</li>
 			</ul>
 		</div>
 		
@@ -80,13 +80,17 @@
 		   			 		 <div class="row">				   				
 				   				 
 				   				 		<div class="col-sm-6" style="background-color: #ccccb3;">
-				   				 		<h2><a href="Teacher_tutorial_pdf.jsp">
+				   				 		<h2><a href=".\documents\Tutorial 1 - Views.pdf" target="_new">
 				   				 		<b><%=tutorial.getTutorialTitle()%></b></a></h2><br>
 				   				 		<!--<a href="C:\Users\ASUS\Desktop\MADD\Tutes\Tutorial 1 - Views.pdf" target="_new">  -->
 				     					</div>
 				     					<div class="col-sm-6" style="background-color:#ccccb3;">
 					   				 		<form class = "form2" method="POST" action="GetTutorialServlet"><h2>
-												<input type="hidden" name="tutorialID" value="<%=tutorial.getTutorialId()%>"/>
+												 <input type="hidden" name="tutorialID" value="<%=tutorial.getTutorialId()%>"/>
+												 <input type="hidden" name="subjectName" value="<%=tutorial1.getSubjectName()%>"/>
+												 <input type="hidden" name="level" value="<%=tutorial1.getLevel()%>"/>
+												 <input type="hidden" name="medium" value="<%=tutorial1.getMedium()%>"/>
+												 <input type="hidden" name="teacherName"  value="<%=tutorial1.getTeacherName()%>"/>
 												<input type="submit" value= "Edit" class="button2" /></h2>
 											</form>
 				     					</div>				   				 
@@ -101,8 +105,12 @@
 		   			         		<div class="row">
 				   						 <div class="col-sm-6">
 						   						<form class = "form2" method="POST" action="BlankTutorialServlet"><h2>	
-		   			         				<input type="hidden" name="teacherID" value="<%=tutorial1.getTeacherId()%>"/>	
-		   			         				<input type="hidden" name="subjectCode" value="<%=tutorial1.getSubjectCode()%>"/>		   			         		
+				   			         				<input type="hidden" name="teacherID" value="<%=tutorial1.getTeacherId()%>"/>	
+				   			         				<input type="hidden" name="subjectCode" value="<%=tutorial1.getSubjectCode()%>"/>
+				   			         				<input type="hidden" name="subjectName" value="<%=tutorial1.getSubjectName()%>"/>
+													<input type="hidden" name="level" value="<%=tutorial1.getLevel()%>"/>
+													<input type="hidden" name="medium" value="<%=tutorial1.getMedium()%>"/>
+													<input type="hidden" name="teacherName"  value="<%=tutorial1.getTeacherName()%>"/>		   			         		
 		   			         		 		<button class="button" style = "background: #4d9900;  margin-left:25%;">
 		   			         		 		Upload a new tutorial</button>
 									</h2>
@@ -135,9 +143,13 @@
 				     			 </div>
 				    		     <div class="col-sm-6" style="background-color:	 #ccccb3;">
 				    		     <form class = "form2" method="POST" action="GetAnswerSheetServlet"><h2>
-											 <input type="hidden" name="answerSheetID" value="<%=answerSheet.getSheet_id()%>"/>
-											 <input type="hidden" name="teacherID" value="<%=tutorial1.getTeacherId()%>"/>	
-		   			         				<input type="hidden" name="subjectCode" value="<%=tutorial1.getSubjectCode()%>"/>	
+												 <input type="hidden" name="answerSheetID" value="<%=answerSheet.getSheet_id()%>"/>
+												 <input type="hidden" name="teacherID" value="<%=tutorial1.getTeacherId()%>"/>	
+			   			         				 <input type="hidden" name="subjectCode" value="<%=tutorial1.getSubjectCode()%>"/>
+			   			         				 <input type="hidden" name="subjectName" value="<%=tutorial1.getSubjectName()%>"/>
+												 <input type="hidden" name="level" value="<%=tutorial1.getLevel()%>"/>
+												 <input type="hidden" name="medium" value="<%=tutorial1.getMedium()%>"/>
+												 <input type="hidden" name="teacherName"  value="<%=tutorial1.getTeacherName()%>"/>	
 											<button class="button2" role="button" style="background-color: #4d9900;" >Edit</button></h2>
 										</form>
 				    		     </div>
@@ -151,8 +163,12 @@
 		   			        	
 		   			         		<div class="row">
 		   			         		<form class = "form2" method="POST" action="BlankAnswerSheetServlet"><h2>	
-		   			         				<input type="hidden" name="teacherID" value="<%=tutorial1.getTeacherId()%>"/>	
-		   			         				<input type="hidden" name="subjectCode" value="<%=tutorial1.getSubjectCode()%>"/>		   			         		
+		   			         				     <input type="hidden" name="teacherID" value="<%=tutorial1.getTeacherId()%>"/>	
+		   			         					 <input type="hidden" name="subjectCode" value="<%=tutorial1.getSubjectCode()%>"/>
+		   			         					 <input type="hidden" name="subjectName" value="<%=tutorial1.getSubjectName()%>"/>
+												 <input type="hidden" name="level" value="<%=tutorial1.getLevel()%>"/>
+												 <input type="hidden" name="medium" value="<%=tutorial1.getMedium()%>"/>
+												 <input type="hidden" name="teacherName"  value="<%=tutorial1.getTeacherName()%>"/>		   			         		
 		   			         		 		<button class="button" style = "background: #4d9900;  margin-left:25%;">
 		   			         		 		Upload a new answer sheet</button>
 									</h2>

@@ -58,6 +58,7 @@
 			    		 		 <input type="hidden" name="subjectName" value="<%=anu_Subject.getSubjectName()%>"/>
 			    		 		 <input type="hidden" name="level" value="<%=anu_Subject.getLevel()%>"/>
 			    		 		 <input type="hidden" name="medium" value="<%=anu_Subject.getMedium()%>"/>
+			    		 		 <input type="hidden" name="teacher" value="true"/>
 			    		 		 <button class="button" role="button"><%=anu_Subject.getSubjectName()%></button><br><br>
 							</h2>
 							</form>

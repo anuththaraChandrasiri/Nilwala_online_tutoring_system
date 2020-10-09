@@ -88,14 +88,15 @@ else
 
 	<%
 		Tutorial tutorial = (Tutorial) request.getAttribute("tutorial");
+	    Tutorial tutorial1 = (Tutorial) request.getAttribute("tutorial1");
 	
 	%>
 		<div>
-			<ul class="breadcrumb"><!--   add your path example : Subject / Add Subject 1st li subject 2nd li Add Subject . change accordingly-->
-			  <li><a href="Student_tutorial_home.jsp"><b>Ordinary level - Sinhala medium</b></a>
-			  	  <a href="Student_tutorial_subject.jsp"><b> - Mathematics</b></a>
-			  	  <a href="#"><b> - Kapila Gunarathne</b></a>
-			  	  <a href="#"><b> - Update a tutorial</b></a>
+			<ul class="breadcrumb">
+			    <li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getLevel()%></b></a>
+				<li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getMedium()%></b></a>
+				<li><a href="Teacher_tutorial_subject.jsp"><b><%=tutorial1.getSubjectName()%></b></a>	
+				<li><a href="Teacher_tutorial_subject.jsp"><b><%=tutorial1.getTeacherName()%></b></a>	
 			  </li>
 			</ul>
 		</div>
