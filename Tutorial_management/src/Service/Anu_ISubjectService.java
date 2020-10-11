@@ -11,7 +11,7 @@ public interface Anu_ISubjectService {
 	public Anu_Subject getSubjectById(String subjectCode) ;
 	
 	public ArrayList<Anu_Subject> getSubjects() ;
-	
+		
 	public ArrayList<Anu_Subject> OLSinhalaSubjects() ;
 	
 	public ArrayList<Anu_Subject> OLEnglishSubjects() ;

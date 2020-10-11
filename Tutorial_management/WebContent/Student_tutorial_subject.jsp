@@ -38,8 +38,8 @@
 
 		<div>
 			<ul class="breadcrumb">
-			    <li><a href="Student_tutorial_home.jsp"><b><%=teacher.getLevel()%></b></a>
-				<li><a href="Student_tutorial_home.jsp"><b><%=teacher.getMedium()%></b></a>
+			    <li><a href="Student_tutorial_home.jsp"><b><%=teacher.getLevel()%> - </b></a>
+					<a href="Student_tutorial_home.jsp"><b><%=teacher.getMedium()%> medium </b></a>
 				</li>
 			</ul>
 		</div>

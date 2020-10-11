@@ -51,11 +51,17 @@ public class GetTutorialServlet extends HttpServlet {
 		String level = request.getParameter("level");
 		String medium = request.getParameter("medium");
 		String teacherName = request.getParameter("teacherName");
+		String teacherId = request.getParameter("teacherId");
+		String subjectCode = request.getParameter("subjectCode");
 		
 		tutorial1.setSubjectName(subjectName);
  		tutorial1.setLevel(level);
  		tutorial1.setMedium(medium);
  		tutorial1.setTeacherName(teacherName);
+ 		tutorial1.setTeacherId(teacherId);
+		tutorial1.setSubjectCode(subjectCode);
+		
+		System.out.println("Get servlet : " + tutorial1.getSubjectName() + " " + tutorial1.getLevel());
  		
  		request.setAttribute("tutorial1", tutorial1);
  		
@@ -63,7 +69,7 @@ public class GetTutorialServlet extends HttpServlet {
 		Tutorial tutorial = iTutorialService.getTutorialById(tutorialID);
 		
 		request.setAttribute("tutorial", tutorial);
-		
+				
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_updateTutorial.jsp");
 		dispatcher.forward(request, response);
 		

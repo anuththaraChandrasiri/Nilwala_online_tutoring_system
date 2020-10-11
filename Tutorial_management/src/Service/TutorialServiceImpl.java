@@ -501,4 +501,251 @@ public class TutorialServiceImpl implements ITutorialService {
 			}
 			return questionList;
 		}
+
+		@Override
+		public Tutorial getTeacherByName(String teacherName) {
+			
+			return actionOnTeacherSubject(teacherName).get(0);
+		}
+		
+		private ArrayList<Tutorial> actionOnTeacherSubject(String teacherName) {
+			
+			String query1 = "select * from teacher_subject where teacher_subject.teacher_name like '%"+teacherName+"%' " ;
+			String query2 = "select * from teacher_subject order by teacher_subject.teacher_id " ;
+			
+			System.out.println("Teacher name search : " + teacherName);
+
+			ArrayList<Tutorial> teacherDetailsList = new ArrayList<Tutorial>();
+			try {
+				connection = DBConnectionUtil.getDBConnection();
+				/*
+				 * Before fetching tutorial it checks whether tutorial ID is
+				 * available
+				 */
+				if (teacherName!= null && !teacherName.isEmpty()) {
+					
+					preparedStatement = connection.prepareStatement(query1);
+				
+				}
+				/*
+				 * If tutorial ID is not provided it displays all tutorials
+				 */
+				else {
+					preparedStatement = connection.prepareStatement(query2);
+				}
+				ResultSet resultSet = preparedStatement.executeQuery();
+				
+				while (resultSet.next()) {
+						
+						System.out.println("In the correct path..");
+						Tutorial tutorial = new Tutorial();
+						tutorial.setTeacherId(resultSet.getString(1));
+						tutorial.setSubjectCode(resultSet.getString(2));
+						tutorial.setGrade(Integer.parseInt(resultSet.getString(3)));
+						tutorial.setTeacherName(resultSet.getString(4));
+																
+						teacherDetailsList.add(tutorial);
+				}
+				
+				if(!resultSet.next()) {
+					
+						System.out.println("No data");
+						Tutorial tutorial = new Tutorial();
+						tutorial.setTeacherId(null);
+						tutorial.setSubjectCode(null);
+						tutorial.setGrade(0);
+						tutorial.setTeacherName(null);
+																
+						teacherDetailsList.add(tutorial);
+						System.out.println("End of no data");
+					
+				}
+				
+			} catch (SQLException | ClassNotFoundException e) {
+				Log.log(Level.SEVERE, e.getMessage());
+			} finally {
+				/*
+				 * Close prepared statement and database connectivity at the end of
+				 * transaction
+				 */
+				try {
+					if (preparedStatement != null) {
+						preparedStatement.close();
+					}
+					if (connection != null) {
+						connection.close();
+					}
+				} catch (SQLException e) {
+					Log.log(Level.SEVERE, e.getMessage());
+				}
+			}
+			return teacherDetailsList;
+		}
+
+		@Override
+		public Tutorial getTheNewestTutorial(Tutorial tutorial) {
+			
+			return getTheNewestTuteDetails(tutorial).get(0);
+		}
+		
+		private ArrayList<Tutorial> getTheNewestTuteDetails(Tutorial tutorial1) {
+			
+			String teacherId = tutorial1.getTeacherId() ;
+			String subjectCode = tutorial1.getSubjectCode() ;			
+			
+			String query1 = "select * from tutorials where tutorials.teacher_id = "+teacherId+" and tutorials.subject_code = "+subjectCode+" and tutorials.tute_id = (select max(tutorials.tute_id) from tutorials)";
+					
+			ArrayList<Tutorial> tutorialList = new ArrayList<Tutorial>();
+			try {
+				connection = DBConnectionUtil.getDBConnection();
+				/*
+				 * Before fetching tutorial it checks whether tutorial ID is
+				 * available
+				 */
+				if (teacherId!= null && !teacherId.isEmpty() && subjectCode!= null && !subjectCode.isEmpty()) {
+					
+					preparedStatement = connection.prepareStatement(query1);
+		
+				}
+				
+				ResultSet resultSet = preparedStatement.executeQuery();
+
+				while (resultSet.next()) {
+					
+					Tutorial tutorial = new Tutorial();
+					tutorial.setTeacherId(resultSet.getString(1));
+					tutorial.setSubjectCode(resultSet.getString(2));
+					tutorial.setTutorialId(resultSet.getString(3));
+					tutorial.setTutorialTitle(resultSet.getString(4));
+					tutorial.setDateAdded(resultSet.getString(5));
+					tutorial.setMonth(resultSet.getString(6));
+					tutorial.setMaterial(resultSet.getString(7));
+										
+					tutorialList.add(tutorial);
+				}
+
+			} catch (SQLException | ClassNotFoundException e) {
+				Log.log(Level.SEVERE, e.getMessage());
+			} finally {
+				/*
+				 * Close prepared statement and database connectivity at the end of
+				 * transaction
+				 */
+				try {
+					if (preparedStatement != null) {
+						preparedStatement.close();
+					}
+					if (connection != null) {
+						connection.close();
+					}
+				} catch (SQLException e) {
+					Log.log(Level.SEVERE, e.getMessage());
+				}
+			}
+			return tutorialList;
+		}
+		
+		@Override
+		public int checkStudentCountForAforum(Tutorial tutorial) {
+			
+			Tutorial tutorial1 = actionOnQForum(tutorial).get(0); 
+			int studentCount = tutorial1.getStudentCount();
+			
+			return studentCount;
+		}
+
+		@Override
+		public boolean checkStudentIdInQforum(Tutorial tutorial) {
+			
+			Tutorial tutorial1 = actionOnQForum(tutorial).get(0); 
+			String studentId = tutorial1.getStudentId();
+			String tutorialId = tutorial1.getTutorialId();
+			
+			if(studentId!=null && !studentId.isEmpty() && tutorialId!=null && !tutorialId.isEmpty())		
+				return true;
+			
+			else
+				return false;
+			
+		}
+		
+		private ArrayList<Tutorial> actionOnQForum(Tutorial tutorial1) {
+			
+			String studentId = tutorial1.getStudentId();
+			String tutorialId = tutorial1.getTutorialId();
+			String teacherId = tutorial1.getTeacherId();
+			
+			String query1 = "select qforum.student_id, qforum.tute_id, count(question_no) as qcount from qforum where qforum.student_id = "+studentId+" and qforum.tute_id = "+tutorialId+" group by student_id" ;
+			String query2 = "select qforum.student_id, qforum.tute_id, count( DISTINCT student_id) as scount from qforum where qforum.teacher_id = "+teacherId+" and qforum.tute_id = "+tutorialId+" group by forum_id" ;
+			
+			System.out.println("Student id : " + studentId + "Tutorial id" + tutorialId + "Teacher id : " + teacherId);
+
+			ArrayList<Tutorial> questionList = new ArrayList<Tutorial>();
+			try {
+				connection = DBConnectionUtil.getDBConnection();
+				/*
+				 * Before fetching tutorial it checks whether tutorial ID is
+				 * available
+				 */
+				if (studentId!= null && !studentId.isEmpty() && tutorialId!= null && !tutorialId.isEmpty()) {
+					
+					preparedStatement = connection.prepareStatement(query1);
+				
+				}
+				
+				else if (studentId== null && tutorialId!= null && !tutorialId.isEmpty() && teacherId!=null && !teacherId.isEmpty()) {
+					
+					preparedStatement = connection.prepareStatement(query2);
+				
+				}
+				
+				ResultSet resultSet = preparedStatement.executeQuery();
+				
+				while (resultSet.next()) {
+						
+						System.out.println("Found student..");
+						Tutorial tutorial = new Tutorial();
+						
+						tutorial.setStudentId(resultSet.getString(1));
+						tutorial.setTutorialId(resultSet.getString(2));
+						tutorial.setStudentCount(Integer.parseInt(resultSet.getString(3)));
+											
+						questionList.add(tutorial);
+						
+				}
+				
+				if(!resultSet.next()) {
+					
+						System.out.println("No data");
+						Tutorial tutorial = new Tutorial();
+						tutorial.setStudentId(null);
+						tutorial.setTutorialId(null);
+						tutorial.setCount(0);
+											
+						questionList.add(tutorial);
+						System.out.println("End of no data");
+					
+				}
+				
+			} catch (SQLException | ClassNotFoundException e) {
+				Log.log(Level.SEVERE, e.getMessage());
+			} finally {
+				/*
+				 * Close prepared statement and database connectivity at the end of
+				 * transaction
+				 */
+				try {
+					if (preparedStatement != null) {
+						preparedStatement.close();
+					}
+					if (connection != null) {
+						connection.close();
+					}
+				} catch (SQLException e) {
+					Log.log(Level.SEVERE, e.getMessage());
+				}
+			}
+			return questionList;
+		}
+		
 }

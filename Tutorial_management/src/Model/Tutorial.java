@@ -20,6 +20,8 @@ public class Tutorial {
 	private String forumId ;
 	private int questionNo ;
 	private int count ;
+	private int studentCount ;
+	private int grade ;
 	
 	public String getTutorialId() {
 		return tutorialId;
@@ -156,6 +158,22 @@ public class Tutorial {
 	public void setCount(int count) {
 		this.count = count;
 	}
+		
+	public int getStudentCount() {
+		return studentCount;
+	}
+
+	public void setStudentCount(int studentCount) {
+		this.studentCount = studentCount;
+	}
+
+	public int getGrade() {
+		return grade;
+	}
+
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
 
 	@Override
 	public String toString() {
@@ -163,7 +181,8 @@ public class Tutorial {
 				+ subjectCode + ", subjectName=" + subjectName + ", dateAdded=" + dateAdded + ", month=" + month
 				+ ", material=" + material + ", level=" + level + ", medium=" + medium + ", teacherName=" + teacherName
 				+ ", studentId=" + studentId + ", questions=" + Arrays.toString(questions) + ", forumId=" + forumId
-				+ ", questionNo=" + questionNo + ", count=" + count + "]";
+				+ ", questionNo=" + questionNo + ", count=" + count + ", studentCount=" + studentCount + ", grade="
+				+ grade + "]";
 	}
 	
 }

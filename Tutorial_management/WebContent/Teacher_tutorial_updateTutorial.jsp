@@ -93,10 +93,10 @@ else
 	%>
 		<div>
 			<ul class="breadcrumb">
-			    <li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getLevel()%></b></a>
-				<li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getMedium()%></b></a>
-				<li><a href="Teacher_tutorial_subject.jsp"><b><%=tutorial1.getSubjectName()%></b></a>	
-				<li><a href="Teacher_tutorial_subject.jsp"><b><%=tutorial1.getTeacherName()%></b></a>	
+			    <li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getLevel()%> - </b></a>
+					<a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getMedium()%> medium - </b></a>
+					<b><%=tutorial1.getSubjectName()%> - </b>	
+					<b><%=tutorial1.getTeacherName()%></b>	
 			  </li>
 			</ul>
 		</div>
@@ -134,7 +134,7 @@ else
 							        <label for="TeacherId" style="display: none;" >Teacher ID</label>
 							      </div>
 								      <div class="col-75">
-								        <input type="text" id="tId" name="teacherID" value="<%=tutorial.getTeacherId()%>" readonly="readonly" style="display: none;" >
+								        <input type="text" id="tId" name="teacherId" value="<%=tutorial.getTeacherId()%>" readonly="readonly" style="display: none;" >
 								      </div>
 							    </div>
 							    
@@ -186,15 +186,17 @@ else
 							      <div class="col-75">
 							        <input type="text" id="uploadedDate" name="uploadedDate"  value="<%=tutorial.getDateAdded()%>" readonly="readonly">
 							      </div>
-							    </div><br><br><br>
-							    
-							    
-							    
+							    </div><br> <br><br><br>
+							    						    
 							    <div class="row">							    
 							      <div class="col-50">
 							      </div>
 							      <div class="col-50"> 
-							          <button class="button" role="button">Update</button>
+							      		 <input type="hidden" name="level" value="<%=tutorial1.getLevel()%>">
+							      		 <input type="hidden" name="medium" value="<%=tutorial1.getMedium()%>">
+							      		 <input type="hidden" name="subjectName" value="<%=tutorial1.getSubjectName()%>">
+							      		 <input type="hidden" name="teacherName" id="teacherName" value="<%=tutorial1.getTeacherName()%>">
+							          	  	<button class="button" role="button">Update</button>
 							      </div>			     						
 							    </div>
 							  </form><br>
@@ -203,17 +205,22 @@ else
 								      <div class="col-50">							        
 								      	<form class = "form1" method="POST" action="DeleteTutorialServlet">
 												<input type="hidden" name="tutorialID" value="<%=tutorial.getTutorialId()%>"/>
-												<input type="hidden" name="teacherID" value="<%=tutorial.getTeacherId()%>"/>
+												<input type="hidden" name="teacherId" value="<%=tutorial.getTeacherId()%>"/>
 												<input type="hidden" name="subjectCode" value="<%=tutorial.getSubjectCode()%>"/> 
 												<button class="button" role="button">Delete</button>
 										</form>
 								      </div><br>							      
 							       	  <div class="col-50">
 							  		      <form class = "form1" method="POST" action="ListTutorialsServlet">
-							       	  <input type="hidden" name="teacherId" id="teacherId" value="<%=tutorial.getTeacherId()%>"/>
-							     <button class="button" style="background-color:  #70db70;">
-							       Cancel</button>
-							       </form>	
+							       	  		<input type="hidden" name="teacherId" id="teacherId" value="<%=tutorial.getTeacherId()%>"/>
+								       	    <input type="hidden" name="subjectName" value="<%=tutorial.getSubjectName()%>"/>
+					    		 		    <input type="hidden" name="level" value="<%=tutorial.getLevel()%>"/>
+					    		 		    <input type="hidden" name="medium" value="<%=tutorial.getMedium()%>"/>
+					    		 		    <input type="hidden" name="subjectCode" id="subjectCode" value="<%=tutorial.getSubjectCode()%>"/>
+									       	<input type="hidden" name="teacherName" id="teacherName" value="<%=tutorial.getTeacherName()%>"/>
+					    		 		    <input type="hidden" name="teacher" value="true"/>
+							     				<button class="button" style="background-color:  #70db70;">Cancel</button>
+							       		  </form>	
 							      	</div><br>					       							     						
 							   </div>							  			  
 						</div>

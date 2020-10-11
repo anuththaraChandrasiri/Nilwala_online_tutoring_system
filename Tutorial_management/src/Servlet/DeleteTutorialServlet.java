@@ -51,7 +51,7 @@ public class DeleteTutorialServlet extends HttpServlet {
 		Tutorial tutorial = new Tutorial() ;
 		
 		String tutorialID = request.getParameter("tutorialID");
-		String teacherID = request.getParameter("teacherID");
+		String teacherID = request.getParameter("teacherId");
 		String subjectCode = request.getParameter("subjectCode");
 		
 		tutorial.setTutorialId(tutorialID);

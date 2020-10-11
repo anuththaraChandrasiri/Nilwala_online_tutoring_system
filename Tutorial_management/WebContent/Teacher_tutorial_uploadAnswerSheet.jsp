@@ -99,10 +99,10 @@ else
 
 		<div>
 			<ul class="breadcrumb">
-			  	<li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getLevel()%></b></a>
-				<li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getMedium()%></b></a>
-				<li><a href="Teacher_tutorial_subject.jsp"><b><%=tutorial1.getSubjectName()%></b></a>	
-				<li><a href="Teacher_tutorial_subject.jsp"><b><%=tutorial1.getTeacherName()%></b></a>	
+			  	<li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getLevel()%> - </b></a>
+					<a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getMedium()%> medium - </b></a>
+					<b><%=tutorial1.getSubjectName()%> - </b>	
+					<b><%=tutorial1.getTeacherName()%></b>	
 			  </li>
 			</ul>
 		</div>
@@ -195,11 +195,15 @@ else
 							  </div><br>
 						  </form>							  
 							   	<div class="row">
-								             <form class = "form1" method="POST" action="ListTutorialsServlet">
-							       	  <input type="hidden" name="teacherId" id="teacherId" value="<%=answerSheet.getTeacher_id()%>"/>
-							       	  <input type="hidden" name="teacherId" id="subjectCode" value="<%=answerSheet.getSubject_code()%>"/>
-							     <button class="button" style="background-color:  #70db70;">
-							       Cancel</button>
+								    <form class = "form1" method="POST" action="ListTutorialsServlet">
+								       	<input type="hidden" name="subjectName" value="<%=tutorial1.getSubjectName()%>"/>
+					    		 	   	<input type="hidden" name="level" value="<%=tutorial1.getLevel()%>"/>
+					    		 	   	<input type="hidden" name="medium" value="<%=tutorial1.getMedium()%>"/>
+					    		 	   	<input type="hidden" name="teacherName" id="teacherName" value="<%=tutorial1.getTeacherName()%>"/>
+							       		<input type="hidden" name="teacherId" id="teacherId" value="<%=answerSheet.getTeacher_id()%>"/>
+							       		<input type="hidden" name="subjectCode" id="subjectCode" value="<%=answerSheet.getSubject_code()%>"/>
+							       		<input type="hidden" name="teacher" value="true"/>
+							     			<button class="button" style="background-color:  #70db70;">Cancel</button>
 							       </form>
 							       </div><br>
 							      	<div class="col-50">

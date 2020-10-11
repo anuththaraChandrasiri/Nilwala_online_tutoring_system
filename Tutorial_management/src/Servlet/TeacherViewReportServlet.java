@@ -53,11 +53,10 @@ public class TeacherViewReportServlet extends HttpServlet {
 		String medium = request.getParameter("medium");
 		String teacherName = request.getParameter("teacherName");
 		String tutorialID =  request.getParameter("tutorialID");
-		String studentID =  request.getParameter("studentID");
 		String tutorialTitle =  request.getParameter("tutorialName");
 		String questions[] = request.getParameterValues("questions");
 		
- 		System.out.println(teacherId + subjectName + teacherName + subjectCode + studentID + " servlet");
+ 		System.out.println(teacherId + subjectName + teacherName + subjectCode + " servlet");
  		
  		tutorial.setTeacherId(teacherId);
  		tutorial.setSubjectCode(subjectCode);
@@ -67,16 +66,21 @@ public class TeacherViewReportServlet extends HttpServlet {
  		tutorial.setTeacherName(teacherName);
  		tutorial.setTutorialId(tutorialID);
  		tutorial.setTutorialTitle(tutorialTitle);
- 		tutorial.setStudentId(studentID);
  		tutorial.setQuestions(questions);
  		
- 		System.out.println(tutorial.getTeacherId()+ "is tid" + tutorial.getTeacherName() + "teacher name");
- 		
+ 		System.out.println(tutorial.getTeacherId()+ "is teacher id" + tutorial.getTeacherName() + "teacher name" + tutorial.getTutorialId() + " report newest tute id");
+ 		System.out.println(tutorial.getTutorialTitle()+ " teacher report newest tute name " + tutorial.getLevel() + "level");
+ 		 		
+ 		ITutorialService iTutorialService = new TutorialServiceImpl();
+		ArrayList<Tutorial> tutorials = iTutorialService.getQuestionNumbersByTutorialId(tutorialID);	
+		
+		ITutorialService iTutorialService2 = new TutorialServiceImpl();
+
+ 		int studentCount = iTutorialService2.checkStudentCountForAforum(tutorial);
+ 		tutorial.setStudentCount(studentCount);
+		
  		request.setAttribute("tutorial", tutorial);
  		
- 		ITutorialService iTutorialService = new TutorialServiceImpl();
-		ArrayList<Tutorial> tutorials = iTutorialService.getQuestionNumbersByTutorialId(tutorialID);
-		
 		request.setAttribute("tutorials", tutorials);
 			
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_viewQuestionsReport.jsp");

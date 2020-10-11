@@ -50,13 +50,17 @@ public class UpdateTutorialServlet extends HttpServlet {
 		Tutorial tutorial = new Tutorial() ;
 		
 		String tutorialID = request.getParameter("tutorialID");
-						
+								
 		tutorial.setTutorialId(tutorialID);
 		tutorial.setTutorialTitle(request.getParameter("tutorialName"));
-		tutorial.setTeacherId(request.getParameter("teacherID"));
+		tutorial.setTeacherId(request.getParameter("teacherId"));
 		tutorial.setSubjectCode(request.getParameter("subjectCode"));
+		tutorial.setSubjectName(request.getParameter("subjectName"));
 		tutorial.setDateAdded(request.getParameter("uploadedDate"));
 		tutorial.setMonth(request.getParameter("month"));
+		tutorial.setLevel(request.getParameter("level"));
+		tutorial.setMedium(request.getParameter("medium"));
+		tutorial.setTeacherName(request.getParameter("teacherName"));
 				
 		if(request.getParameter("filename").equalsIgnoreCase("")) {
 			tutorial.setMaterial(request.getParameter("filename1"));
@@ -65,7 +69,7 @@ public class UpdateTutorialServlet extends HttpServlet {
 		else	
 			tutorial.setMaterial(request.getParameter("filename"));
 		
-		System.out.println(tutorial.getMaterial());
+		System.out.println(tutorial.getMaterial() + "medium " + tutorial.getMedium());
 		
 		request.setAttribute("tutorial", tutorial);
 	

@@ -99,10 +99,10 @@ else
 
 		<div>
 			<ul class="breadcrumb">
-			    <li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getLevel()%></b></a>
-				<li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getMedium()%></b></a>
-				<li><a href="Teacher_tutorial_subject.jsp"><b><%=tutorial1.getSubjectName()%></b></a>	
-				<li><a href="Teacher_tutorial_subject.jsp"><b><%=tutorial1.getTeacherName()%></b></a>	
+			    <li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getLevel()%> - </b></a>
+					<a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getMedium()%> medium - </b></a>
+					<b><%=tutorial1.getSubjectName()%> - </b>
+					<b><%=tutorial1.getTeacherName()%></b>	
 			  </li>
 			</ul>
 		</div>
@@ -151,7 +151,7 @@ else
 								       <div class="col-75">								         
 								        		<select id="tuteId" name="tuteID" required>
 								        		
-								        			 <option value="<%=answerSheet.getTute_id()%>" style=" color: brown;"><%=answerSheet.getTute_id()%></option>
+								        			 <option value="<%=answerSheet.getTute_id()%>" style=" color: brown;"><%=answerSheet.getTute_title()%></option>
 								        			<%
 					           								
 															for(Tutorial tutorial : tutorialList){
@@ -202,7 +202,13 @@ else
 								      </div>
 							      
 								       <div class="col-50"> 
-								          <button class="button" role="button">Update</button>
+								       		<input type="hidden" name="subjectName" value="<%=tutorial1.getSubjectName()%>"/>
+				    		 		      	<input type="hidden" name="level" value="<%=tutorial1.getLevel()%>"/>
+				    		 		      	<input type="hidden" name="medium" value="<%=tutorial1.getMedium()%>"/>
+				    		 		      	<input type="hidden" name="teacherId" id="teacherID" value="<%=answerSheet.getTeacher_id()%>"/>
+								       	  	<input type="hidden" name="subjectCode" id="subjectCode" value="<%=answerSheet.getSubject_code()%>"/>
+				    		 		      	<input type="hidden" name="teacherName" id="teacherName" value="<%=tutorial1.getTeacherName()%>"/>
+								          		<button class="button" role="button">Update</button>
 								      </div>
 							       							     						
 							    </div>
@@ -212,6 +218,10 @@ else
 							    <div class="row">							    
 								      <div class="col-50">							        
 								      	<form class = "form1" method="POST" action="DeleteAnswerSheetServlet">
+								      			<input type="hidden" name="subjectName" value="<%=tutorial1.getSubjectName()%>"/>
+				    		 		      		<input type="hidden" name="level" value="<%=tutorial1.getLevel()%>"/>
+				    		 		      		<input type="hidden" name="medium" value="<%=tutorial1.getMedium()%>"/>
+				    		 		      		<input type="hidden" name="teacherName" id="teacherName" value="<%=tutorial1.getTeacherName()%>"/>
 												<input type="hidden" name="sheetID" id="sheetID" value="<%=answerSheet.getSheet_id()%>"/> 
 												<input type="hidden" name="teacherID" value="<%=answerSheet.getTeacher_id()%>"/>
 												<input type="hidden" name="subjectCode" value="<%=answerSheet.getSubject_code()%>"/> 
@@ -221,11 +231,14 @@ else
 							      
 							       	  <div class="col-50">
 							       	  <form class = "form1" method="POST" action="ListTutorialsServlet">
-							       	  <input type="hidden" name="teacherId" id="teacherID" value="<%=answerSheet.getTeacher_id()%>"/>
-							       	  <input type="hidden" name="subjectCode" id="subjectCode" value="<%=answerSheet.getSubject_code()%>"/>
-							       	  <input type="hidden" name="teacherName" id="teacherName" value="<%=answerSheet.getTeacher_name()%>"/>
-							     <button class="button" style="background-color:  #70db70;">
-							       Cancel</button>
+				    		 		 	  <input type="hidden" name="subjectName" value="<%=tutorial1.getSubjectName()%>"/>
+				    		 		      <input type="hidden" name="level" value="<%=tutorial1.getLevel()%>"/>
+				    		 		      <input type="hidden" name="medium" value="<%=tutorial1.getMedium()%>"/>
+								       	  <input type="hidden" name="teacherId" id="teacherID" value="<%=answerSheet.getTeacher_id()%>"/>
+								       	  <input type="hidden" name="subjectCode" id="subjectCode" value="<%=answerSheet.getSubject_code()%>"/>
+								       	  <input type="hidden" name="teacherName" id="teacherName" value="<%=tutorial1.getTeacherName()%>"/>
+							       	 	  <input type="hidden" name="teacher" value="true"/>
+							    			 <button class="button" style="background-color:  #70db70;">Cancel</button>
 							       </form>
 							     	 </div>  			
 							       							     						

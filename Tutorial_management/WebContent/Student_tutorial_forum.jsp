@@ -30,17 +30,17 @@
 	     %>  
 		<div>
 			<ul class="breadcrumb">
-					<li><a href="Student_tutorial_home.jsp"><b><%=tutorial1.getLevel()%></b></a>
-					<li><a href="Student_tutorial_home.jsp"><b><%=tutorial1.getMedium()%></b></a>
-					<li><a href="Student_tutorial_subject.jsp"><b><%=tutorial1.getSubjectName()%></b></a>	
-					<li><a href="Student_tutorial_subject.jsp"><b><%=tutorial1.getTeacherName()%></b></a>			
+					<li><a href="Student_tutorial_home.jsp"><b><%=tutorial1.getLevel()%> - </b></a>
+						<a href="Student_tutorial_home.jsp"><b><%=tutorial1.getMedium()%> medium - </b></a>
+					 	<b><%=tutorial1.getSubjectName()%> - </b>
+					 	<b><%=tutorial1.getTeacherName()%></b>			
 					</li>
 			</ul>
 		</div>
 		<hr>
 		       	
 		<div class="jumbotron text-center">
-	 		 <h1>Questions</h1>
+	 		 <h1>Questions - <%=tutorial1.getTutorialTitle()%> </h1>
 		</div>
 		
 		<div class="jumbotron text-center">
@@ -118,6 +118,7 @@
 												 <input type="hidden" name="level" value="<%=tutorial1.getLevel()%>"/>
 												 <input type="hidden" name="medium" value="<%=tutorial1.getMedium()%>"/>
 												 <input type="hidden" name="teacherId" value="<%=tutorial1.getTeacherId()%>"/>
+												  <input type="hidden" name="subjectCode" value="<%=tutorial1.getSubjectCode()%>"/>
 												 <input type="hidden" name="teacherName"  value="<%=tutorial1.getTeacherName()%>"/>	
 												 <input type="hidden" name="teacher" value="false"/>						       	  			
 							     					<button class="button"><b>Cancel</b></button>

@@ -29,8 +29,6 @@ ul.breadcrumb li a {
     text-decoration: underline;
 }
 
-/*My work*/
-
 .col-sm-6{
 	 text-align:center;	
 }
@@ -48,7 +46,7 @@ ul.breadcrumb li a {
 }
 .button:hover {
   background:   #0090FF;
-  color:  black;
+  color:  #002699;
 }
 
 .button1 {
@@ -81,7 +79,7 @@ ul.breadcrumb li a {
 }
 .button2:hover {
   background:  #0090FF;
-  color:  black;
+  color:  #002699;
 }
 
 .button3 {
@@ -98,7 +96,7 @@ ul.breadcrumb li a {
 }
 .button3:hover {
   background:  #008000;
-  color:  black;
+  color:  #002699;
 }
 
 .button4 {

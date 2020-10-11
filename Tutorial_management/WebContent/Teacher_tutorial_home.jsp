@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="teacher_styles.css">
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <meta charset="ISO-8859-1">
-<!-- For the table -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -21,29 +20,39 @@
 <%@ include file="WEB-INF/Teacher_header.jsp" %> 
 
 	<div>
-		<ul class="breadcrumb"><!--   add your path example : Subject / Add Subject 1st li subject 2nd li Add Subject . change accordingly-->
-		  <li><a href="Teacher_tutorial_home.jsp"><b>Tutorials</b></a></li>
+		<ul class="breadcrumb">
+		  <li><a href="Teacher_tutorial_home.jsp"><b>Tutorials</b></a>  
+		 	 <div style= "margin-left: 520px;">				
+				  	 <form method="POST" action="SearchTeacherServlet">
+		                <input type="text" placeholder="Search by the teacher's name..." name="searchTeacher" style= "font-size: 24px; width: 420px">
+		                	 <input type="hidden" name="teacher" value="true"/>
+		                       <button type="submit">
+		                      		 <i class="fa fa-search"></i>
+		                       </button>
+		          	</form>	 				
+			</div>
+		  </li>
 		</ul>
 	</div>
 	<hr>
 	
-	<div class="container-fluid" style="padding: 10px 20px 70px 20px; width: 96%;">	     
+	<div class="container-fluid" style=" width: 96%;">	     
 		  <div class="row">
-		   		 <div class="col-sm-6" style= "background-color:#99ff99;"><h1>Ordinary level</h1>
-		     		 <div class="col-sm-6" style="background-color:#70db70;"><h1>Sinhala medium</h1>	         
+		   		 <div class="col-sm-6"><h1>Ordinary level</h1>
+		     		 <div class="col-sm-6" style="background-color:#f0f0f5;"><h1>Sinhala medium</h1>	         
 		        	 </div>
-		         	 <div class="col-sm-6" style="background-color:#47d147;"><h1>English medium</h1>    
+		         	 <div class="col-sm-6" style="background-color:#f0f0f5;"><h1>English medium</h1>    
 		   			 </div>
 		    	</div>
-		    	<div class="col-sm-6" style="background-color:#99ff99;"><h1>Advanced level</h1>
-		    		 <div class="col-sm-6" style="background-color:#70db70;"><h1>Sinhala medium</h1>
+		    	<div class="col-sm-6"><h1>Advanced level</h1>
+		    		 <div class="col-sm-6" style="background-color:#f0f0f5;"><h1>Sinhala medium</h1>
 		           	 </div>
-		       		 <div class="col-sm-6" style="background-color:#47d147;"><h1>English medium</h1>
+		       		 <div class="col-sm-6" style="background-color:#f0f0f5;"><h1>English medium</h1>
 		         	 </div>
 		       </div>
 		  </div>     
 		 
-		  <div class="col-sm-6" style="background-color:#99ff99;"><br><br>
+		  <div class="col-sm-6"><br><br>
 		  	<div class="col-sm-6"><br>
 		       <%
 					            Anu_ISubjectService iSubjectService = new Anu_SubjectServiceImpl();
@@ -93,7 +102,7 @@
 				
 			   </div> <br>    
 		  </div>
-		  <div class="col-sm-6" style="background-color:#99ff99;"><br><br>
+		  <div class="col-sm-6"><br><br>
 		  	<div class="col-sm-6"><br>
 		       <%
 					            Anu_ISubjectService iSubjectService2 = new Anu_SubjectServiceImpl();
@@ -143,9 +152,9 @@
 			   </div>     
 		  </div>
 				
-		  	    <div class="col-sm-6" style="background-color:#99ff99;"><br><br>  		         
+		  	    <div class="col-sm-6"><br><br>  		         
 		 	   </div>
-			   <div class="col-sm-6" style="background-color:#99ff99;"><br><br>
+			   <div class="col-sm-6"><br><br>
 		       </div>
 		    </div>
 </body>

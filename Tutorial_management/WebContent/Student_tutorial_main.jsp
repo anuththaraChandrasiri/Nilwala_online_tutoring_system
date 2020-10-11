@@ -28,12 +28,12 @@
 }
 
 .left {
-  width: 55%;
+  width: 50%;
   margin-left: 2.5%;
 }
 
 .right {
-  width: 40%;
+  width: 45%;
 }
 
 /* Clear floats after the columns */
@@ -57,17 +57,17 @@
 	     %>  
 		<div>
 			<ul class="breadcrumb">
-					<li><a href="Student_tutorial_home.jsp"><b><%=tutorial1.getLevel()%></b></a>
-					<li><a href="Student_tutorial_home.jsp"><b><%=tutorial1.getMedium()%></b></a>
-					<li><a href="Student_tutorial_subject.jsp"><b><%=tutorial1.getSubjectName()%></b></a>	
-					<li><a href="Student_tutorial_subject.jsp"><b><%=tutorial1.getTeacherName()%></b></a>			
+					<li><a href="Student_tutorial_home.jsp"><b><%=tutorial1.getLevel()%> - </b></a>
+						<a href="Student_tutorial_home.jsp"><b><%=tutorial1.getMedium()%> medium - </b></a>
+						<b><%=tutorial1.getSubjectName()%> - </b>
+						<b><%=tutorial1.getTeacherName()%></b>			
 					</li>
 			</ul>
 		</div>
 		
 		<hr>
 	
-	<div class="column left" style="background-color: #b3d1ff;">
+	<div class="column left">
 			 		<div class="jumbotron text-center" style=" height: 30px; text-align:left; padding: 10px 20px 70px 20px;">
 			   			 <h2>Tutorials</h2>
 			   		</div>
@@ -80,11 +80,11 @@
 							%>
 						    <div class="row">
 				   				
-				   				 		<div class="col-sm-6" style="background-color:#cce0ff;">
+				   				 		<div class="col-sm-6">
 				   				 		<h2><a href=".\documents\Tutorial 1 - Views.pdf" target="_new">
 				   				 		<b><%=tutorial.getTutorialTitle()%></b></a></h2><br>
 				     					</div>
-				     					<div class="col-sm-6" style="background-color:#cce0ff;">
+				     					<div class="col-sm-6">
 				     						<form class = "form2" method="POST" action="GetTutorialServlet"><h2>
 												<input type="hidden" name="tutorialID" value="<%=tutorial.getTutorialId()%>"/>
 												<input type="submit" value= "Download" class="button2" /></h2>
@@ -103,9 +103,9 @@
 				     					 </div>
 				     					 <div class="col-sm-6">
 					   				 		<form class = "form2" method="POST" action="StudentDisplayForumServlet"><h2>
-												 <input type="hidden" name="tutorialID" value="1008"/>
+												 <input type="hidden" name="tutorialID" value="<%=tutorial1.getTutorialId()%>"/>
 												 <input type="hidden" name="studentID" value="10009"/>
-												 <input type="hidden" name="tutorialName" value="tute"/>
+												 <input type="hidden" name="tutorialName" value="<%=tutorial1.getTutorialTitle()%>"/>
 												 <input type="hidden" name="subjectName" value="<%=tutorial1.getSubjectName()%>"/>
 												 <input type="hidden" name="subjectCode" value="<%=tutorial1.getSubjectCode()%>"/>
 												 <input type="hidden" name="level" value="<%=tutorial1.getLevel()%>"/>
@@ -119,7 +119,7 @@
 		   			         	</div>
 				    	 </div>  
 					    		    			    		    				
-			  			<div class="column right" style="background-color:#b3d1ff; ">
+			  			<div class="column right" style="background-color: #ccebff;">
 			   				<div class="jumbotron text-center" style=" height: 30px; text-align:left; padding: 10px 20px 70px 20px;">
 			   			 		<h2>Answer sheets</h2>
 			  			</div>
@@ -130,11 +130,11 @@
 					%>
 			  		
 		   			 		 <div class="row">
-				   				 	<div class="col-sm-6" style="background-color: #cce0ff;">
+				   				 	<div class="col-sm-6">
 				   				 		<h2><a href="Student_tutorial_pdf.jsp">
 				   							 <b><%=answerSheet.getSheet_name()%></b></a></h2><br>
 				     			    </div>
-				    		     	<div class="col-sm-6" style="background-color:	#cce0ff;">
+				    		     	<div class="col-sm-6">
 				    		     			<form class = "form2" method="POST" action="GetTutorialServlet"><h2>
 												<input type="hidden" name="tutorialID" value="<%=tutorial1.getTutorialId()%>"/>
 												<input type="submit" value= "Download" class="button2" /></h2>

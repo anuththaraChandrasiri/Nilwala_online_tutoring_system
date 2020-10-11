@@ -63,16 +63,27 @@ public class ListTutorialsServlet extends HttpServlet {
  		tutorial.setMedium(medium);
  		tutorial.setTeacherName(teacherName);
  		
- 		System.out.println(tutorial.getTeacherId()+ "is tid" + tutorial.getTeacherName() + "teacher name");
- 		
- 		request.setAttribute("tutorial", tutorial);
- 		 		
+ 		System.out.println(tutorial.getTeacherId()+ "is tid" + tutorial.getTeacherName() + "teacher name" + tutorial.getSubjectCode() + "subjet code");
+ 		 		 		
 		ITutorialService iTutorialService = new TutorialServiceImpl();
 		ArrayList<Tutorial> tutorials = iTutorialService.getTutorialsById(teacherId);
 		
+		ITutorialService iTutorialService1 = new TutorialServiceImpl();
+		Tutorial tutorial1 = iTutorialService1.getTheNewestTutorial(tutorial);
+		
+		String tutorialId =  tutorial1.getTutorialId();
+		String tutorialName = tutorial1.getTutorialTitle();
+		
+		tutorial.setTutorialId(tutorialId);
+		tutorial.setTutorialTitle(tutorialName);
+		
+		System.out.println("newest tute id : " + tutorialId + "tute name :" + tutorialName);
+		
+		request.setAttribute("tutorial", tutorial);
+		
 		IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
 		ArrayList<AnswerSheet> answerSheets = iAnswerSheetService.getAnswerSheetsById(teacherId);
-		
+				
 		request.setAttribute("answerSheets", answerSheets);
 		
 		request.setAttribute("tutorials", tutorials);

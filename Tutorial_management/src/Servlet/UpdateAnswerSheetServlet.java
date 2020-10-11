@@ -67,6 +67,20 @@ public class UpdateAnswerSheetServlet extends HttpServlet {
 		System.out.println(answerSheet.getMaterial());
 		
 		request.setAttribute("answerSheet", answerSheet);
+		
+		Tutorial tutorial1 = new Tutorial() ;
+		
+		String subjectName = request.getParameter("subjectName");
+		String level = request.getParameter("level");
+		String medium = request.getParameter("medium");
+		String teacherName = request.getParameter("teacherName");
+		
+		tutorial1.setSubjectName(subjectName);
+ 		tutorial1.setLevel(level);
+ 		tutorial1.setMedium(medium);
+ 		tutorial1.setTeacherName(teacherName);
+ 		
+ 		request.setAttribute("tutorial", tutorial1);
 			
 		IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
 		iAnswerSheetService.updateAnswerSheet(answerSheetID, answerSheet);

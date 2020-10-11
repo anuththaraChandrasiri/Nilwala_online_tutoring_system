@@ -94,10 +94,10 @@ else
 
 		<div>
 			<ul class="breadcrumb">
-			 	<li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial.getLevel()%></b></a>
-				<li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial.getMedium()%></b></a>
-				<li><a href="Teacher_tutorial_subject.jsp"><b><%=tutorial.getSubjectName()%></b></a>	
-				<li><a href="Teacher_tutorial_subject.jsp"><b><%=tutorial.getTeacherName()%></b></a>	
+			 	<li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial.getLevel()%> - </b></a>
+					<a href="Teacher_tutorial_home.jsp"><b><%=tutorial.getMedium()%> medium - </b></a>
+					<b><%=tutorial.getSubjectName()%> - </b>	
+					<b><%=tutorial.getTeacherName()%></b>	
 			  </li>
 			</ul>
 		</div>
@@ -190,7 +190,13 @@ else
 							  <div class="row">
 							       <div class="col-50">
 							  		      <form class = "form1" method="POST" action="ListTutorialsServlet">
-							       	  <input type="hidden" name="teacherId" id="teacherId" value="<%=tutorial.getTeacherId()%>"/>
+								       	      <input type="hidden" name="teacherId" id="teacherId" value="<%=tutorial.getTeacherId()%>"/>
+								       	      <input type="hidden" name="subjectName" value="<%=tutorial.getSubjectName()%>"/>
+					    		 		      <input type="hidden" name="level" value="<%=tutorial.getLevel()%>"/>
+					    		 		      <input type="hidden" name="medium" value="<%=tutorial.getMedium()%>"/>
+									       	  <input type="hidden" name="subjectCode" id="subjectCode" value="<%=tutorial.getSubjectCode()%>"/>
+									       	  <input type="hidden" name="teacherName" id="teacherName" value="<%=tutorial.getTeacherName()%>"/>
+									       	  <input type="hidden" name="teacher" value="true"/>
 							     <button class="button" style="background-color:  #70db70;">
 							       Cancel</button>
 							       </form>	

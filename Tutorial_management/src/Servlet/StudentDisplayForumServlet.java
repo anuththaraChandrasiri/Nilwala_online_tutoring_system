@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Model.Tutorial;
+import Service.ITutorialService;
+import Service.TutorialServiceImpl;
 
 /**
  * Servlet implementation class StudentDisplayForumServlet
@@ -66,11 +68,24 @@ public class StudentDisplayForumServlet extends HttpServlet {
  		System.out.println(tutorial.getTeacherId()+ "is tid" + tutorial.getTeacherName() + "teacher name");
  		
  		request.setAttribute("tutorial", tutorial);
- 		 
+ 		 		 
+ 		ITutorialService iTutorialService = new TutorialServiceImpl();
+ 		 		
+		boolean checkStatus = iTutorialService.checkStudentIdInQforum(tutorial);
+		
+		if(!checkStatus) {
 			
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Student_tutorial_forum.jsp");
-		dispatcher.forward(request, response);			
-					
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Student_tutorial_ForumAlreadySubmitted.jsp");
+			dispatcher.forward(request, response);	
+			
+		}
+		else {			
+			
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Student_tutorial_forum.jsp");
+			dispatcher.forward(request, response);			
+						
+		}
+			
 		//doGet(request, response);
 	}
 

@@ -12,6 +12,14 @@ public interface ITutorialService {
 	
 	public Tutorial getTutorialById(String tutorialId) ;
 	
+	public Tutorial getTheNewestTutorial(Tutorial tutorial) ;
+	
+	public boolean checkStudentIdInQforum(Tutorial tutorial) ;
+	
+	public int checkStudentCountForAforum(Tutorial tutorial) ;
+	
+	public Tutorial getTeacherByName(String teacherName) ;
+		
 	public ArrayList<Tutorial> getTutorials() ;
 	
 	public Tutorial updateTutorial(String tutorialId, Tutorial tutorial) ;

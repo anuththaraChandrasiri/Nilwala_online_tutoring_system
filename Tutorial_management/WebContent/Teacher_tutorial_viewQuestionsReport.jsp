@@ -54,10 +54,10 @@
 	     %>  
 		<div>
 			<ul class="breadcrumb">
-				<li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getLevel()%></b></a>
-				<li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getMedium()%></b></a>
-				<li><a href="Teacher_tutorial_subject.jsp"><b><%=tutorial1.getSubjectName()%></b></a>	
-				<li><a href="Teacher_tutorial_subject.jsp"><b><%=tutorial1.getTeacherName()%></b></a>			
+				<li><a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getLevel()%> - </b></a>
+					<a href="Teacher_tutorial_home.jsp"><b><%=tutorial1.getMedium()%> medium - </b></a>
+					<b><%=tutorial1.getSubjectName()%> - </b>	
+					<b><%=tutorial1.getTeacherName()%></b>			
 				</li>
 			</ul>
 		</div>
@@ -65,8 +65,11 @@
 		<div class="jumbotron text-center" style=" height: 30px; text-align:center; padding: 10px 20px 70px 20px;">
 	  		<h2>View most asked questions - <%=tutorial1.getTutorialTitle()%></h2>
 		</div>
+		
+	  		<h3 style="margin-left:20px; color: #009900;"><b>Total number of students who submitted their responses - <%=tutorial1.getStudentCount()%></b></h3><br>
+		
 		<div class="row">
-  			<div class="column" style="background-color: #00ff55; margin-left:35px; text-align:center; ">
+  			<div class="column" style="background-color:  #ccffcc; margin-left:35px; text-align:center; ">
    				 <h1>Question number</h1>
    				 
    				 <div class="row"><br><br>
@@ -77,7 +80,7 @@
 							%>
    				 
    				 
-			   		 <div class="col-sm-11" style="background-color: #b3ffcc;  text-align:center; margin-left:30px;"><h3>Question <%=tutorial.getQuestionNo()%></h3>
+			   		 <div class="col-sm-11" style="background-color: white;  text-align:center; margin-left:40px;"><h3>Question <%=tutorial.getQuestionNo()%></h3>
 			     		
 			    	</div>
 			    	
@@ -85,13 +88,16 @@
 				 					  }
 	         				%> 
 			    	
-			    	 <div class="col-sm-11" style="background-color:#b3ffcc;  text-align:center; margin-left:30px;"><br><br>
+			    	 <div class="col-sm-11" style="background-color:white;  text-align:center; margin-left:40px;"><br><br>
+			     		
+			    	</div>
+			    	 <div class="col-sm-11" style="background-color:  #ccffcc;  text-align:center; margin-left:40px;"><br><br>
 			     		
 			    	</div>
 		     </div>	 
    				 
            </div>
-  		   <div class="column" style="background-color: #00ff55; text-align:center;">
+  		   <div class="column" style="background-color:  #ccffcc; text-align:center;">
     			<h1>Number of students</h1><br><br>
     			
 		    				<%
@@ -99,7 +105,7 @@
 								for(Tutorial tutorial : tutorialList){
 							%>
     			
-	    			 <div class="col-sm-11" style="background-color:#b3ffcc;  text-align:center; margin-left:30px;"><h3><%=tutorial.getCount()%></h3>
+	    			 <div class="col-sm-11" style="background-color:white;  text-align:center; margin-left:30px;"><h3><%=tutorial.getCount()%></h3>
 			     		
 			    	</div>
 			    	
@@ -108,7 +114,10 @@
 						 					  }
 			         		%> 
 	    			
-	    			 <div class="col-sm-11" style="background-color:#b3ffcc;  text-align:center; margin-left:30px;"><br><br>
+	    			 <div class="col-sm-11" style="background-color:white;  text-align:center; margin-left:30px;"><br><br>
+			     		
+			    	</div>
+			    	 <div class="col-sm-11" style="background-color:#ccffcc;  text-align:center; margin-left:30px;"><br><br>
 			     		
 			    	</div>
 	    			
@@ -134,6 +143,7 @@
 												 <input type="hidden" name="level" value="<%=tutorial1.getLevel()%>"/>
 												 <input type="hidden" name="medium" value="<%=tutorial1.getMedium()%>"/>
 												 <input type="hidden" name="teacherId" value="<%=tutorial1.getTeacherId()%>"/>
+												 <input type="hidden" name="subjectCode" id="subjectCode" value="<%=tutorial1.getSubjectCode()%>"/>
 												 <input type="hidden" name="teacherName"  value="<%=tutorial1.getTeacherName()%>"/>	
 												 <input type="hidden" name="teacher" value="true"/>						       	  			
 							     					<button class="button"><b>Cancel</b></button>

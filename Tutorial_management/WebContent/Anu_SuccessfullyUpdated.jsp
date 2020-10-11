@@ -24,16 +24,18 @@
 	
 		%>
 		<h1>Answer sheet is successfully updated!</h1>
-		<div class="col-50">
-							       	  <form class = "form1" method="POST" action="ListTutorialsServlet">
-							       	  <input type="hidden" name="teacherId" id="teacherID" value="<%=answerSheet.getTeacher_id()%>"/>
-							       	  <input type="hidden" name="subjectCode" id="subjectCode" value="<%=answerSheet.getSubject_code()%>"/>
-							       	  <input type="hidden" name="teacherName" id="teacherName" value="<%=answerSheet.getTeacher_name()%>"/>
-							       	  <input type="hidden" name="teacher" value="true"/>
-							     <button class="button" style="background-color:  #70db70;">
-							       OK</button>
-							       </form>
-							     	 </div>  
+			<div class="col-50">
+				<form class = "form1" method="POST" action="ListTutorialsServlet">
+						  <input type="hidden" name="teacherId" id="teacherID" value="<%=answerSheet.getTeacher_id()%>"/>
+						  <input type="hidden" name="subjectCode" id="subjectCode" value="<%=answerSheet.getSubject_code()%>"/>
+						  <input type="hidden" name="subjectName" value="<%=tutorial.getSubjectName()%>"/>
+				    	  <input type="hidden" name="level" value="<%=tutorial.getLevel()%>"/>
+				    	  <input type="hidden" name="medium" value="<%=tutorial.getMedium()%>"/>
+						  <input type="hidden" name="teacherName" id="teacherName" value="<%=answerSheet.getTeacher_name()%>"/>
+						  <input type="hidden" name="teacher" value="true"/>
+							     <button class="button" style="background-color:  #70db70;">OK</button>
+				</form>
+			</div>  
 							     	 
 		<%
 		}
@@ -42,17 +44,18 @@
 	
 		%>
 		<h1>Tutorial is successfully updated!</h1>
-		<div class="col-50">
-		
-							       	  <form class = "form1" method="POST" action="ListTutorialsServlet">
-							       	  <input type="hidden" name="teacherId" id="teacherID" value="<%=tutorial.getTeacherId()%>"/>
-							       	  <input type="hidden" name="subjectCode" id="subjectCode" value="<%=tutorial.getSubjectCode()%>"/>
-							       	  <input type="hidden" name="teacherName" id="teacherName" value="<%=tutorial.getTeacherName()%>"/>
-							       	  <input type="hidden" name="teacher" value="true"/>
-							     <button class="button" style="background-color:  #70db70;">
-							       OK</button>
-							       </form>
-							     	 </div>  
+			<div class="col-50">
+				<form class = "form1" method="POST" action="ListTutorialsServlet">
+						<input type="hidden" name="teacherId" id="teacherId" value="<%=tutorial.getTeacherId()%>"/>
+						<input type="hidden" name="subjectCode" id="subjectCode" value="<%=tutorial.getSubjectCode()%>"/>
+						<input type="hidden" name="teacherName" id="teacherName" value="<%=tutorial.getTeacherName()%>"/>
+						<input type="hidden" name="subjectName" value="<%=tutorial.getSubjectName()%>"/>
+					    <input type="hidden" name="level" value="<%=tutorial.getLevel()%>"/>
+					    <input type="hidden" name="medium" value="<%=tutorial.getMedium()%>"/>
+						<input type="hidden" name="teacher" value="true"/>
+								     <button class="button" style="background-color:  #70db70;">OK</button>
+				</form>
+	    	 </div>  
 							     	 
 		<%
 			}
@@ -60,6 +63,18 @@
 	
 		%>		
 				<h1>Error</h1>
+				<div class="col-50">
+				<form class = "form1" method="POST" action="ListTutorialsServlet">
+						<input type="hidden" name="teacherId" id="teacherId" value="<%=answerSheet.getTeacher_id()%>"/>
+						<input type="hidden" name="subjectCode" id="subjectCode" value="<%=answerSheet.getSubject_code()%>"/>
+						<input type="hidden" name="teacherName" id="teacherName" value="<%=tutorial.getTeacherName()%>"/>
+						<input type="hidden" name="subjectName" value="<%=tutorial.getSubjectName()%>"/>
+					    <input type="hidden" name="level" value="<%=tutorial.getLevel()%>"/>
+					    <input type="hidden" name="medium" value="<%=tutorial.getMedium()%>"/>
+						<input type="hidden" name="teacher" value="true"/>
+								     <button class="button" style="background-color:  #70db70;">OK</button>
+				</form>
+	    	 </div>  
 				
 		<%
 			}

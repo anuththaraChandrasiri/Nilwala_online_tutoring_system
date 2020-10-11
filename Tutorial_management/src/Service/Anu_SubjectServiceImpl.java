@@ -261,6 +261,4 @@ public class Anu_SubjectServiceImpl implements Anu_ISubjectService {
 		return subjectList;
 	}
 
-
-
 }

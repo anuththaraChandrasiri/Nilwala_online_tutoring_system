@@ -73,17 +73,24 @@ public class GetAnswerSheetServlet extends HttpServlet {
  		tutorial.setMedium(medium);
  		tutorial.setTeacherName(teacherName);
  		
- 		System.out.println(tutorial.getTeacherName()+ "is teacher name in update as");
- 		
- 		request.setAttribute("tutorial", tutorial);
- 		
+ 		System.out.println(tutorial.getTeacherName()+ "is teacher name in update as" + "subject code " + answerSheet.getSubject_code());
+ 		 		
 		IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
 		AnswerSheet answerSheet1 = iAnswerSheetService.getAnswerSheetById(answerSheetID);
 		
-		System.out.println(teacherID+"sECOND");
+		String tutorialId = answerSheet1.getTute_id();
 		
 		ITutorialService iTutorialService1 = new TutorialServiceImpl();
-		ArrayList<Tutorial> tutorials = iTutorialService1.getTutorialsById(answerSheet.getTeacher_id());
+		Tutorial tutorial1 = iTutorialService1.getTutorialById(tutorialId);
+		
+		answerSheet1.setTute_title(tutorial1.getTutorialTitle());
+ 		
+ 		request.setAttribute("tutorial", tutorial);		
+		
+		System.out.println(teacherID+"sECOND"+ "tute tile ans : " + answerSheet1.getTute_title());
+		
+		ITutorialService iTutorialService2 = new TutorialServiceImpl();
+		ArrayList<Tutorial> tutorials = iTutorialService2.getTutorialsById(answerSheet.getTeacher_id());
 		
 		request.setAttribute("answerSheet1", answerSheet1);
 		
