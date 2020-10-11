@@ -41,7 +41,7 @@ public class Anu_ListSubjectsServlet extends HttpServlet {
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_home.jsp");
 		dispatcher.forward(request, response);
-		//doGet(request, response);
+	
 	}
 
 }

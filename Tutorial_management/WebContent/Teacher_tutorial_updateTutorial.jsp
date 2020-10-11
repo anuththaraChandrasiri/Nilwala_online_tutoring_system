@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="teacher_styles.css">
+<link rel="stylesheet" href="Anu_Teacher_styles.css">
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -157,28 +157,6 @@ else
 							        <input type="file" id = "myFile" name="filename" value="<%=tutorial.getMaterial()%>"/>
 							      </div>
 							    </div><br>
-							    <div class="row">
-							      <div class="col-25">
-							        <label for="Month">Month</label>
-							      </div>
-							     <div class="col-75">
-							        		<select id="month" name="month" required>
-							        			  <option value="<%=tutorial.getMonth()%>" style=" color: brown;"><%=tutorial.getMonth()%></option>
-										          <option value="January">January</option>
-										          <option value="February">February</option>
-										          <option value="March">March</option>
-										          <option value="April">April</option>
-										          <option value="May">May</option>
-										          <option value="June">June</option>
-										          <option value="July">July</option>
-										          <option value="August">August</option>
-										          <option value="September">September</option>
-										          <option value="October">October</option>
-										          <option value="November">November</option>
-										          <option value="December">December</option>
-							       			</select>
-							     </div>
-							    </div><br>
 							     <div class="row">
 							      <div class="col-25">
 							        <label for="Uploaded date">Uploaded date</label>
@@ -207,7 +185,11 @@ else
 												<input type="hidden" name="tutorialID" value="<%=tutorial.getTutorialId()%>"/>
 												<input type="hidden" name="teacherId" value="<%=tutorial.getTeacherId()%>"/>
 												<input type="hidden" name="subjectCode" value="<%=tutorial.getSubjectCode()%>"/> 
-												<button class="button" role="button">Delete</button>
+												<input type="hidden" name="level" value="<%=tutorial1.getLevel()%>">
+							      		 		<input type="hidden" name="medium" value="<%=tutorial1.getMedium()%>">
+							      				<input type="hidden" name="subjectName" value="<%=tutorial1.getSubjectName()%>">
+							      		 		<input type="hidden" name="teacherName" id="teacherName" value="<%=tutorial1.getTeacherName()%>">
+													<button class="button" role="button">Delete</button>
 										</form>
 								      </div><br>							      
 							       	  <div class="col-50">

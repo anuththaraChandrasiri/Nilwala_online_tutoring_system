@@ -52,9 +52,7 @@ public class StudentDisplayForumServlet extends HttpServlet {
 		String tutorialID =  request.getParameter("tutorialID");
 		String studentID =  request.getParameter("studentID");
 		String tutorialTitle =  request.getParameter("tutorialName");
-		
- 		System.out.println(teacherId + subjectName + teacherName + tutorialTitle + studentID + " servlet");
- 		
+		 		
  		tutorial.setTeacherId(teacherId);
  		tutorial.setSubjectCode(subjectCode);
  		tutorial.setSubjectName(subjectName);
@@ -64,9 +62,7 @@ public class StudentDisplayForumServlet extends HttpServlet {
  		tutorial.setTutorialId(tutorialID);
  		tutorial.setTutorialTitle(tutorialTitle);
  		tutorial.setStudentId(studentID);
- 		
- 		System.out.println(tutorial.getTeacherId()+ "is tid" + tutorial.getTeacherName() + "teacher name");
- 		
+ 		 		
  		request.setAttribute("tutorial", tutorial);
  		 		 
  		ITutorialService iTutorialService = new TutorialServiceImpl();
@@ -86,7 +82,6 @@ public class StudentDisplayForumServlet extends HttpServlet {
 						
 		}
 			
-		//doGet(request, response);
 	}
 
 }

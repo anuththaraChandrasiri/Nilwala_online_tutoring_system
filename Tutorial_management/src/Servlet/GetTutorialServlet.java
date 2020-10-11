@@ -60,9 +60,7 @@ public class GetTutorialServlet extends HttpServlet {
  		tutorial1.setTeacherName(teacherName);
  		tutorial1.setTeacherId(teacherId);
 		tutorial1.setSubjectCode(subjectCode);
-		
-		System.out.println("Get servlet : " + tutorial1.getSubjectName() + " " + tutorial1.getLevel());
- 		
+		 		
  		request.setAttribute("tutorial1", tutorial1);
  		
 		ITutorialService iTutorialService = new TutorialServiceImpl();
@@ -73,7 +71,6 @@ public class GetTutorialServlet extends HttpServlet {
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_updateTutorial.jsp");
 		dispatcher.forward(request, response);
 		
-		//doGet(request, response);
 	}
 
 }

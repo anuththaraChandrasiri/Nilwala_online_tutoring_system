@@ -54,21 +54,15 @@ public class ListTutorialsServlet extends HttpServlet {
 		String level = request.getParameter("level");
 		String medium = request.getParameter("medium");
 		String teacherName = request.getParameter("teacherName");
- 		System.out.println(teacherId + subjectName + teacherName + "servlet");
- 		
+ 		 		
  		tutorial.setTeacherId(teacherId);
  		tutorial.setSubjectCode(subjectCode);
  		tutorial.setSubjectName(subjectName);
  		tutorial.setLevel(level);
  		tutorial.setMedium(medium);
  		tutorial.setTeacherName(teacherName);
- 		
- 		System.out.println(tutorial.getTeacherId()+ "is tid" + tutorial.getTeacherName() + "teacher name" + tutorial.getSubjectCode() + "subjet code");
- 		 		 		
-		ITutorialService iTutorialService = new TutorialServiceImpl();
-		ArrayList<Tutorial> tutorials = iTutorialService.getTutorialsById(teacherId);
-		
-		ITutorialService iTutorialService1 = new TutorialServiceImpl();
+ 		 		
+ 		ITutorialService iTutorialService1 = new TutorialServiceImpl();
 		Tutorial tutorial1 = iTutorialService1.getTheNewestTutorial(tutorial);
 		
 		String tutorialId =  tutorial1.getTutorialId();
@@ -76,9 +70,10 @@ public class ListTutorialsServlet extends HttpServlet {
 		
 		tutorial.setTutorialId(tutorialId);
 		tutorial.setTutorialTitle(tutorialName);
-		
-		System.out.println("newest tute id : " + tutorialId + "tute name :" + tutorialName);
-		
+ 		 		 		
+		ITutorialService iTutorialService = new TutorialServiceImpl();
+		ArrayList<Tutorial> tutorials = iTutorialService.getTutorialsById(teacherId);
+						
 		request.setAttribute("tutorial", tutorial);
 		
 		IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
@@ -89,7 +84,6 @@ public class ListTutorialsServlet extends HttpServlet {
 		request.setAttribute("tutorials", tutorials);
 		
 		String teacherStatus = request.getParameter("teacher");
-		System.out.println("teacher status : " + teacherStatus);
 		
 		if(teacherStatus.contentEquals("true")) {
 			
@@ -104,8 +98,7 @@ public class ListTutorialsServlet extends HttpServlet {
 			dispatcher.forward(request, response);			
 			
 		}
-		
-		//doGet(request, response);
+	
 	}
 
 }

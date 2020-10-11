@@ -68,9 +68,7 @@ public class BlankAnswerSheetServlet extends HttpServlet {
 		request.setAttribute("answerSheet", answerSheet);
 		
 		request.setAttribute("tutorial", tutorial);
-		
-		System.out.println("Teacher id in upload answer sheet : " + tutorial.getTeacherId());
-	 		
+			 		
 		ITutorialService iTutorialService = new TutorialServiceImpl();
 		ArrayList<Tutorial> tutorials = iTutorialService.getTutorialsById(teacherID);
 		
@@ -79,7 +77,6 @@ public class BlankAnswerSheetServlet extends HttpServlet {
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_uploadAnswerSheet.jsp");
 		dispatcher.forward(request, response);
 		
-		//doGet(request, response);
 	}
 
 }

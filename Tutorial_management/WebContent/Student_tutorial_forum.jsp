@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="student_styles.css">
+<link rel="stylesheet" href="Anu_Student_styles.css">
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">

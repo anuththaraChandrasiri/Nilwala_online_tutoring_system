@@ -2,14 +2,12 @@ package Servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import Model.AnswerSheet;
 import Model.Anu_Subject;
 import Model.Tutorial;
@@ -55,20 +53,17 @@ public class SearchTeacherServlet extends HttpServlet {
 		
 		String subjectCode = tutorial.getSubjectCode();
 		String teacherId = tutorial.getTeacherId();
-		
-		if(teacherId!=null && subjectCode!=null) {
-		
-				System.out.println("teacher id : " + teacherId + "subject code : " + subjectCode);
+		String teacherStatus = request.getParameter("teacher");
 				
+		if(teacherId!=null && subjectCode!=null) {
+						
 				Anu_ISubjectService iSubjectService = new Anu_SubjectServiceImpl();
 				Anu_Subject subject = iSubjectService.getSubjectById(subjectCode);
 				
 				String subjectName = subject.getSubjectName();
 				String level = subject.getLevel();
 				String medium = subject.getMedium();
-				
-				System.out.println("subject name : " + subjectName);
-				
+								
 				tutorial.setSubjectCode(subjectCode);
 				tutorial.setTeacherId(teacherId);
 				tutorial.setSubjectName(subjectName);
@@ -86,9 +81,7 @@ public class SearchTeacherServlet extends HttpServlet {
 
 				tutorial.setTutorialId(tutorialId);
 				tutorial.setTutorialTitle(tutorialName);
-				
-				System.out.println("Search newest tute id : " + tutorialId + "tute name :" + tutorialName);
-				
+								
 				IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
 				ArrayList<AnswerSheet> answerSheets = iAnswerSheetService.getAnswerSheetsById(teacherId);
 				
@@ -97,10 +90,7 @@ public class SearchTeacherServlet extends HttpServlet {
 				request.setAttribute("answerSheets", answerSheets);
 				
 				request.setAttribute("tutorials", tutorials);
-				
-				String teacherStatus = request.getParameter("teacher");
-				System.out.println("Search teacher status : " + teacherStatus + "subject code " + tutorial.getSubjectCode());
-				
+								
 				if(teacherStatus.contentEquals("true")) {
 					
 					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_main.jsp");
@@ -117,8 +107,20 @@ public class SearchTeacherServlet extends HttpServlet {
 				
 		}
 		else {
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Anu_SearchedItemNotFound.jsp");
-			dispatcher.forward(request, response);	
+			
+				if(teacherStatus.contentEquals("true")) {
+					
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_home.jsp");
+					dispatcher.forward(request, response);
+					
+				}
+				
+				else if (teacherStatus.contentEquals("false")) {
+								
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Student_tutorial_home.jsp");
+					dispatcher.forward(request, response);			
+					
+				}	
 		}
 			
 	}

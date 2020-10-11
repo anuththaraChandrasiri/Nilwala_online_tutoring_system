@@ -10,8 +10,11 @@ public class AnswerSheet {
 	private String tute_title ;
 	private String subject_code ;
 	private String teacher_id ;
-	private String teacher_name ;
+	private String teacher_name ;	
 	
+	public AnswerSheet() {
+		super();
+	}
 	public String getMaterial() {
 		return material;
 	}

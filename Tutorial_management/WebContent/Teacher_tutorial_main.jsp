@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="teacher_styles.css">
+<link rel="stylesheet" href="Anu_Teacher_styles.css">
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -75,7 +75,7 @@
 								for(Tutorial tutorial : tutorialList){
 							%>
 						   			 	
-		   			 		 <div class="row">				   				
+		   			 		 <div class="row" style="background-color: #ccffcc;">				   				
 				   				 
 				   				 		<div class="col-sm-6">
 				   				 		<h2><a href=".\documents\Tutorial 1 - Views.pdf" target="_new">
@@ -110,7 +110,7 @@
 													<input type="hidden" name="level" value="<%=tutorial1.getLevel()%>"/>
 													<input type="hidden" name="medium" value="<%=tutorial1.getMedium()%>"/>
 													<input type="hidden" name="teacherName"  value="<%=tutorial1.getTeacherName()%>"/>		   			         		
-		   			         		 		<button class="button" style = "background: #4d9900;  margin-left:10%;">
+		   			         		 		<button class="button" style = "margin-left:10%;">
 		   			         		 		Upload a new tutorial</button>
 									</h2>
 									</form>
@@ -127,7 +127,7 @@
 												 <input type="hidden" name="medium" value="<%=tutorial1.getMedium()%>"/>
 												 <input type="hidden" name="teacherId" value="<%=tutorial1.getTeacherId()%>"/>
 												 <input type="hidden" name="teacherName"  value="<%=tutorial1.getTeacherName()%>"/>
-												 <button class="button" style = "background: #4d9900;">
+												 <button class="button" style="background-color:#006622;">
 		   			         		 			 View most asked questions</button>
 											</form>
 											<br><br>
@@ -136,7 +136,7 @@
 		   			         		</div>
 				    	 </div>  
 					    	    				
-			  	<div class="column right" style="background-color: #ccffcc; ">
+			  	<div class="column right">
 			   		<div class="jumbotron text-center" style=" height: 30px; text-align:left; padding: 10px 20px 70px 20px;">
 			   			 <h2>Answer sheets</h2>
 			  		</div>
@@ -146,7 +146,7 @@
 								for(AnswerSheet answerSheet : answerSheetList){
 					%>
 			  		
-		   			 		 <div class="row">
+		   			 		 <div class="row" style="background-color: #ccffcc;">
 				   				 <div class="col-sm-6">
 				   				 <h2><a href="Teacher_tutorial_pdf.jsp">
 				   				 <b><%=answerSheet.getSheet_name()%></b></a></h2><br>

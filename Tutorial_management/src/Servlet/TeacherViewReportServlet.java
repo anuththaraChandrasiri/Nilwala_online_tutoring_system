@@ -56,8 +56,6 @@ public class TeacherViewReportServlet extends HttpServlet {
 		String tutorialTitle =  request.getParameter("tutorialName");
 		String questions[] = request.getParameterValues("questions");
 		
- 		System.out.println(teacherId + subjectName + teacherName + subjectCode + " servlet");
- 		
  		tutorial.setTeacherId(teacherId);
  		tutorial.setSubjectCode(subjectCode);
  		tutorial.setSubjectName(subjectName);
@@ -67,10 +65,7 @@ public class TeacherViewReportServlet extends HttpServlet {
  		tutorial.setTutorialId(tutorialID);
  		tutorial.setTutorialTitle(tutorialTitle);
  		tutorial.setQuestions(questions);
- 		
- 		System.out.println(tutorial.getTeacherId()+ "is teacher id" + tutorial.getTeacherName() + "teacher name" + tutorial.getTutorialId() + " report newest tute id");
- 		System.out.println(tutorial.getTutorialTitle()+ " teacher report newest tute name " + tutorial.getLevel() + "level");
- 		 		
+ 			
  		ITutorialService iTutorialService = new TutorialServiceImpl();
 		ArrayList<Tutorial> tutorials = iTutorialService.getQuestionNumbersByTutorialId(tutorialID);	
 		
@@ -86,7 +81,6 @@ public class TeacherViewReportServlet extends HttpServlet {
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_viewQuestionsReport.jsp");
 		dispatcher.forward(request, response);			
 					
-		//doGet(request, response);
 	}
 
 }

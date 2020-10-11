@@ -57,7 +57,19 @@ public class DeleteAnswerSheetServlet extends HttpServlet {
 		answerSheet.setTeacher_id(teacherID);
 		answerSheet.setSubject_code(subjectCode);
 		
-		System.out.println(answerSheetID+" ASID "+teacherID+" TID"+subjectCode+" CODE ");
+		Tutorial tutorial1 = new Tutorial() ;
+		
+		String subjectName = request.getParameter("subjectName");
+		String level = request.getParameter("level");
+		String medium = request.getParameter("medium");
+		String teacherName = request.getParameter("teacherName");
+		
+		tutorial1.setSubjectName(subjectName);
+ 		tutorial1.setLevel(level);
+ 		tutorial1.setMedium(medium);
+ 		tutorial1.setTeacherName(teacherName);
+ 		
+ 		request.setAttribute("tutorial", tutorial1);
 		
 		request.setAttribute("answerSheet", answerSheet);
 		
@@ -74,10 +86,9 @@ public class DeleteAnswerSheetServlet extends HttpServlet {
 		
 		request.setAttribute("tutorials", tutorials);
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Anu_SuccessfullyUpdated.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Anu_DeleteAnswerSheetMessage.jsp");
 		dispatcher.forward(request, response);
-		
-		// doGet(request, response);
+	
 	}
 
 }

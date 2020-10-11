@@ -56,9 +56,7 @@ public class GetAnswerSheetServlet extends HttpServlet {
  		answerSheet.setSheet_id(answerSheetID);
  		answerSheet.setSubject_code(subjectCode);
  		answerSheet.setTeacher_id(teacherID);
- 		
- 		System.out.println(teacherID+"FIRST");
- 		
+ 		 		
  		request.setAttribute("answerSheet", answerSheet);
  		
  		Tutorial tutorial = new Tutorial() ;
@@ -72,9 +70,7 @@ public class GetAnswerSheetServlet extends HttpServlet {
  		tutorial.setLevel(level);
  		tutorial.setMedium(medium);
  		tutorial.setTeacherName(teacherName);
- 		
- 		System.out.println(tutorial.getTeacherName()+ "is teacher name in update as" + "subject code " + answerSheet.getSubject_code());
- 		 		
+ 		 		 		
 		IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
 		AnswerSheet answerSheet1 = iAnswerSheetService.getAnswerSheetById(answerSheetID);
 		
@@ -86,9 +82,7 @@ public class GetAnswerSheetServlet extends HttpServlet {
 		answerSheet1.setTute_title(tutorial1.getTutorialTitle());
  		
  		request.setAttribute("tutorial", tutorial);		
-		
-		System.out.println(teacherID+"sECOND"+ "tute tile ans : " + answerSheet1.getTute_title());
-		
+				
 		ITutorialService iTutorialService2 = new TutorialServiceImpl();
 		ArrayList<Tutorial> tutorials = iTutorialService2.getTutorialsById(answerSheet.getTeacher_id());
 		
@@ -99,7 +93,6 @@ public class GetAnswerSheetServlet extends HttpServlet {
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_updateAnswerSheet.jsp");
 		dispatcher.forward(request, response);
 		
-		//doGet(request, response);
 	}
 
 }

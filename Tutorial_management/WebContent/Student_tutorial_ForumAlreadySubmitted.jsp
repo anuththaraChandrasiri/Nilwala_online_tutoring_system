@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="Anu_Student_styles.css">
 <meta charset="ISO-8859-1">
 <title>Forum already submitted</title>
 </head>
@@ -14,7 +15,10 @@
 	
 	%>
 	
-	<h1>Sorry! You have already submitted your response.</h1>
+		<div class="jumbotron text-center">
+	 		 <h1 >Sorry! You have already submitted your response.</h1>
+		</div>
+
 		<div class="col-50">
 				<form class = "form1" method="POST" action="ListTutorialsServlet">
 				    	  <input type="hidden" name="teacherId" id="teacherID" value="<%=tutorial.getTeacherId()%>"/>

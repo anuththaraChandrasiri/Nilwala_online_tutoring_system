@@ -45,17 +45,14 @@ public class TutorialServiceImpl implements ITutorialService {
 	public void addTutorial(Tutorial tutorial) {
 		
 		String tutorialID = generateIDs(getTutorialIDs());
-		String query = "insert into tutorials (teacher_id, subject_code, tute_id,  title, date_added,  month, material) values (?, ?, ?, ?, ?, ?, ?)" ;
-		System.out.println(tutorial.getDateAdded()+"date");
-		
+		String query = "insert into tutorials (teacher_id, subject_code, tute_id,  title, date_added, material) values (?, ?, ?, ?, ?, ?)" ;
+				
 		try {
 			connection = DBConnectionUtil.getDBConnection();
 			
 			preparedStatement = connection.prepareStatement(query);
 			connection.setAutoCommit(false);
-			
-			System.out.println(tutorial.getSubjectCode()+"code" +tutorial.getTeacherId()+" tid ");
-						
+		
 			//Generate tutorial IDs
 			tutorial.setTutorialId(tutorialID);
 			preparedStatement.setString(1, tutorial.getTeacherId());
@@ -63,8 +60,7 @@ public class TutorialServiceImpl implements ITutorialService {
 			preparedStatement.setString(3, tutorial.getTutorialId());
 			preparedStatement.setString(4, tutorial.getTutorialTitle());
 			preparedStatement.setString(5, tutorial.getDateAdded());
-			preparedStatement.setString(6, tutorial.getMonth());
-			preparedStatement.setString(7, tutorial.getMaterial());
+			preparedStatement.setString(6, tutorial.getMaterial());
 						
 			// Add tutorial
 			preparedStatement.execute();
@@ -114,7 +110,7 @@ public class TutorialServiceImpl implements ITutorialService {
 	@Override
 	public Tutorial updateTutorial(String tutorialId, Tutorial tutorial) {
 		
-	String query = "update tutorials as t set t.teacher_id = ?, t.subject_code = ?, t.title = ?, t.date_added = ?, t.month = ?, t.material = ? where t.tute_id = ?";
+	String query = "update tutorials as t set t.teacher_id = ?, t.subject_code = ?, t.title = ?, t.date_added = ?, t.material = ? where t.tute_id = ?";
 	
 		/*
 		 * Before fetching tutorial it checks whether tutorialID is available
@@ -126,17 +122,13 @@ public class TutorialServiceImpl implements ITutorialService {
 				connection = DBConnectionUtil.getDBConnection();
 				preparedStatement = connection
 						.prepareStatement(query);
-				
-				System.out.println(tutorial.getMaterial());
-				System.out.println(tutorial.getDateAdded());
-				
+							
 				preparedStatement.setString(1, tutorial.getTeacherId());
 				preparedStatement.setString(2, tutorial.getSubjectCode());
 				preparedStatement.setString(3, tutorial.getTutorialTitle());
 				preparedStatement.setString(4, tutorial.getDateAdded());
-				preparedStatement.setString(5, tutorial.getMonth());
-				preparedStatement.setString(6, tutorial.getMaterial());
-				preparedStatement.setString(7, tutorialId);
+				preparedStatement.setString(5, tutorial.getMaterial());
+				preparedStatement.setString(6, tutorialId);
 				
 				preparedStatement.executeUpdate();
 								
@@ -167,7 +159,6 @@ public class TutorialServiceImpl implements ITutorialService {
 	public void deleteTutorial(String tutorialId) {
 		
 		String query = "delete from tutorials where tutorials.tute_Id = ?" ;
-		System.out.println(tutorialId+" tuteId ");
 		
 		// Before deleting check whether the tutorial ID is available
 		if (tutorialId!= null && !tutorialId.isEmpty()) {
@@ -283,7 +274,7 @@ public class TutorialServiceImpl implements ITutorialService {
 					
 					preparedStatement = connection.prepareStatement(query1);
 					preparedStatement.setString(1, teacherID);
-					System.out.println("Correct");
+			
 				}
 				/*
 				 * If tutorial ID is not provided it displays all tutorials
@@ -301,8 +292,7 @@ public class TutorialServiceImpl implements ITutorialService {
 					tutorial.setTutorialId(resultSet.getString(3));
 					tutorial.setTutorialTitle(resultSet.getString(4));
 					tutorial.setDateAdded(resultSet.getString(5));
-					tutorial.setMonth(resultSet.getString(6));
-					tutorial.setMaterial(resultSet.getString(7));
+					tutorial.setMaterial(resultSet.getString(6));
 					
 					tutorialList.add(tutorial);
 				}
@@ -361,8 +351,7 @@ public class TutorialServiceImpl implements ITutorialService {
 					tutorial.setTutorialId(resultSet.getString(3));
 					tutorial.setTutorialTitle(resultSet.getString(4));
 					tutorial.setDateAdded(resultSet.getString(5));
-					tutorial.setMonth(resultSet.getString(6));
-					tutorial.setMaterial(resultSet.getString(7));
+					tutorial.setMaterial(resultSet.getString(6));
 										
 					tutorialList.add(tutorial);
 				}
@@ -408,8 +397,7 @@ public class TutorialServiceImpl implements ITutorialService {
 					if(questions[i]!=null) {
 						
 						question_no = questions[i];	
-						System.out.println(question_no + " question number");
-						
+												
 						preparedStatement.setString(1, tutorial.getForumId());
 						preparedStatement.setString(2, tutorial.getStudentId());
 						preparedStatement.setString(3, tutorial.getTutorialId());
@@ -454,19 +442,14 @@ public class TutorialServiceImpl implements ITutorialService {
 			ArrayList<Tutorial> questionList = new ArrayList<Tutorial>();
 			try {
 				connection = DBConnectionUtil.getDBConnection();
-				/*
-				 * Before fetching tutorial it checks whether tutorial ID is
-				 * available
-				 */
+				
 				if (tutorialId!= null && !tutorialId.isEmpty()) {
 					
 					preparedStatement = connection.prepareStatement(query1);
 					preparedStatement.setString(1, tutorialId);
 					System.out.println("Correct");
 				}
-				/*
-				 * If tutorial ID is not provided it displays all tutorials
-				 */
+				
 				else {
 					preparedStatement = connection.prepareStatement(query2);
 				}
@@ -484,10 +467,7 @@ public class TutorialServiceImpl implements ITutorialService {
 			} catch (SQLException | ClassNotFoundException e) {
 				Log.log(Level.SEVERE, e.getMessage());
 			} finally {
-				/*
-				 * Close prepared statement and database connectivity at the end of
-				 * transaction
-				 */
+				
 				try {
 					if (preparedStatement != null) {
 						preparedStatement.close();
@@ -513,23 +493,16 @@ public class TutorialServiceImpl implements ITutorialService {
 			String query1 = "select * from teacher_subject where teacher_subject.teacher_name like '%"+teacherName+"%' " ;
 			String query2 = "select * from teacher_subject order by teacher_subject.teacher_id " ;
 			
-			System.out.println("Teacher name search : " + teacherName);
-
 			ArrayList<Tutorial> teacherDetailsList = new ArrayList<Tutorial>();
 			try {
 				connection = DBConnectionUtil.getDBConnection();
-				/*
-				 * Before fetching tutorial it checks whether tutorial ID is
-				 * available
-				 */
+				
 				if (teacherName!= null && !teacherName.isEmpty()) {
 					
 					preparedStatement = connection.prepareStatement(query1);
 				
 				}
-				/*
-				 * If tutorial ID is not provided it displays all tutorials
-				 */
+				
 				else {
 					preparedStatement = connection.prepareStatement(query2);
 				}
@@ -537,7 +510,6 @@ public class TutorialServiceImpl implements ITutorialService {
 				
 				while (resultSet.next()) {
 						
-						System.out.println("In the correct path..");
 						Tutorial tutorial = new Tutorial();
 						tutorial.setTeacherId(resultSet.getString(1));
 						tutorial.setSubjectCode(resultSet.getString(2));
@@ -548,8 +520,7 @@ public class TutorialServiceImpl implements ITutorialService {
 				}
 				
 				if(!resultSet.next()) {
-					
-						System.out.println("No data");
+				
 						Tutorial tutorial = new Tutorial();
 						tutorial.setTeacherId(null);
 						tutorial.setSubjectCode(null);
@@ -557,7 +528,6 @@ public class TutorialServiceImpl implements ITutorialService {
 						tutorial.setTeacherName(null);
 																
 						teacherDetailsList.add(tutorial);
-						System.out.println("End of no data");
 					
 				}
 				
@@ -591,17 +561,14 @@ public class TutorialServiceImpl implements ITutorialService {
 		private ArrayList<Tutorial> getTheNewestTuteDetails(Tutorial tutorial1) {
 			
 			String teacherId = tutorial1.getTeacherId() ;
-			String subjectCode = tutorial1.getSubjectCode() ;			
-			
-			String query1 = "select * from tutorials where tutorials.teacher_id = "+teacherId+" and tutorials.subject_code = "+subjectCode+" and tutorials.tute_id = (select max(tutorials.tute_id) from tutorials)";
+			String subjectCode = tutorial1.getSubjectCode() ;	
+						
+			String query1 = "select teacher_id, subject_code, MAX(tute_id), title, date_added, material from tutorials where tutorials.teacher_id = "+teacherId+" and tutorials.subject_code = "+subjectCode+"";
 					
 			ArrayList<Tutorial> tutorialList = new ArrayList<Tutorial>();
 			try {
 				connection = DBConnectionUtil.getDBConnection();
-				/*
-				 * Before fetching tutorial it checks whether tutorial ID is
-				 * available
-				 */
+				
 				if (teacherId!= null && !teacherId.isEmpty() && subjectCode!= null && !subjectCode.isEmpty()) {
 					
 					preparedStatement = connection.prepareStatement(query1);
@@ -609,19 +576,20 @@ public class TutorialServiceImpl implements ITutorialService {
 				}
 				
 				ResultSet resultSet = preparedStatement.executeQuery();
-
+				
 				while (resultSet.next()) {
 					
 					Tutorial tutorial = new Tutorial();
+										
 					tutorial.setTeacherId(resultSet.getString(1));
 					tutorial.setSubjectCode(resultSet.getString(2));
 					tutorial.setTutorialId(resultSet.getString(3));
 					tutorial.setTutorialTitle(resultSet.getString(4));
 					tutorial.setDateAdded(resultSet.getString(5));
-					tutorial.setMonth(resultSet.getString(6));
-					tutorial.setMaterial(resultSet.getString(7));
+					tutorial.setMaterial(resultSet.getString(6));
 										
 					tutorialList.add(tutorial);
+									
 				}
 
 			} catch (SQLException | ClassNotFoundException e) {
@@ -678,15 +646,10 @@ public class TutorialServiceImpl implements ITutorialService {
 			String query1 = "select qforum.student_id, qforum.tute_id, count(question_no) as qcount from qforum where qforum.student_id = "+studentId+" and qforum.tute_id = "+tutorialId+" group by student_id" ;
 			String query2 = "select qforum.student_id, qforum.tute_id, count( DISTINCT student_id) as scount from qforum where qforum.teacher_id = "+teacherId+" and qforum.tute_id = "+tutorialId+" group by forum_id" ;
 			
-			System.out.println("Student id : " + studentId + "Tutorial id" + tutorialId + "Teacher id : " + teacherId);
-
 			ArrayList<Tutorial> questionList = new ArrayList<Tutorial>();
 			try {
 				connection = DBConnectionUtil.getDBConnection();
-				/*
-				 * Before fetching tutorial it checks whether tutorial ID is
-				 * available
-				 */
+				
 				if (studentId!= null && !studentId.isEmpty() && tutorialId!= null && !tutorialId.isEmpty()) {
 					
 					preparedStatement = connection.prepareStatement(query1);
@@ -716,14 +679,12 @@ public class TutorialServiceImpl implements ITutorialService {
 				
 				if(!resultSet.next()) {
 					
-						System.out.println("No data");
 						Tutorial tutorial = new Tutorial();
 						tutorial.setStudentId(null);
 						tutorial.setTutorialId(null);
 						tutorial.setCount(0);
 											
 						questionList.add(tutorial);
-						System.out.println("End of no data");
 					
 				}
 				

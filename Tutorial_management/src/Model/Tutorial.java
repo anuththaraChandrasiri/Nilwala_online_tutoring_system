@@ -10,7 +10,6 @@ public class Tutorial {
 	private String subjectCode ;
 	private String subjectName ;
 	private String dateAdded ;
-	private String month ;
 	private String material ;
 	private String level ;
 	private String medium ;
@@ -22,7 +21,11 @@ public class Tutorial {
 	private int count ;
 	private int studentCount ;
 	private int grade ;
-	
+		
+	public Tutorial() {
+		super();	
+	}
+
 	public String getTutorialId() {
 		return tutorialId;
 	}
@@ -69,14 +72,6 @@ public class Tutorial {
 
 	public void setDateAdded(String dateAdded) {
 		this.dateAdded =  dateAdded;
-	}
-	
-	public String getMonth() {
-		return month;
-	}
-
-	public void setMonth(String month) {
-		this.month =  month;
 	}
 	
 	public String getMaterial() {
@@ -178,11 +173,10 @@ public class Tutorial {
 	@Override
 	public String toString() {
 		return "Tutorial [tutorialId=" + tutorialId + ", title=" + title + ", teacherId=" + teacherId + ", subjectCode="
-				+ subjectCode + ", subjectName=" + subjectName + ", dateAdded=" + dateAdded + ", month=" + month
-				+ ", material=" + material + ", level=" + level + ", medium=" + medium + ", teacherName=" + teacherName
-				+ ", studentId=" + studentId + ", questions=" + Arrays.toString(questions) + ", forumId=" + forumId
-				+ ", questionNo=" + questionNo + ", count=" + count + ", studentCount=" + studentCount + ", grade="
-				+ grade + "]";
+				+ subjectCode + ", subjectName=" + subjectName + ", dateAdded=" + dateAdded + ", material=" + material
+				+ ", level=" + level + ", medium=" + medium + ", teacherName=" + teacherName + ", studentId="
+				+ studentId + ", questions=" + Arrays.toString(questions) + ", forumId=" + forumId + ", questionNo="
+				+ questionNo + ", count=" + count + ", studentCount=" + studentCount + ", grade=" + grade + "]";
 	}
 	
 }

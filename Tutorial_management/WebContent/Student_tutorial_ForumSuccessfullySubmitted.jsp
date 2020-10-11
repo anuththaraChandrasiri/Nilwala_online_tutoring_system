@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="Anu_Student_styles.css">
 <meta charset="ISO-8859-1">
 <title>Forum submission message</title>
 </head>

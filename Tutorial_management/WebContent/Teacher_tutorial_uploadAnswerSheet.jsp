@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="teacher_styles.css">
+<link rel="stylesheet" href="Anu_Teacher_styles.css">
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -187,6 +187,10 @@ else
 							    </div>
 							    <div class="row">							    
 								             <div class="col-50">
+								             	<input type="hidden" name="subjectName" value="<%=tutorial1.getSubjectName()%>"/>
+					    		 		        <input type="hidden" name="level" value="<%=tutorial1.getLevel()%>"/>
+					    		 		        <input type="hidden" name="medium" value="<%=tutorial1.getMedium()%>"/>
+									       	    <input type="hidden" name="teacherName" id="teacherName" value="<%=tutorial1.getTeacherName()%>"/>
 								        			 <button class="button" role="button"><b>Upload</b></button><br>
 								    		  </div><br>
 								     		 <div class="col-50">

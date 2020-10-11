@@ -59,13 +59,10 @@ public class UpdateAnswerSheetServlet extends HttpServlet {
 		
 		if(request.getParameter("filename").equalsIgnoreCase("")) {
 			answerSheet.setMaterial(request.getParameter("filename1"));
-			System.out.println(request.getParameter("filename1"));
 		}
 		else	
 			answerSheet.setMaterial(request.getParameter("filename"));
-		
-		System.out.println(answerSheet.getMaterial());
-		
+				
 		request.setAttribute("answerSheet", answerSheet);
 		
 		Tutorial tutorial1 = new Tutorial() ;
@@ -95,9 +92,9 @@ public class UpdateAnswerSheetServlet extends HttpServlet {
 		
 		request.setAttribute("tutorials", tutorials);
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Anu_SuccessfullyUpdated.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Anu_UpdateAnswerSheetMessage.jsp");
 		dispatcher.forward(request, response);
-		//doGet(request, response);
+		
 	}
 
 }

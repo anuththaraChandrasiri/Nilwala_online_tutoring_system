@@ -50,7 +50,6 @@ public class Anu_ListTeachersServlet extends HttpServlet {
  		String subjectName = request.getParameter("subjectName");
  		String level = request.getParameter("level");
  		String medium = request.getParameter("medium");
- 		System.out.println(subjectCode + "servlet");
  		
  		teacher.setSubjectCode(subjectCode);
  		teacher.setSubjectName(subjectName);
@@ -65,7 +64,6 @@ public class Anu_ListTeachersServlet extends HttpServlet {
 		request.setAttribute("teachers", teachers);
 		
 		String teacherStatus = request.getParameter("teacher");
-		System.out.println("teacher status : " + teacherStatus);
 		
 		if(teacherStatus.contentEquals("true")) {
 			
@@ -80,8 +78,7 @@ public class Anu_ListTeachersServlet extends HttpServlet {
 			dispatcher.forward(request, response);			
 			
 		}
-		
-		//doGet(request, response);
+	
 	}
 
 }

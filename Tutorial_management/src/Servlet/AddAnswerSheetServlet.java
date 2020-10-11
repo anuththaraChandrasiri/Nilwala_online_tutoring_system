@@ -54,11 +54,24 @@ public class AddAnswerSheetServlet extends HttpServlet {
 		answerSheet.setTute_id(request.getParameter("tuteID"));
 		answerSheet.setSubject_code(request.getParameter("subjectCode"));
 		
+		Tutorial tutorial1 = new Tutorial() ;
+		
+		String subjectName = request.getParameter("subjectName");
+		String level = request.getParameter("level");
+		String medium = request.getParameter("medium");
+		String teacherName = request.getParameter("teacherName");
+		
+		tutorial1.setSubjectName(subjectName);
+ 		tutorial1.setLevel(level);
+ 		tutorial1.setMedium(medium);
+ 		tutorial1.setTeacherName(teacherName);
+ 		
+ 		request.setAttribute("tutorial", tutorial1);
+		
 		IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
 		iAnswerSheetService.addAnswerSheet(answerSheet);
 		
 		request.setAttribute("answerSheet", answerSheet);
-		System.out.println(answerSheet.getTute_id() + "tuteId");
 		
 		ITutorialService iTutorialService1 = new TutorialServiceImpl();
 		ArrayList<Tutorial> tutorials = iTutorialService1.getTutorialsById(answerSheet.getTeacher_id());
@@ -70,10 +83,9 @@ public class AddAnswerSheetServlet extends HttpServlet {
 		
 		request.setAttribute("tutorials", tutorials);
 		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Anu_SuccessfullyUpdated.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Anu_AddAnswerSheetMessage.jsp");
 		dispatcher.forward(request, response);
-		
-		//doGet(request, response);
+	
 	}
 
 }

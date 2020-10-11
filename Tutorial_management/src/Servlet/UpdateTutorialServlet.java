@@ -57,20 +57,17 @@ public class UpdateTutorialServlet extends HttpServlet {
 		tutorial.setSubjectCode(request.getParameter("subjectCode"));
 		tutorial.setSubjectName(request.getParameter("subjectName"));
 		tutorial.setDateAdded(request.getParameter("uploadedDate"));
-		tutorial.setMonth(request.getParameter("month"));
 		tutorial.setLevel(request.getParameter("level"));
 		tutorial.setMedium(request.getParameter("medium"));
 		tutorial.setTeacherName(request.getParameter("teacherName"));
 				
 		if(request.getParameter("filename").equalsIgnoreCase("")) {
 			tutorial.setMaterial(request.getParameter("filename1"));
-			System.out.println(request.getParameter("filename1"));
+	
 		}
 		else	
 			tutorial.setMaterial(request.getParameter("filename"));
-		
-		System.out.println(tutorial.getMaterial() + "medium " + tutorial.getMedium());
-		
+			
 		request.setAttribute("tutorial", tutorial);
 	
 		ITutorialService iTutorialService = new TutorialServiceImpl();
@@ -86,9 +83,9 @@ public class UpdateTutorialServlet extends HttpServlet {
 		
 		request.setAttribute("tutorials", tutorials);
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Anu_SuccessfullyUpdated.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Anu_UpdateTutorialMessage.jsp");
 		dispatcher.forward(request, response);
-		//doGet(request, response);
+
 	}
 
 }

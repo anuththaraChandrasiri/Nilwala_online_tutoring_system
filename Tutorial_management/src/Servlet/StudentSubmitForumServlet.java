@@ -55,9 +55,7 @@ public class StudentSubmitForumServlet extends HttpServlet {
 		String studentID =  request.getParameter("studentID");
 		String tutorialTitle =  request.getParameter("tutorialName");
 		String questions[] = request.getParameterValues("questions");
-		
- 		System.out.println(teacherId + subjectName + teacherName + subjectCode + studentID + " servlet");
- 		
+		 		
  		tutorial.setTeacherId(teacherId);
  		tutorial.setSubjectCode(subjectCode);
  		tutorial.setSubjectName(subjectName);
@@ -68,9 +66,7 @@ public class StudentSubmitForumServlet extends HttpServlet {
  		tutorial.setTutorialTitle(tutorialTitle);
  		tutorial.setStudentId(studentID);
  		tutorial.setQuestions(questions);
- 		
- 		System.out.println(tutorial.getTeacherId()+ "is tid" + tutorial.getTeacherName() + "teacher name");
- 		
+ 		 		
  		request.setAttribute("tutorial", tutorial);
  		
  		for(int i = 0 ; i < questions.length; i++) {
@@ -89,7 +85,6 @@ public class StudentSubmitForumServlet extends HttpServlet {
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Student_tutorial_ForumSuccessfullySubmitted.jsp");
 		dispatcher.forward(request, response);			
 					
-		//doGet(request, response);
 	}
 
 }

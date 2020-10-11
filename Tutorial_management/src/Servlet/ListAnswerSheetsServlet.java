@@ -44,8 +44,7 @@ public class ListAnswerSheetsServlet extends HttpServlet {
 		response.setContentType("text/html");
 		
 		String teacherId = request.getParameter("teacherId");	
- 		System.out.println(teacherId + "servlet");
- 		
+ 		 		
 		IAnswerSheetService iAnswerSheetService = new AnswerSheetServiceImpl();
 		ArrayList<AnswerSheet> answerSheets = iAnswerSheetService.getAnswerSheetsById(teacherId);
 		
@@ -53,7 +52,7 @@ public class ListAnswerSheetsServlet extends HttpServlet {
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_main.jsp");
 		dispatcher.forward(request, response);
-		//doGet(request, response);
+	
 	}
 
 }

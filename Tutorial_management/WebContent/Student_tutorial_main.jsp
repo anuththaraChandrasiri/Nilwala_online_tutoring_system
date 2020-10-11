@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="student_styles.css">
+<link rel="stylesheet" href="Anu_Student_styles.css">
 <meta charset="ISO-8859-1">
 <title>Student main</title><meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -78,7 +78,7 @@
 								for(Tutorial tutorial : tutorialList){
 									
 							%>
-						    <div class="row">
+						    <div class="row" style="background-color: #ccebff;">
 				   				
 				   				 		<div class="col-sm-6">
 				   				 		<h2><a href=".\documents\Tutorial 1 - Views.pdf" target="_new">
@@ -119,7 +119,7 @@
 		   			         	</div>
 				    	 </div>  
 					    		    			    		    				
-			  			<div class="column right" style="background-color: #ccebff;">
+			  			<div class="column right">
 			   				<div class="jumbotron text-center" style=" height: 30px; text-align:left; padding: 10px 20px 70px 20px;">
 			   			 		<h2>Answer sheets</h2>
 			  			</div>
@@ -129,7 +129,7 @@
 								for(AnswerSheet answerSheet : answerSheetList){
 					%>
 			  		
-		   			 		 <div class="row">
+		   			 		 <div class="row" style="background-color: #ccebff;">
 				   				 	<div class="col-sm-6">
 				   				 		<h2><a href="Student_tutorial_pdf.jsp">
 				   							 <b><%=answerSheet.getSheet_name()%></b></a></h2><br>

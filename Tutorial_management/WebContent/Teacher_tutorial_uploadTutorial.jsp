@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="teacher_styles.css">
+<link rel="stylesheet" href="Anu_Teacher_styles.css">
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -145,27 +145,6 @@ else
 								           <label for="fileupload" style = "font-size:12px;"> Select a file to upload</label>
 								       </div><br>
 							    </div>
-							    <div class="row">
-							      		<div class="col-25">
-							        		<label for="month">Month</label>
-							      		</div>
-							      		<div class="col-75">
-							        		<select id="month" name="month" required>
-										          <option value="January">January</option>
-										          <option value="February">February</option>
-										          <option value="March">March</option>
-										          <option value="April">April</option>
-										          <option value="May">May</option>
-										          <option value="June">June</option>
-										          <option value="July">July</option>
-										          <option value="August">August</option>
-										          <option value="September">September</option>
-										          <option value="October">October</option>
-										          <option value="November">November</option>
-										          <option value="December">December</option>
-							       			</select>
-							      		</div>
-							    	</div>
 							    	<div class="row">
 							      		<div class="col-25">							      			
 							        		<label for="subject" style="display: none;">Uploading date</label>
@@ -180,7 +159,11 @@ else
 							    	</div>
 							    	<div class="row">							    
 							            <div class="col-50">
-							     		    <button class="button" role="button"><b>Upload</b></button><br>
+							            	  <input type="hidden" name="subjectName" value="<%=tutorial.getSubjectName()%>"/>
+					    		 		      <input type="hidden" name="level" value="<%=tutorial.getLevel()%>"/>
+					    		 		      <input type="hidden" name="medium" value="<%=tutorial.getMedium()%>"/>
+									       	  <input type="hidden" name="teacherName" id="teacherName" value="<%=tutorial.getTeacherName()%>"/>
+							     		    	<button class="button" role="button"><b>Upload</b></button><br>
 							      		</div><br>
 							      		<div class="col-50">
 							      			<button class="button" type="reset" role="button"><b>Reset</b></button>

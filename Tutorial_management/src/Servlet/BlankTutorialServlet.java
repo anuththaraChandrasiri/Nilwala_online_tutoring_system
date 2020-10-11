@@ -45,9 +45,7 @@ public class BlankTutorialServlet extends HttpServlet {
 		String level = request.getParameter("level");
 		String medium = request.getParameter("medium");
 		String teacherName = request.getParameter("teacherName");
- 		
- 		System.out.println(teacherID + "TID");
- 		
+ 		 		
  		tutorial.setTeacherId(teacherID);
  		tutorial.setSubjectCode(subjectCode);
  		tutorial.setSubjectName(subjectName);
@@ -60,7 +58,6 @@ public class BlankTutorialServlet extends HttpServlet {
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Teacher_tutorial_uploadTutorial.jsp");
 		dispatcher.forward(request, response);
 		
-		//doGet(request, response);
 	}
 
 }

@@ -3,14 +3,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="Anu_Teacher_styles.css">
 <meta charset="ISO-8859-1">
 <title>Searched item not found</title>
+
 </head>
 <body>
 
-	<h1>Searched item not found!</h1>
+		<div class="jumbotron text-center">
+	 		 <h1>Searched item not found!</h1>
+		</div>
 	
-	 <li><a href="Teacher_tutorial_home.jsp"><b>Go back to home</b></a> 
-	 
+			<button class="button" onclick= "document.location='Teacher_tutorial_home.jsp'">
+			<b>Go back to home</b></button>
+			 
 </body>
 </html>

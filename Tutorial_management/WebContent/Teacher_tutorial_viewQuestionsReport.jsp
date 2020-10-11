@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="teacher_styles.css">
+<link rel="stylesheet" href="Anu_Teacher_styles.css">
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <meta charset="ISO-8859-1">
 <title>View questions report</title>
@@ -66,7 +66,7 @@
 	  		<h2>View most asked questions - <%=tutorial1.getTutorialTitle()%></h2>
 		</div>
 		
-	  		<h3 style="margin-left:20px; color: #009900;"><b>Total number of students who submitted their responses - <%=tutorial1.getStudentCount()%></b></h3><br>
+	  		<h3 style="margin-left:20px; color: #009900;"><b>Total number of students who have submitted their responses - <%=tutorial1.getStudentCount()%></b></h3><br>
 		
 		<div class="row">
   			<div class="column" style="background-color:  #ccffcc; margin-left:35px; text-align:center; ">

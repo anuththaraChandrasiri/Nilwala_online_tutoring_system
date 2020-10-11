@@ -52,11 +52,11 @@ public class AddTutorialServlet extends HttpServlet {
 		tutorial.setTeacherId(request.getParameter("teacherID"));
 		tutorial.setSubjectCode(request.getParameter("subjectCode"));
 		tutorial.setDateAdded(request.getParameter("uploadingDate"));
-		tutorial.setMonth(request.getParameter("month"));
 		tutorial.setMaterial(request.getParameter("filename"));
-		
-		System.out.println(tutorial.getTeacherId() + "tid");
-		System.out.println(request.getParameter("uploadingDate") + "File name is : " + request.getParameter("filename"));
+		tutorial.setSubjectName(request.getParameter("subjectName"));
+		tutorial.setMedium(request.getParameter("medium"));
+		tutorial.setLevel(request.getParameter("level"));
+		tutorial.setTeacherName(request.getParameter("teacherName"));
 		
 		ITutorialService iTutorialService = new TutorialServiceImpl();
 		iTutorialService.addTutorial(tutorial);
@@ -73,10 +73,9 @@ public class AddTutorialServlet extends HttpServlet {
 		
 		request.setAttribute("tutorials", tutorials);
 		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Anu_SuccessfullyUpdated.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Anu_AddTutorialMessage.jsp");
 		dispatcher.forward(request, response);
 				
-		//doGet(request, response);
 	}
 
 }
